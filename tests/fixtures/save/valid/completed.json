@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "tripKey": "missione-italia-2026-10",
+  "contentVersion": "trip-2026.10-v1",
+  "journeyState": "completed",
+  "localRevision": 20,
+  "family": {
+    "members": [
+      {"id": "child-1", "nickname": "Mira", "ageBand": "9-11", "avatarId": null},
+      {"id": "child-2", "nickname": "Pip", "ageBand": "7-8", "avatarId": null},
+      {"id": "child-3", "nickname": "Sol", "ageBand": "4-6", "avatarId": null}
+    ],
+    "roleRotationIndex": 1
+  },
+  "route": {"screenId": "PASSPORT", "chapterId": "verona", "missionId": "VER-06", "stage": null, "selectedWalkId": null},
+  "missionProgress": {
+    "ROAD-01": {"state": "completed", "resolvedVariantId": null},
+    "ROAD-02": {"state": "completed", "resolvedVariantId": null},
+    "ROAD-03": {"state": "manual", "resolvedVariantId": null},
+    "VEN-01": {"state": "completed", "resolvedVariantId": null},
+    "VEN-02": {"state": "completed", "resolvedVariantId": null},
+    "VEN-03": {"state": "completed", "resolvedVariantId": null},
+    "VEN-04": {"state": "manual", "resolvedVariantId": null},
+    "ISL-01": {"state": "completed", "resolvedVariantId": null},
+    "ISL-02": {"state": "completed", "resolvedVariantId": null},
+    "ISL-03": {"state": "completed", "resolvedVariantId": null},
+    "VER-01": {"state": "completed", "resolvedVariantId": null},
+    "VER-02": {"state": "completed", "resolvedVariantId": null},
+    "VER-03": {"state": "completed", "resolvedVariantId": null},
+    "VER-04": {"state": "completed", "resolvedVariantId": "sigurta-team-maze"},
+    "VER-05": {"state": "completed", "resolvedVariantId": "borghetto-water-mill"},
+    "VER-06": {"state": "completed", "resolvedVariantId": null}
+  },
+  "excursionSelection": {"selectedPairId": "sigurta-borghetto"},
+  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
+  "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null}
+}

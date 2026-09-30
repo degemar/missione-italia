@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "tripKey": "missione-italia-2026-10",
+  "contentVersion": "trip-2026.10-v1",
+  "journeyState": "reset",
+  "localRevision": 5,
+  "family": {"members": [{"id": "child-1", "nickname": "Sol", "ageBand": "4-6", "avatarId": null}], "roleRotationIndex": 0},
+  "route": {"screenId": "ATLAS", "chapterId": null, "missionId": null, "stage": null, "selectedWalkId": null},
+  "missionProgress": {},
+  "excursionSelection": {"selectedPairId": "sigurta-borghetto"},
+  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
+  "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null}
+}

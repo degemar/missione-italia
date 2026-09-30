@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "id": "invalid-walk",
+    "title": "Invalid walk fixture",
+    "chapterId": "venice",
+    "mode": "tired-legs"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "broken-stop-a",
+      "geometry": {"type": "Point", "coordinates": [190, 45.4341]},
+      "properties": {"kind": "checkpoint", "order": 1, "label": "Broken coordinate", "missionIds": ["VEN-01"]}
+    },
+    {
+      "type": "Feature",
+      "id": "broken-stop-b",
+      "geometry": {"type": "Point", "coordinates": [12.3359, 45.4362]},
+      "properties": {"kind": "checkpoint", "order": 3, "label": "Broken order", "missionIds": ["MISSION-MISSING"]}
+    },
+    {
+      "type": "Feature",
+      "id": "broken-route",
+      "geometry": {"type": "LineString", "coordinates": [[13.2, 45.4341], [12.3359, 45.4362]]},
+      "properties": {"kind": "route", "checkpointIds": ["broken-stop-a", "place-missing"]}
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+[
+  {"id": "duplicate-mission-id", "mutation": "duplicateMission", "expectedCode": "CONTENT_DUPLICATE_MISSION_ID"},
+  {"id": "dangling-source-id", "mutation": "danglingSource", "expectedCode": "CONTENT_DANGLING_SOURCE"},
+  {"id": "missing-asset-id", "mutation": "missingAsset", "expectedCode": "CONTENT_DANGLING_ASSET"},
+  {"id": "unapproved-source-url", "mutation": "unapprovedUrl", "expectedCode": "CONTENT_UNAPPROVED_URL"},
+  {"id": "prohibited-family-field", "mutation": "prohibitedField", "expectedCode": "CONTENT_PROHIBITED_FIELD"},
+  {"id": "missing-role", "mutation": "missingRole", "expectedCode": "MISSION_ROLES"},
+  {"id": "asset-filename-case", "mutation": "assetCaseMismatch", "expectedCode": "CONTENT_MISSING_ASSET_FILE"}
+]

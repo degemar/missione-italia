@@ -1,0 +1,29 @@
+{
+  "type": "FeatureCollection",
+  "properties": {
+    "id": "venice-tired-legs-example",
+    "title": "Venice Tired Legs Example",
+    "chapterId": "venice",
+    "mode": "tired-legs"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "venice-lion-stop",
+      "geometry": {"type": "Point", "coordinates": [12.3379, 45.4341]},
+      "properties": {"kind": "checkpoint", "order": 1, "label": "Winged lion stop", "missionIds": ["VEN-01"]}
+    },
+    {
+      "type": "Feature",
+      "id": "venice-bridge-stop",
+      "geometry": {"type": "Point", "coordinates": [12.3359, 45.4362]},
+      "properties": {"kind": "checkpoint", "order": 2, "label": "Bridge detail stop", "missionIds": ["VEN-02"]}
+    },
+    {
+      "type": "Feature",
+      "id": "venice-tired-legs-route",
+      "geometry": {"type": "LineString", "coordinates": [[12.3379, 45.4341], [12.3359, 45.4362]]},
+      "properties": {"kind": "route", "checkpointIds": ["venice-lion-stop", "venice-bridge-stop"]}
+    }
+  ]
+}

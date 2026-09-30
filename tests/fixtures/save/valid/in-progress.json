@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "tripKey": "missione-italia-2026-10",
+  "contentVersion": "trip-2026.10-v1",
+  "journeyState": "in-progress",
+  "localRevision": 2,
+  "family": {
+    "members": [
+      {"id": "child-1", "nickname": "Mira", "ageBand": "9-11", "avatarId": null},
+      {"id": "child-2", "nickname": "Pip", "ageBand": "7-8", "avatarId": null},
+      {"id": "child-3", "nickname": "Sol", "ageBand": "4-6", "avatarId": null}
+    ],
+    "roleRotationIndex": 1
+  },
+  "route": {"screenId": "CHALLENGE", "chapterId": "road", "missionId": "ROAD-01", "stage": "challenge", "selectedWalkId": null},
+  "missionProgress": {"ROAD-01": {"state": "in-progress", "resolvedVariantId": null}},
+  "excursionSelection": {"selectedPairId": null},
+  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
+  "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null}
+}

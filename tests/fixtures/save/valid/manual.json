@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "tripKey": "missione-italia-2026-10",
+  "contentVersion": "trip-2026.10-v1",
+  "journeyState": "in-progress",
+  "localRevision": 3,
+  "family": {"members": [{"id": "child-1", "nickname": "Mira", "ageBand": "9-11", "avatarId": null}], "roleRotationIndex": 0},
+  "route": {"screenId": "CELEBRATION", "chapterId": "road", "missionId": "ROAD-01", "stage": "celebration", "selectedWalkId": null},
+  "missionProgress": {"ROAD-01": {"state": "manual", "resolvedVariantId": null}},
+  "excursionSelection": {"selectedPairId": null},
+  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
+  "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null}
+}
