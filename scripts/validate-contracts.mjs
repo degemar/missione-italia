@@ -296,6 +296,8 @@ for (const code of ["WALK_COORDINATE", "WALK_DESTINATION_BOUNDS", "WALK_ORDER", 
 if (!failures.some(({code}) => code === "WALK_INVALID_ACCEPTED")) pass("invalid GeoJSON fixture is rejected for range, order, mission, and place defects");
 
 const saveRequired = ["schemaVersion", "tripKey", "contentVersion", "journeyState", "localRevision", "family", "route", "missionProgress", "excursionSelection", "settings", "backup"];
+const saveSchemaVersion = 2;
+const supportedLocales = ["es", "en"];
 const journeyStates = ["fresh", "in-progress", "completed", "reset"];
 const missionStates = ["in-progress", "completed", "manual", "skipped"];
 const resolvedStates = new Set(["completed", "manual", "skipped"]);
@@ -303,7 +305,7 @@ function saveErrors(save) {
   const result = [...prohibitedErrors(save, "SAVE")];
   const add = (code, message) => result.push({code, message});
   for (const key of saveRequired) if (!(key in save)) add("SAVE_REQUIRED", key);
-  if (save.schemaVersion !== 1 || !journeyStates.includes(save.journeyState)) add("SAVE_VERSION_OR_STATE", "unsupported schema or journey state");
+  if (save.schemaVersion !== saveSchemaVersion || !journeyStates.includes(save.journeyState)) add("SAVE_VERSION_OR_STATE", "unsupported schema or journey state");
   if (!Number.isInteger(save.localRevision) || save.localRevision < 0) add("SAVE_REVISION", save.localRevision);
   if (!save.missionProgress || Array.isArray(save.missionProgress)) add("SAVE_PROGRESS", "object required");
   for (const [id, progress] of Object.entries(save.missionProgress ?? {})) {
@@ -316,6 +318,7 @@ function saveErrors(save) {
     for (const mission of manifest.missions.filter(({scored}) => scored)) if (!resolvedStates.has(save.missionProgress?.[mission.id]?.state)) add("SAVE_INCOMPLETE", mission.id);
   }
   if ((save.family?.members ?? []).length > 3 || !unique((save.family?.members ?? []).map(({id}) => id))) add("SAVE_FAMILY", "invalid member count or IDs");
+  if (!supportedLocales.includes(save.settings?.preferredLocale)) add("SAVE_LOCALE", "unsupported preferred locale");
   if (save.backup?.lastSuccessfulRevision !== null && save.backup?.lastSuccessfulRevision > save.localRevision) add("SAVE_BACKUP_REVISION", "cloud revision exceeds local revision");
   const encoded = JSON.stringify(save);
   if (/data:(?:image|audio)\//i.test(encoded) || /;base64,/i.test(encoded)) add("SAVE_BINARY_MEDIA", "binary/base64 media is prohibited");
@@ -343,7 +346,9 @@ if (!failures.some(({code}) => ["SAVE_INVALID_ACCEPTED", "SAVE_SIZE_TEST"].inclu
 const typeScript = readFileSync(join(root, "src/contracts/save-contract.ts"), "utf8");
 for (const state of [...journeyStates, ...missionStates]) if (!typeScript.includes(`"${state}"`)) fail("TS_SCHEMA_DRIFT", `missing ${state}`);
 for (const key of saveRequired) if (!new RegExp(`\\b${key}\\b`).test(typeScript)) fail("TS_SCHEMA_DRIFT", `missing field ${key}`);
-if (!typeScript.includes("SAVE_SCHEMA_VERSION = 1") || !typeScript.includes("SAVE_HARD_LIMIT_BYTES = 262_144")) fail("TS_SCHEMA_DRIFT", "version/size constants differ");
+if (!typeScript.includes(`SAVE_SCHEMA_VERSION = ${saveSchemaVersion}`) || !typeScript.includes("SAVE_HARD_LIMIT_BYTES = 262_144")) fail("TS_SCHEMA_DRIFT", "version/size constants differ");
+for (const locale of supportedLocales) if (!typeScript.includes(`"${locale}"`)) fail("TS_SCHEMA_DRIFT", `missing locale ${locale}`);
+if (!typeScript.includes("preferredLocale")) fail("TS_SCHEMA_DRIFT", "missing preferredLocale field");
 if (!failures.some(({code}) => code === "TS_SCHEMA_DRIFT")) pass("TypeScript save contract matches schema version, states, fields, and 256 KiB limit");
 
 const packagePath = "public/content/content-package.json";
