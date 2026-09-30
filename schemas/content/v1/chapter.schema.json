@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/chapter.schema.json",
+  "title": "Story chapter",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "order", "dateRange", "title", "power", "status", "missionIds", "openingBeat", "closingBeat"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "order": {"type": "integer", "minimum": 1},
+    "dateRange": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"type": "string", "format": "date"},
+        {"type": "string", "format": "date"}
+      ],
+      "items": false
+    },
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "power": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "status": {"const": "fixed"},
+    "missionIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Z]+(?:-[A-Z0-9]+)+$", "maxLength": 64}
+    },
+    "openingBeat": {"type": "string", "minLength": 1, "maxLength": 500},
+    "closingBeat": {"type": "string", "minLength": 1, "maxLength": 500}
+  }
+}

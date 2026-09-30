@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/mission.schema.json",
+  "title": "Mission",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id", "order", "chapterId", "date", "scored", "title", "status",
+    "durationMinutes", "energy", "storyBeat", "objective", "location", "roles",
+    "choices", "facts", "completion", "fallbacks", "safety", "reward", "sourceIds",
+    "fact_checked_on", "review_after", "offlineCritical", "dependencies"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z]+(?:-[A-Z0-9]+)+$", "maxLength": 64},
+    "order": {"type": "integer", "minimum": 1},
+    "chapterId": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "date": {"type": "string", "format": "date"},
+    "scored": {"type": "boolean"},
+    "title": {"type": "string", "minLength": 1, "maxLength": 100},
+    "status": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 80},
+    "durationMinutes": {"type": "integer", "minimum": 1, "maximum": 90},
+    "energy": {"type": "string", "enum": ["quiet", "low", "medium", "high"]},
+    "storyBeat": {"type": "string", "minLength": 1, "maxLength": 700},
+    "objective": {"type": "string", "minLength": 1, "maxLength": 500},
+    "location": {"$ref": "#/$defs/location"},
+    "roles": {"$ref": "#/$defs/roles"},
+    "fact_checked_on": {"type": "string", "format": "date"},
+    "review_after": {"type": "string", "format": "date"},
+    "phrases": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["it", "en", "pronunciation", "gesture"],
+        "properties": {
+          "it": {"type": "string", "minLength": 1, "maxLength": 80},
+          "en": {"type": "string", "minLength": 1, "maxLength": 120},
+          "pronunciation": {"type": "string", "minLength": 1, "maxLength": 120},
+          "gesture": {"type": "string", "minLength": 1, "maxLength": 160}
+        }
+      }
+    },
+    "choices": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "https://missione-italia.example/schemas/content/v1/choice.schema.json"}
+    },
+    "facts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/fact"}
+    },
+    "completion": {"$ref": "#/$defs/completion"},
+    "fallbacks": {"$ref": "#/$defs/fallbacks"},
+    "safety": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 240}
+    },
+    "reward": {"$ref": "https://missione-italia.example/schemas/content/v1/reward.schema.json"},
+    "sourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^SRC-[A-Z0-9]+(?:-[A-Z0-9]+)+$", "maxLength": 96}
+    },
+    "assetIds": {
+      "type": "array",
+      "default": [],
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96}
+    },
+    "offlineCritical": {"const": true},
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gps", "audio", "ticket", "liveData"],
+      "properties": {
+        "gps": {"const": false},
+        "audio": {"const": false},
+        "ticket": {"const": false},
+        "liveData": {"const": false}
+      }
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/variant"}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"scored": {"const": false}}, "required": ["scored"]},
+      "then": {
+        "properties": {
+          "chapterId": {"type": "null"},
+          "reward": {
+            "type": "object",
+            "properties": {"stamp": {"type": "null"}, "power": {"type": "null"}},
+            "required": ["stamp", "power"]
+          }
+        }
+      },
+      "else": {"properties": {"chapterId": {"type": "string"}}}
+    }
+  ],
+  "$defs": {
+    "position": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"type": "number", "minimum": -180, "maximum": 180},
+        {"type": "number", "minimum": -90, "maximum": 90}
+      ],
+      "items": false
+    },
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "label", "coordinates"],
+      "properties": {
+        "mode": {"const": "parent-selected"},
+        "label": {"type": "string", "minLength": 1, "maxLength": 240},
+        "coordinates": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/position"}]}
+      }
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "action"],
+      "properties": {
+        "role": {"type": "string", "enum": ["spotter", "detective", "navigator"]},
+        "action": {"type": "string", "minLength": 1, "maxLength": 320}
+      }
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/role"},
+      "allOf": [
+        {"contains": {"properties": {"role": {"const": "spotter"}}, "required": ["role"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"role": {"const": "detective"}}, "required": ["role"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"role": {"const": "navigator"}}, "required": ["role"]}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "fact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "text", "sourceId"],
+      "properties": {
+        "label": {"type": "string", "enum": ["FACT", "TRADITION", "LEGEND", "OUR STORY"]},
+        "text": {"type": "string", "minLength": 1, "maxLength": 800},
+        "sourceId": {"type": ["string", "null"], "pattern": "^SRC-[A-Z0-9]+(?:-[A-Z0-9]+)+$", "maxLength": 96}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"label": {"const": "OUR STORY"}}, "required": ["label"]},
+          "then": {"properties": {"sourceId": {"type": "null"}}},
+          "else": {"properties": {"sourceId": {"type": "string"}}}
+        }
+      ]
+    },
+    "completion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "allowedStates", "retryLine", "explanation", "successLine"],
+      "properties": {
+        "mode": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 80},
+        "allowedStates": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["completed", "manual", "skipped"]},
+          "allOf": [
+            {"contains": {"const": "completed"}},
+            {"contains": {"const": "manual"}},
+            {"contains": {"const": "skipped"}}
+          ]
+        },
+        "retryLine": {"type": "string", "minLength": 1, "maxLength": 240},
+        "explanation": {"type": "string", "minLength": 1, "maxLength": 500},
+        "successLine": {"type": "string", "minLength": 1, "maxLength": 240}
+      }
+    },
+    "fallbacks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["noGps", "closedVenue", "badWeather", "tiredLegs"],
+      "properties": {
+        "noGps": {"type": "string", "minLength": 1, "maxLength": 320},
+        "closedVenue": {"type": "string", "minLength": 1, "maxLength": 320},
+        "badWeather": {"type": "string", "minLength": 1, "maxLength": 320},
+        "tiredLegs": {"type": "string", "minLength": 1, "maxLength": 320}
+      }
+    },
+    "variant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "pairId", "title", "locationLabel", "storyBeat", "objective", "roles",
+        "choices", "facts", "completion", "fallbacks", "safety", "sourceIds",
+        "fact_checked_on", "review_after"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+        "pairId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+        "title": {"type": "string", "minLength": 1, "maxLength": 100},
+        "locationLabel": {"type": "string", "minLength": 1, "maxLength": 240},
+        "storyBeat": {"type": "string", "minLength": 1, "maxLength": 700},
+        "objective": {"type": "string", "minLength": 1, "maxLength": 500},
+        "roles": {"$ref": "#/$defs/roles"},
+        "choices": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"$ref": "https://missione-italia.example/schemas/content/v1/choice.schema.json"}
+        },
+        "facts": {"type": "array", "items": {"$ref": "#/$defs/fact"}},
+        "completion": {"$ref": "#/$defs/completion"},
+        "fallbacks": {"$ref": "#/$defs/fallbacks"},
+        "safety": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 240}
+        },
+        "fact_checked_on": {"type": "string", "format": "date"},
+        "review_after": {"type": "string", "format": "date"},
+        "sourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^SRC-[A-Z0-9]+(?:-[A-Z0-9]+)+$", "maxLength": 96}
+        },
+        "assetIds": {
+          "type": "array",
+          "default": [],
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96}
+        }
+      }
+    }
+  }
+}

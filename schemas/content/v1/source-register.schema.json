@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/source-register.schema.json",
+  "title": "Source register",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "registerVersion", "defaultCheckedOn", "claims"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "registerVersion": {"type": "string", "format": "date"},
+    "defaultCheckedOn": {"type": "string", "format": "date"},
+    "claims": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "https://missione-italia.example/schemas/content/v1/source.schema.json"}
+    }
+  }
+}

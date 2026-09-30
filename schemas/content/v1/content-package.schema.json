@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/content-package.schema.json",
+  "title": "Immutable content package index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "contentVersion", "status", "immutable", "createdAt", "hashAlgorithm",
+    "hashCanonicalization", "compatibility", "entrypoint", "files", "packageHash"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "contentVersion": {"type": "string", "pattern": "^trip-[0-9]{4}\\.[0-9]{2}-v[1-9][0-9]*$", "maxLength": 64},
+    "status": {"type": "string", "enum": ["foundation", "frozen"]},
+    "immutable": {"type": "boolean"},
+    "createdAt": {"type": "string", "format": "date-time"},
+    "hashAlgorithm": {"const": "sha256"},
+    "hashCanonicalization": {"const": "utf8-exact-bytes; package=LF-joined(path:sha256:bytes), sorted by path, no trailing LF"},
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contentSchemaVersion", "minimumAppVersion", "minimumStorageVersion", "maximumStorageVersion"],
+      "properties": {
+        "contentSchemaVersion": {"const": "0.1.0"},
+        "minimumAppVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+        "minimumStorageVersion": {"type": "integer", "minimum": 1},
+        "maximumStorageVersion": {"type": "integer", "minimum": 1}
+      }
+    },
+    "entrypoint": {"const": "trip-manifest.json"},
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "offlineCritical"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$", "maxLength": 240},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 0},
+          "offlineCritical": {"type": "boolean"}
+        }
+      }
+    },
+    "packageHash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "frozen"}}, "required": ["status"]},
+      "then": {"properties": {"immutable": {"const": true}}}
+    },
+    {
+      "properties": {
+        "compatibility": {
+          "properties": {
+            "maximumStorageVersion": {"minimum": 1}
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "id": "VEN-01",
+  "order": 4,
+  "chapterId": "venice",
+  "date": "2026-10-06",
+  "scored": true,
+  "title": "Find the Winged Lion",
+  "status": "fixed",
+  "durationMinutes": 8,
+  "energy": "low",
+  "storyBeat": "Bussola has reached Venice, but Wonder is still hiding. A lion could help—yet this city asks its lion to carry wings. Stop in a safe public place and look up together. The Spotter finds the wings, the Detective chooses what makes the animal unusual, and the Navigator confirms the whole team can pause before the parent checks the answer.",
+  "objective": "Find a winged lion from a safe public position.",
+  "location": {
+    "mode": "parent-selected",
+    "label": "Any safely visible winged lion in Venice",
+    "coordinates": null
+  },
+  "roles": [
+    {"role": "spotter", "action": "Point to the wings."},
+    {"role": "detective", "action": "Choose what makes this lion unusual."},
+    {"role": "navigator", "action": "Confirm the team can stop safely before the phone returns."}
+  ],
+  "choices": [
+    {"id": "wings", "label": "It has wings", "correct": true, "hint": "Look above the lion's back."},
+    {"id": "fins", "label": "It has fins", "correct": false, "hint": "Take another look above its back."},
+    {"id": "wheels", "label": "It has wheels", "correct": false, "hint": "Take another look above its back."}
+  ],
+  "facts": [
+    {
+      "label": "FACT",
+      "text": "The winged lion of Saint Mark is a symbol of Venice.",
+      "sourceId": "SRC-VEN-LION-01"
+    }
+  ],
+  "completion": {
+    "mode": "team-confirm",
+    "allowedStates": ["completed", "manual", "skipped"],
+    "retryLine": "Take another look. Find the shape above the lion's back.",
+    "explanation": "The winged lion represents Saint Mark and is one of Venice's best-known symbols. It can appear on carvings, flags, and signs.",
+    "successLine": "Lion found—Wonder has its first clue."
+  },
+  "fallbacks": {
+    "noGps": "Parent chooses any safely visible lion; no location check is required.",
+    "closedVenue": "Use an outdoor carving, sign, or the included offline reference image.",
+    "badWeather": "Use the offline image and match wings, book, and paws.",
+    "tiredLegs": "Complete while seated from a safe viewpoint or use manual completion."
+  },
+  "safety": ["Stop together; parent holds the phone.", "Do not cross or enter a crowd for a clue."],
+  "reward": {"stamp": "eagle-eye", "power": "wonder"},
+  "sourceIds": ["SRC-VEN-LION-01"],
+  "fact_checked_on": "2026-09-29",
+  "review_after": "2026-10-03",
+  "offlineCritical": true,
+  "dependencies": {"gps": false, "audio": false, "ticket": false, "liveData": false}
+}

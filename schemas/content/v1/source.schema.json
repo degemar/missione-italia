@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/source.schema.json",
+  "title": "Source claim",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "publisher", "pageTitle", "url", "retrievedOn", "claimType", "claimText", "stability", "requiredRecheckOn", "usedBy"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^SRC-[A-Z0-9]+(?:-[A-Z0-9]+)+$", "maxLength": 96},
+    "publisher": {"type": "string", "minLength": 1, "maxLength": 160},
+    "pageTitle": {"type": "string", "minLength": 1, "maxLength": 200},
+    "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "retrievedOn": {"type": "string", "format": "date"},
+    "claimType": {"type": "string", "enum": ["fact", "tradition", "legend", "visitor"]},
+    "claimText": {"type": "string", "minLength": 1, "maxLength": 800},
+    "stability": {"type": "string", "enum": ["stable", "seasonal", "volatile"]},
+    "requiredRecheckOn": {"type": "string", "format": "date"},
+    "usedBy": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "anyOf": [
+          {"pattern": "^[A-Z]+(?:-[A-Z0-9]+)+$"},
+          {"const": "planning-only"}
+        ]
+      }
+    }
+  }
+}

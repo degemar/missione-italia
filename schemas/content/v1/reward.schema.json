@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/reward.schema.json",
+  "title": "Mission reward reference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["stamp", "power"],
+  "properties": {
+    "stamp": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64},
+    "power": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 64}
+  }
+}

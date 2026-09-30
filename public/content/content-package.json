@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "contentVersion": "trip-2026.10-v1",
+  "status": "foundation",
+  "immutable": false,
+  "createdAt": "2026-09-29T17:30:00+02:00",
+  "hashAlgorithm": "sha256",
+  "hashCanonicalization": "utf8-exact-bytes; package=LF-joined(path:sha256:bytes), sorted by path, no trailing LF",
+  "compatibility": {
+    "contentSchemaVersion": "0.1.0",
+    "minimumAppVersion": "0.1.0",
+    "minimumStorageVersion": 1,
+    "maximumStorageVersion": 1
+  },
+  "entrypoint": "trip-manifest.json",
+  "files": [
+    {"path": "assets.json", "sha256": "9c99d61a32c9637351c6353ebd411027eb110ae7d10d4fb14b29eb017cc6540c", "bytes": 1696, "offlineCritical": true},
+    {"path": "rewards.json", "sha256": "2a42430af135dd6a0aaff5b509a35bccc966f7eb5a35fed918dd7781a0e4541f", "bytes": 659, "offlineCritical": true},
+    {"path": "sources.json", "sha256": "95be460c6b8cd976c8ebf33517369d35e82e5ec8c6c7817443183da844525a9e", "bytes": 19198, "offlineCritical": true},
+    {"path": "trip-manifest.json", "sha256": "1349d9848c5bc0f7ba6e0fab8fe9b4a7e9f9fe464d187ae4ac7dc80a0bbc94e6", "bytes": 64842, "offlineCritical": true}
+  ],
+  "packageHash": "ba94429094428154c74d49bcd8136ba3096f0c566ee56af32c238874b38ec9a0"
+}

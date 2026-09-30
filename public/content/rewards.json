@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "1.0.0",
+  "powers": [
+    {"id": "curiosity", "label": "Curiosity", "chapterId": "road"},
+    {"id": "wonder", "label": "Wonder", "chapterId": "venice"},
+    {"id": "creativity", "label": "Creativity", "chapterId": "lagoon-islands"},
+    {"id": "teamwork", "label": "Teamwork", "chapterId": "verona"}
+  ],
+  "stamps": [
+    {"id": "eagle-eye", "label": "Eagle Eye"},
+    {"id": "pattern-maker", "label": "Pattern Maker"},
+    {"id": "story-sleuth", "label": "Story Sleuth"},
+    {"id": "kind-navigator", "label": "Kind Navigator"},
+    {"id": "sound-scout", "label": "Sound Scout"},
+    {"id": "team-spark", "label": "Team Spark"}
+  ]
+}

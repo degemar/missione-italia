@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.example/schemas/content/v1/trip-manifest.schema.json",
+  "title": "Missione Italia trip manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "contentVersion", "tripKey", "status", "generatedAt",
+    "minimumAppVersion", "minimumStorageVersion", "calendarAuthority", "sourceRegister",
+    "rewardRegister", "assetRegister", "locales", "privacy", "dependencies",
+    "excludedContent", "epilogueMissionId", "narrative", "chapters", "excursionSelection", "missions"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "0.1.0"},
+    "contentVersion": {"type": "string", "pattern": "^trip-[0-9]{4}\\.[0-9]{2}-v[1-9][0-9]*$", "maxLength": 64},
+    "tripKey": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+    "status": {"type": "string", "enum": ["foundation-ready-not-frozen", "frozen"]},
+    "generatedAt": {"type": "string", "format": "date-time"},
+    "minimumAppVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "minimumStorageVersion": {"type": "integer", "minimum": 1},
+    "calendarAuthority": {"const": "planning/TRIP_CALENDAR.md"},
+    "sourceRegister": {"const": "public/content/sources.json"},
+    "rewardRegister": {"const": "public/content/rewards.json"},
+    "assetRegister": {"const": "public/content/assets.json"},
+    "locales": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default", "phraseLayer"],
+      "properties": {
+        "default": {"const": "en"},
+        "phraseLayer": {"type": "array", "contains": {"const": "it"}, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z]{2}$"}}
+      }
+    },
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["childIdentifiers", "childAccounts"],
+      "properties": {
+        "childIdentifiers": {"const": "nicknames-only"},
+        "childAccounts": {"const": false}
+      }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deviceMode", "gps", "audio", "tickets", "liveData"],
+      "properties": {
+        "deviceMode": {"const": "one-parent-phone"},
+        "gps": {"const": false},
+        "audio": {"const": false},
+        "tickets": {"const": false},
+        "liveData": {"const": false}
+      }
+    },
+    "excludedContent": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "contains": {"const": "gardaland"},
+      "items": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"}
+    },
+    "epilogueMissionId": {"type": "string", "pattern": "^[A-Z]+(?:-[A-Z0-9]+)+$", "maxLength": 64},
+    "narrative": {"$ref": "#/$defs/narrative"},
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "https://missione-italia.example/schemas/content/v1/chapter.schema.json"}
+    },
+    "excursionSelection": {"$ref": "#/$defs/excursionSelection"},
+    "missions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "https://missione-italia.example/schemas/content/v1/mission.schema.json"}
+    }
+  },
+  "$defs": {
+    "narrative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["opening", "states"],
+      "properties": {
+        "opening": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["storyBeat", "youngestAction", "familyOath", "tutorialSteps"],
+          "properties": {
+            "storyBeat": {"type": "string", "minLength": 1, "maxLength": 900},
+            "youngestAction": {"type": "string", "minLength": 1, "maxLength": 180},
+            "familyOath": {"type": "string", "minLength": 1, "maxLength": 500},
+            "tutorialSteps": {
+              "type": "array",
+              "minItems": 3,
+              "maxItems": 3,
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1, "maxLength": 180}
+            }
+          }
+        },
+        "states": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "interrupted", "resume", "skip", "manual", "retry", "offline",
+            "closedVenue", "tiredLegs", "badWeather", "endingWithSkips",
+            "endingAllObserved", "mondaySilent"
+          ],
+          "properties": {
+            "interrupted": {"type": "string", "minLength": 1, "maxLength": 320},
+            "resume": {"type": "string", "minLength": 1, "maxLength": 320},
+            "skip": {"type": "string", "minLength": 1, "maxLength": 320},
+            "manual": {"type": "string", "minLength": 1, "maxLength": 320},
+            "retry": {"type": "string", "minLength": 1, "maxLength": 320},
+            "offline": {"type": "string", "minLength": 1, "maxLength": 320},
+            "closedVenue": {"type": "string", "minLength": 1, "maxLength": 320},
+            "tiredLegs": {"type": "string", "minLength": 1, "maxLength": 320},
+            "badWeather": {"type": "string", "minLength": 1, "maxLength": 320},
+            "endingWithSkips": {"type": "string", "minLength": 1, "maxLength": 320},
+            "endingAllObserved": {"type": "string", "minLength": 1, "maxLength": 320},
+            "mondaySilent": {"type": "string", "minLength": 1, "maxLength": 320}
+          }
+        }
+      }
+    },
+    "excursionSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "selectedPairId", "recommendedPairId", "thursdayShortTrip", "candidatePairs"],
+      "properties": {
+        "status": {"const": "tbc"},
+        "selectedPairId": {"type": ["string", "null"], "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+        "recommendedPairId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+        "thursdayShortTrip": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "recommendation", "rule"],
+          "properties": {
+            "status": {"const": "tbc"},
+            "recommendation": {"const": "none"},
+            "rule": {"type": "string", "minLength": 1, "maxLength": 500}
+          }
+        },
+        "candidatePairs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "label", "status", "morningVariantId", "afternoonVariantId", "reason"],
+            "properties": {
+              "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+              "label": {"type": "string", "minLength": 1, "maxLength": 100},
+              "status": {"type": "string", "enum": ["candidate-recommended", "candidate-alternate", "weather-fallback"]},
+              "morningVariantId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+              "afternoonVariantId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
+              "reason": {"type": "string", "minLength": 1, "maxLength": 500}
+            }
+          }
+        }
+      }
+    }
+  }
+}

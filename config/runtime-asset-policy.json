@@ -1,0 +1,12 @@
+{
+  "schemaVersion": "1.0.0",
+  "targetPrecacheBytes": 15728640,
+  "maximumPrecacheBytes": 26214400,
+  "assets": [
+    {"id": "bussola-app-icon-source", "width": 1254, "height": 1254, "aspectRatio": "1:1", "maximumBytes": 5242880},
+    {"id": "bussola-app-icon-192", "width": 192, "height": 192, "aspectRatio": "1:1", "maximumBytes": 65536},
+    {"id": "bussola-app-icon-512", "width": 512, "height": 512, "aspectRatio": "1:1", "maximumBytes": 358400},
+    {"id": "bussola-app-icon-maskable-512", "width": 512, "height": 512, "aspectRatio": "1:1", "maximumBytes": 358400},
+    {"id": "bussola-app-icon-apple-touch", "width": 180, "height": 180, "aspectRatio": "1:1", "maximumBytes": 65536}
+  ]
+}

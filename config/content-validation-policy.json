@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "approvedSourceHosts": [
+    "museodistorianaturale.comune.verona.it",
+    "museilombardia.cultura.gov.it",
+    "museovetro.visitmuve.it",
+    "visitsirmione.com",
+    "www.comune.lazise.vr.it",
+    "www.cmverona.it",
+    "www.museonicolis.com",
+    "www.sigurta.it",
+    "www.treccani.it",
+    "www.veneziaunica.it",
+    "www.visitverona.it"
+  ],
+  "prohibitedPersistedKeys": [
+    "accessToken",
+    "analyticsId",
+    "authToken",
+    "biography",
+    "birthday",
+    "dateOfBirth",
+    "deviceId",
+    "email",
+    "face",
+    "fullName",
+    "gpsHistory",
+    "locationHistory",
+    "photo",
+    "refreshToken",
+    "routeHistory",
+    "school",
+    "surname",
+    "voice"
+  ],
+  "saveTargetBytes": 65536,
+  "saveHardLimitBytes": 262144
+}
