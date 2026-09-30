@@ -3,7 +3,12 @@ import {assertValidSaveEnvelope, type SaveValidationContext} from './save-valida
 
 export interface LegacySaveV0 extends Omit<SaveEnvelopeV1, 'schemaVersion' | 'settings' | 'backup'> {
   schemaVersion: 0;
-  settings: Omit<SaveEnvelopeV1['settings'], 'highContrast'>;
+  settings: Omit<SaveEnvelopeV1['settings'], 'preferredLocale' | 'highContrast'> & {language: 'en'};
+}
+
+export interface LegacySaveV1 extends Omit<SaveEnvelopeV1, 'schemaVersion' | 'settings'> {
+  schemaVersion: 1;
+  settings: Omit<SaveEnvelopeV1['settings'], 'preferredLocale'> & {language: 'en'};
 }
 
 export interface MigrationResult {
@@ -29,18 +34,34 @@ export class InvalidLegacySaveError extends Error {
 
 const isRecord = (value: unknown): value is Record<string, unknown> => Boolean(value) && typeof value === 'object' && !Array.isArray(value);
 
-const migrateV0ToV1 = (input: unknown): SaveEnvelopeV1 => {
+const migrateV0ToV1 = (input: unknown): LegacySaveV1 => {
   if (!isRecord(input) || input.schemaVersion !== 0 || !isRecord(input.settings)) throw new InvalidLegacySaveError('Invalid storage schema 0 record.');
   const legacy = input as unknown as LegacySaveV0;
   return {
     ...legacy,
-    schemaVersion: SAVE_SCHEMA_VERSION,
+    schemaVersion: 1,
     settings: {...legacy.settings, highContrast: false},
     backup: {enabled: false, dirty: false, lastSuccessfulRevision: null, lastSuccessfulSyncAt: null},
   };
 };
 
-export const STORAGE_MIGRATIONS = [{from: 0, to: 1, migrate: migrateV0ToV1}] as const;
+const migrateV1ToV2 = (input: unknown): SaveEnvelopeV1 => {
+  if (!isRecord(input) || input.schemaVersion !== 1 || !isRecord(input.settings) || input.settings.language !== 'en') {
+    throw new InvalidLegacySaveError('Invalid storage schema 1 record.');
+  }
+  const legacy = input as unknown as LegacySaveV1;
+  const {italianPhrases, sound, reducedMotion, highContrast} = legacy.settings;
+  return {
+    ...legacy,
+    schemaVersion: SAVE_SCHEMA_VERSION,
+    settings: {preferredLocale: 'en', italianPhrases, sound, reducedMotion, highContrast},
+  };
+};
+
+export const STORAGE_MIGRATIONS = [
+  {from: 0, to: 1, migrate: migrateV0ToV1},
+  {from: 1, to: 2, migrate: migrateV1ToV2},
+] as const;
 
 export const migrateSave = (input: unknown, validationContext: SaveValidationContext = {}): MigrationResult => {
   if (!isRecord(input) || !Number.isInteger(input.schemaVersion) || (input.schemaVersion as number) < 0) throw new InvalidLegacySaveError('Missing or invalid storage schema version.');

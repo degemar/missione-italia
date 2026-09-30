@@ -3,6 +3,7 @@ import {
   MISSION_STATES,
   SAVE_HARD_LIMIT_BYTES,
   SAVE_SCHEMA_VERSION,
+  SUPPORTED_LOCALES,
   type SaveEnvelopeV1,
 } from '../contracts/save-contract.js';
 import {utf8Bytes} from './canonical-json.js';
@@ -134,8 +135,8 @@ export const validateSaveEnvelope = (input: unknown, context: SaveValidationCont
 
   if (!isRecord(input.settings)) issues.push({code: 'settings', path: '$.settings', message: 'Settings must be an object.'});
   else {
-    addExactKeyIssues(input.settings, ['language', 'italianPhrases', 'sound', 'reducedMotion', 'highContrast'], '$.settings', issues);
-    if (input.settings.language !== 'en') issues.push({code: 'language', path: '$.settings.language', message: 'Only English UI is supported.'});
+    addExactKeyIssues(input.settings, ['preferredLocale', 'italianPhrases', 'sound', 'reducedMotion', 'highContrast'], '$.settings', issues);
+    if (!(SUPPORTED_LOCALES as readonly unknown[]).includes(input.settings.preferredLocale)) issues.push({code: 'locale', path: '$.settings.preferredLocale', message: 'Unsupported preferred locale.'});
     for (const key of ['italianPhrases', 'sound', 'reducedMotion', 'highContrast'] as const) if (!isBoolean(input.settings[key])) issues.push({code: 'setting', path: `$.settings.${key}`, message: 'Setting must be boolean.'});
   }
 

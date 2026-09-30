@@ -107,12 +107,13 @@ describe('local save repository', () => {
     const legacy = readFixture<unknown>('tests/fixtures/save/migration/v0.json');
     const record: StoredSaveRecord = {tripKey, payload: legacy, integrity: integrityHash(legacy), storedAt: '2026-09-29T00:00:00.000Z'};
     await harness.engine.transaction('readwrite', (transaction) => transaction.putSave(record));
-    expect((await harness.repository.load(tripKey)).save?.schemaVersion).toBe(1);
+    expect((await harness.repository.load(tripKey)).save?.schemaVersion).toBe(2);
     const afterFirst = await harness.engine.transaction('readonly', async (transaction) => ({
       canonical: await transaction.getSave(tripKey),
       recovery: await transaction.getRecoveries(tripKey),
     }));
     expect((afterFirst.canonical?.payload as SaveEnvelopeV1).settings.highContrast).toBe(false);
+    expect((afterFirst.canonical?.payload as SaveEnvelopeV1).settings.preferredLocale).toBe('en');
     expect(afterFirst.recovery).toHaveLength(1);
     expect(afterFirst.recovery[0]?.reason).toBe('before-migration');
     await harness.repository.load(tripKey);

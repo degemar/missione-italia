@@ -95,6 +95,7 @@ export function screenFromSave(bundle: ContentBundle, save: SaveEnvelopeV1 | nul
 export type AppAction =
   | {type: 'BOOT_SUCCESS'; bundle: ContentBundle; save: SaveEnvelopeV1 | null; durability: DurabilityStatus; warning: AppState['loadWarning']}
   | {type: 'BOOT_ERROR'}
+  | {type: 'SET_BUNDLE'; bundle: ContentBundle}
   | {type: 'RETRY_BOOT'}
   | {type: 'NAVIGATE'; screen: AppScreen; notice?: string | null}
   | {type: 'OPENING_NEXT'}
@@ -127,6 +128,8 @@ export function appReducer(state: AppState, action: AppAction): AppState {
       };
     case 'BOOT_ERROR':
       return {...state, screen: {id: 'CONTENT-ERROR'}, busy: false};
+    case 'SET_BUNDLE':
+      return {...state, bundle: action.bundle};
     case 'RETRY_BOOT':
       return {...initialAppState};
     case 'NAVIGATE': {

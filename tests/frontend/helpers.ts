@@ -13,7 +13,8 @@ export function createContentFetcher(overrides: Readonly<Record<string, unknown>
   return (async (input: RequestInfo | URL) => {
     const url = new URL(String(input), 'https://missione.test');
     const fileName = url.pathname.split('/').at(-1) ?? '';
-    const value = Object.hasOwn(overrides, fileName) ? overrides[fileName] : await readContentJson(fileName);
+    const contentPath = url.pathname.split('/content/').at(-1) ?? fileName;
+    const value = Object.hasOwn(overrides, fileName) ? overrides[fileName] : await readContentJson(contentPath);
     return new Response(JSON.stringify(value), {status: 200, headers: {'content-type': 'application/json'}});
   }) as typeof fetch;
 }

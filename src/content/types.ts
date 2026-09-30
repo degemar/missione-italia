@@ -1,5 +1,6 @@
 export type RoleId = 'spotter' | 'detective' | 'navigator';
 export type CompletionState = 'completed' | 'manual' | 'skipped';
+export type ContentLocale = 'es' | 'en';
 
 export interface RoleAction {
   role: RoleId;
@@ -14,7 +15,7 @@ export interface MissionChoice {
 }
 
 export interface MissionFact {
-  label: 'FACT' | 'TRADITION' | 'LEGEND' | 'OUR STORY';
+  label: string;
   text: string;
   sourceId: string | null;
 }
@@ -122,7 +123,7 @@ export interface TripManifest {
   generatedAt: string;
   minimumAppVersion: string;
   minimumStorageVersion: number;
-  locales: {default: 'en'; available: string[]; italianLayer: boolean};
+  locales: {default: ContentLocale; available: ContentLocale[]; italianLayer: boolean};
   excludedContent: string[];
   epilogueMissionId: string;
   narrative: {
@@ -155,6 +156,62 @@ export interface TripManifest {
     candidatePairs: ExcursionPair[];
   };
   missions: Mission[];
+}
+
+export interface LocalizedPlayableContent {
+  title: string;
+  storyBeat: string;
+  objective: string;
+  locationLabel: string;
+  roles: Record<RoleId, string>;
+  choices?: Record<string, {label: string; hint: string}>;
+  phrases?: Record<string, {meaning: string; pronunciation: string; gesture: string}>;
+  facts: Record<string, {label: string; text: string}>;
+  completion: Pick<MissionCompletion, 'retryLine' | 'explanation' | 'successLine'>;
+  fallbacks: MissionFallbacks;
+  safety: string[];
+  assetIds?: string[];
+  variants?: Record<string, LocalizedPlayableContent>;
+}
+
+export interface LocalizedTripManifest {
+  schemaVersion: string;
+  baseContentVersion: string;
+  locale: ContentLocale;
+  fallbackLocale: ContentLocale;
+  narrative: {
+    opening: {storyBeat: string; youngestAction: string; familyOath: string; tutorialSteps: Record<string, string>};
+    states: Record<string, string>;
+  };
+  chapters: Record<string, {title: string; openingBeat: string; closingBeat: string}>;
+  excursionSelection: Record<string, unknown>;
+  missions: Record<string, LocalizedPlayableContent>;
+}
+
+export type NarrationScreen =
+  | 'opening'
+  | 'chapter-opening'
+  | 'chapter-closing'
+  | 'mission-story'
+  | 'mission-variant-story'
+  | 'epilogue-story';
+
+export interface NarrationSegment {
+  id: string;
+  screen: NarrationScreen;
+  scriptRef: string;
+  captionRef: string;
+  captionText?: string;
+  audioAssetId?: string;
+}
+
+export interface NarrationManifest {
+  schemaVersion: string;
+  locale: ContentLocale;
+  autoplay: false;
+  captionPolicy: 'exact-script';
+  voice: {character: string; pronunciationNote: string; style: string};
+  segments: NarrationSegment[];
 }
 
 export interface RewardsRegister {
@@ -204,6 +261,7 @@ export interface WalkContent {
 }
 
 export interface ContentBundle {
+  locale: ContentLocale;
   manifest: TripManifest;
   rewards: RewardsRegister;
   sources: SourceRegister;
@@ -217,6 +275,11 @@ export interface ContentBundle {
   stampLabelById: ReadonlyMap<string, string>;
   powerLabelById: ReadonlyMap<string, string>;
   sourceById: ReadonlyMap<string, SourceClaim>;
+}
+
+export interface SpanishContentResources {
+  localized: LocalizedTripManifest;
+  narration: NarrationManifest;
 }
 
 export interface EffectiveMission extends Omit<Mission, 'variants'> {

@@ -23,6 +23,42 @@ const replacePayload = async (raw: string, mutate: (payload: Record<string, unkn
 };
 
 describe('save export and import', () => {
+  it('retains family, locale, and earned mission stamps across export/import; reset keeps setup and locale', async () => {
+    const source = await createHarness();
+    await source.repository.update(tripKey, freshSave, (save) => ({
+      ...save,
+      localRevision: save.localRevision + 1,
+      family: {
+        members: [
+          {id: 'child-1', nickname: 'Mira', ageBand: '9-11', avatarId: 'binoculars'},
+          {id: 'child-2', nickname: 'Leo', ageBand: '7-8', avatarId: 'compass'},
+        ],
+        roleRotationIndex: 1,
+      },
+      settings: {...save.settings, preferredLocale: 'es'},
+    }));
+    await source.repository.update(tripKey, freshSave, (save) => resolveMission(save, 'ROAD-01', 'completed', catalog.missionIds));
+    await source.repository.update(tripKey, freshSave, (save) => resolveMission(save, 'ROAD-02', 'manual', catalog.missionIds));
+
+    const target = await createHarness();
+    const preview = await target.repository.previewImport(await source.repository.exportTrip(tripKey));
+    await target.repository.replaceFromImport(preview);
+    const imported = (await target.repository.load(tripKey)).save!;
+    expect(imported.family).toEqual((await source.repository.load(tripKey)).save!.family);
+    expect(imported.settings.preferredLocale).toBe('es');
+    expect(imported.missionProgress).toMatchObject({
+      'ROAD-01': {state: 'completed'},
+      'ROAD-02': {state: 'manual'},
+    });
+
+    const reset = await target.repository.resetProgress(tripKey, freshSave);
+    expect(reset.save.family).toEqual(imported.family);
+    expect(reset.save.settings.preferredLocale).toBe('es');
+    expect(reset.save.missionProgress).toEqual({});
+    source.repository.close();
+    target.repository.close();
+  });
+
   it('exports only the validated save and previews before replacement', async () => {
     const source = await createHarness();
     await source.repository.update(tripKey, freshSave, (save) => resolveMission(save, 'ROAD-01', 'manual', catalog.missionIds));
@@ -76,7 +112,8 @@ describe('save export and import', () => {
     const harness = await createHarness();
     const preview = await harness.repository.previewImport(canonicalJson(envelope));
     expect(preview).toMatchObject({migrated: true, sourceSchemaVersion: 0});
-    expect(preview.candidate.schemaVersion).toBe(1);
+    expect(preview.candidate.schemaVersion).toBe(2);
+    expect(preview.candidate.settings.preferredLocale).toBe('en');
     harness.repository.close();
   });
 

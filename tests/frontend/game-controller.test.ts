@@ -70,15 +70,15 @@ describe('local game controller', () => {
     const controller = await LocalGameController.create(bundle, {engine: new MemoryStorageEngine()});
     await controller.saveFamily({members: family, sound: false});
     await controller.resolveMission('ROAD-01', 'completed');
-    const settings = await controller.updateSettings({sound: true, reducedMotion: true});
-    expect(settings.save.settings).toMatchObject({sound: true, reducedMotion: true});
+    const settings = await controller.updateSettings({sound: true, reducedMotion: true, preferredLocale: 'en'});
+    expect(settings.save.settings).toMatchObject({sound: true, reducedMotion: true, preferredLocale: 'en'});
 
     const resetPrepared = prepareTripMaintenance('reset-progress', bundle.manifest.tripKey);
     const resetIntent = confirmTripMaintenance(resetPrepared, resetPrepared.confirmationLabel);
     if (!resetIntent) throw new Error('Expected reset confirmation');
     const reset = await controller.resetProgress(resetIntent);
     expect(reset.save.family.members).toEqual(family);
-    expect(reset.save.settings).toMatchObject({sound: true, reducedMotion: true});
+    expect(reset.save.settings).toMatchObject({sound: true, reducedMotion: true, preferredLocale: 'en'});
     expect(reset.save.missionProgress).toEqual({});
     expect(reset.save.route.screenId).toBe('ATLAS');
 

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "tripKey": "missione-italia-2026-10",
   "contentVersion": "trip-2026.10-v1",
   "journeyState": "fresh",
@@ -8,7 +8,7 @@
   "route": {"screenId": "WELCOME", "chapterId": null, "missionId": null, "stage": null, "selectedWalkId": null},
   "missionProgress": {},
   "excursionSelection": {"selectedPairId": null},
-  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
+  "settings": {"preferredLocale": "es", "italianPhrases": true, "sound": false, "reducedMotion": false, "highContrast": false},
   "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null},
   "photo": "data:image/png;base64,iVBORw0KGgo="
 }

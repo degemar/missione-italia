@@ -1,4 +1,5 @@
-import {contentUrl} from './content-urls.js';
+import {contentUrl, localizedContentUrl} from './content-urls.js';
+import {assertLocalizedContentContracts} from './localized-content.js';
 import {BUILD_METADATA} from '../platform/build-metadata.js';
 import type {
   AssetRegister,
@@ -9,6 +10,7 @@ import type {
   Mission,
   RewardsRegister,
   SourceRegister,
+  SpanishContentResources,
   TripManifest,
 } from './types.js';
 
@@ -93,6 +95,26 @@ async function loadJson(fileName: string, fetcher: typeof fetch, basePath: strin
   let response: Response;
   try {
     response = await fetcher(contentUrl(fileName, basePath));
+  } catch (error) {
+    throw new ContentLoadError(`Could not load ${fileName}.`, error);
+  }
+  if (!response.ok) throw new ContentLoadError(`Could not load ${fileName} (${response.status}).`);
+  try {
+    return await response.json() as unknown;
+  } catch (error) {
+    throw new ContentLoadError(`${fileName} is not valid JSON.`, error);
+  }
+}
+
+async function loadLocalizedJson(
+  locale: 'es',
+  fileName: 'trip-manifest.es.json' | 'narration.es.json',
+  fetcher: typeof fetch,
+  basePath: string,
+): Promise<unknown> {
+  let response: Response;
+  try {
+    response = await fetcher(localizedContentUrl(locale, fileName, basePath));
   } catch (error) {
     throw new ContentLoadError(`Could not load ${fileName}.`, error);
   }
@@ -260,6 +282,7 @@ export async function loadContentBundle(options: ContentLoadOptions = {}): Promi
   }
 
   return {
+    locale: 'en',
     manifest,
     rewards,
     sources,
@@ -274,6 +297,20 @@ export async function loadContentBundle(options: ContentLoadOptions = {}): Promi
     powerLabelById,
     sourceById,
   };
+}
+
+export async function loadSpanishContentResources(
+  base: ContentBundle,
+  options: Pick<ContentLoadOptions, 'fetcher' | 'basePath'> = {},
+): Promise<SpanishContentResources> {
+  const fetcher = options.fetcher ?? globalThis.fetch;
+  const basePath = options.basePath ?? import.meta.env.BASE_URL;
+  if (!fetcher) throw new ContentLoadError('This browser cannot load the bundled Spanish content.');
+  const [localized, narration] = await Promise.all([
+    loadLocalizedJson('es', 'trip-manifest.es.json', fetcher, basePath),
+    loadLocalizedJson('es', 'narration.es.json', fetcher, basePath),
+  ]);
+  return assertLocalizedContentContracts(localized, narration, base.manifest, base.assets);
 }
 
 export function getEffectiveMission(

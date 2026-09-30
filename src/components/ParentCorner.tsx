@@ -15,7 +15,7 @@ import {
 import {useReducer} from 'react';
 
 import type {AppScreen} from '../app/app-state.js';
-import type {SaveEnvelopeV1} from '../contracts/save-contract.js';
+import type {SaveEnvelopeV1, SupportedLocale} from '../contracts/save-contract.js';
 import type {ContentBundle, RoleId} from '../content/types.js';
 import {isChapterAvailable, isResolved} from '../game/progress.js';
 import {getRoleAssignments} from '../game/roles.js';
@@ -55,6 +55,7 @@ interface ParentCornerProps {
   readonly onUnlockChapter: (chapterId: string) => void;
   readonly onSelectPair: (pairId: string) => void;
   readonly onSetting: (setting: 'sound' | 'reducedMotion', value: boolean) => void;
+  readonly onLocale: (locale: SupportedLocale) => void;
   readonly onInspectStorage: () => void;
   readonly onRequestPersistence: () => void;
   readonly onCreateDiagnostics: () => void;
@@ -189,6 +190,17 @@ export function ParentCorner(props: ParentCornerProps) {
 
       <section className="parent-section" aria-labelledby="parent-settings-heading">
         <h2 id="parent-settings-heading">{t('parent.settings')}</h2>
+        <label className="field-label" htmlFor="parent-language">{t('parent.language')}</label>
+        <select
+          id="parent-language"
+          value={props.save.settings.preferredLocale}
+          disabled={props.busy}
+          onChange={(event) => props.onLocale(event.currentTarget.value as SupportedLocale)}
+        >
+          <option value="es">{t('parent.languageSpanish')}</option>
+          <option value="en">{t('parent.languageEnglish')}</option>
+        </select>
+        <p className="control-help">{t('parent.languageHelp')}</p>
         <label className="toggle-row">
           <input
             type="checkbox"

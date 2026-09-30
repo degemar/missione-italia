@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "tripKey": "missione-italia-2026-10",
   "contentVersion": "trip-2026.10-v1",
   "journeyState": "in-progress",
@@ -8,6 +8,6 @@
   "route": {"screenId": "CELEBRATION", "chapterId": "verona", "missionId": "VER-04", "stage": "celebration", "selectedWalkId": null},
   "missionProgress": {"VER-04": {"state": "skipped", "resolvedVariantId": null}},
   "excursionSelection": {"selectedPairId": null},
-  "settings": {"language": "en", "italianPhrases": true, "sound": false, "reducedMotion": true, "highContrast": true},
+  "settings": {"preferredLocale": "es", "italianPhrases": true, "sound": false, "reducedMotion": true, "highContrast": true},
   "backup": {"enabled": false, "dirty": false, "lastSuccessfulRevision": null, "lastSuccessfulSyncAt": null}
 }

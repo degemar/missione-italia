@@ -1,4 +1,4 @@
-export const SAVE_SCHEMA_VERSION = 1 as const;
+export const SAVE_SCHEMA_VERSION = 2 as const;
 export const SAVE_TARGET_BYTES = 65_536 as const;
 export const SAVE_HARD_LIMIT_BYTES = 262_144 as const;
 
@@ -10,6 +10,8 @@ export type JourneyState = (typeof JOURNEY_STATES)[number];
 export type MissionState = (typeof MISSION_STATES)[number];
 export type ResolvedMissionState = (typeof RESOLVED_MISSION_STATES)[number];
 export type AgeBand = "4-6" | "7-8" | "9-11";
+export const SUPPORTED_LOCALES = ["es", "en"] as const;
+export type SupportedLocale = (typeof SUPPORTED_LOCALES)[number];
 export type StableScreenId =
   | "WELCOME"
   | "SETUP"
@@ -54,7 +56,7 @@ export interface SaveEnvelopeV1 {
   missionProgress: Record<string, MissionProgress>;
   excursionSelection: {selectedPairId: string | null};
   settings: {
-    language: "en";
+    preferredLocale: SupportedLocale;
     italianPhrases: boolean;
     sound: boolean;
     reducedMotion: boolean;
@@ -78,7 +80,7 @@ export const createDefaultSave = (tripKey: string, contentVersion: string): Save
   route: {screenId: "WELCOME", chapterId: null, missionId: null, stage: null, selectedWalkId: null},
   missionProgress: {},
   excursionSelection: {selectedPairId: null},
-  settings: {language: "en", italianPhrases: true, sound: false, reducedMotion: false, highContrast: false},
+  settings: {preferredLocale: "es", italianPhrases: true, sound: false, reducedMotion: false, highContrast: false},
   backup: {enabled: false, dirty: false, lastSuccessfulRevision: null, lastSuccessfulSyncAt: null}
 });
 
