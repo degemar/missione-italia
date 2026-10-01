@@ -21,7 +21,7 @@ The frontend lane is required in addition to the four requested specialist types
 Close these tasks before their dependent implementation begins.
 
 - [x] **DEC-001 — Confirm the calendar.** Completed in [`planning/TRIP_CALENDAR.md`](planning/TRIP_CALENDAR.md): 4–10 October, Venice nights Monday–Tuesday, Verona nights Wednesday–Friday, return Saturday.
-- [x] **DEC-002 — Confirm child-facing language.** English story/UI plus a small Italian phrase layer; keep strings localization-ready.
+- [x] **DEC-002 — Confirm child-facing language.** V2 is Spanish-only, with a small Italian phrase layer for learning.
 - [x] **DEC-003 — Set the device decision.** V1 is phone-only; exact primary/backup models are deferred to the real-device release gate and do not block implementation.
 - [x] **DEC-004 — Confirm the GitHub handoff.** Codex builds a portable package and manual-import guide; it never uses the connected professional GitHub account or pushes to the personal account.
 - [x] **DEC-005 — Choose the visual direction.** Living Storybook Atlas; no wireframe phase.
@@ -37,7 +37,7 @@ No implementation blocker remains. Deferred release inputs and the manual accoun
 - Gardaland is excluded from app content, navigation, maps, rewards, and tests.
 - Road, Venice, Murano/Burano, and Verona are required; Saturday's return epilogue is deliberately simple and never blocks completion.
 - One parent-controlled phone; no child accounts.
-- Phone-only mobile web/PWA; tablet and desktop layouts are outside V1 scope.
+- Mobile-first web/PWA; 320–430 px remains the primary target and V2 expands gracefully to tablet/desktop.
 - Living Storybook Atlas visual system.
 - Self-hosted Phosphor functional icons plus original story illustrations.
 - Curated walks, not dynamic route generation.
@@ -47,6 +47,19 @@ No implementation blocker remains. Deferred release inputs and the manual accoun
 - No analytics, ads, cloud photos, push notifications, or live generative AI.
 - All core gameplay works with map tiles, Google, and Supabase unavailable.
 - Codex creates local source, workflow, migration, and instruction packages only; personal GitHub/Supabase activation is user-run.
+
+## Spanish and artistic V2 redesign
+
+The authoritative redesign backlog is [`planning/REDESIGN_ROADMAP.md`](planning/REDESIGN_ROADMAP.md). It supersedes earlier inspiration sources but does not replace unfinished trip-critical map, recovery, or field-test tasks below.
+
+- [x] **R0 — contracts and provenance:** completed 30 September 2026. Stamp Theatre selected, Spanish sample approved, and provenance/performance contracts recorded.
+- [x] **R1 — Spanish foundation:** completed 1 October 2026. Spanish UI/story content, Spanish-only save migration, and the integrated verification gate pass.
+- [ ] **R2 — visual system:** build the selected shadcn-based component layer, original illustration kit, Phosphor icon rules, and reduced-motion equivalents.
+- [ ] **R3 — screen rebuild:** migrate setup, atlas, chapter, mission, celebration, Passport, and Parent Corner without changing gameplay contracts.
+- [ ] **R4 — storyteller:** add optional pre-generated Spanish narration, captions, download/cache controls, and silent fallback; no runtime AI or server is required.
+- [ ] **R5 — release:** run mobile/responsive, accessibility, offline, performance, licence, migration, and production-URL gates; retain the V1 rollback package.
+
+**Launch rule:** run one specialist agent at a time in the order defined by each wave. No implementation begins until R0 ends with one approved art treatment and a clean provenance register.
 
 ## Ownership rules
 

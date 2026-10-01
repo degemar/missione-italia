@@ -77,17 +77,19 @@ Roles rotate so nobody owns the “best” role. All completed tasks fill one sh
 | 7 | Counting, ordering, simple multiple choice | Count arches; choose the correct boat |
 | 9 | Riddles, map reading, inference, navigation | Decode a clue; identify the next waypoint |
 
-Text should be short enough for a parent to read aloud. Browser speech synthesis can be added only after the essential experience is stable.
+Text should be short enough for a parent to read aloud. Spanish is the child-facing language; Italian stays as a small travel-phrase layer. Recorded Spanish narration can be added only after the essential experience is stable.
 
 ### Selected visual direction: Living Storybook Atlas
 
 The app will look like a pocket adventure book brought to life: warm paper and passport surfaces, inked map routes, collectible travel stickers, expressive chapter illustrations, and a slightly mischievous brass compass. Functional controls stay crisp and quiet; motion appears only to reveal a clue, confirm an action, or celebrate shared progress.
 
-The direction draws principles—not layouts or assets—from [Design Spells](https://designspells.com/), [60fps](https://60fps.design/), [Motion by Zajno](https://motion.zajno.com/), [Viewport UI](https://viewport-ui.design/), [Recent](https://recent.design/), and [SeeSaw](https://www.seesaw.website/).
+The redesign uses only the approved repository set in [`planning/REDESIGN_ROADMAP.md`](planning/REDESIGN_ROADMAP.md). It borrows patterns, not finished designs: shadcn/ui supplies accessible structure, Magic UI supplies a small number of motion accents, Phosphor supplies interface icons, and verified Sketch Illustrations assets can be adapted into the story artwork. The result must remain an original Missione Italia design.
 
 No wireframe phase is required. The UX/UI lane will define the state inventory, reusable component behavior, design tokens, original-asset brief, accessibility rules, and visual QA contract directly.
 
-Functional icons use self-hosted Phosphor Icons under its MIT licence. The compass, chapter scenes, stamps, markers, and offline route illustrations are original assets with recorded provenance. V1 is designed for 320–430 CSS px phone viewports; tablet and desktop composition is outside scope.
+Functional icons use self-hosted Phosphor Icons under its MIT licence. The compass, chapter scenes, stamps, markers, and offline route illustrations are original or verified reusable assets with recorded provenance. The experience is mobile-first at 320–430 CSS px and expands cleanly to tablet/desktop without creating a separate desktop product.
+
+The artistic Spanish redesign is delivered as a protected V2 track so the live local-first V1 remains the rollback build. Its workstreams, task IDs, agent order, licensing rules, and wave gates are defined in [`planning/REDESIGN_ROADMAP.md`](planning/REDESIGN_ROADMAP.md).
 
 ### Walk Mode
 
@@ -316,6 +318,8 @@ Supabase Free is ample for this family-scale use, but inactive free projects can
 - Place all parent settings behind a deliberate press-and-hold interaction, not a pretend security PIN.
 
 ## 10. Delivery roadmap
+
+The dated plan below records the original trip-ready V1 delivery. The approved Spanish/artistic V2 work continues through the gated redesign waves in [`planning/REDESIGN_ROADMAP.md`](planning/REDESIGN_ROADMAP.md); it may not destabilize the live V1.
 
 ### 29 September — product lock
 

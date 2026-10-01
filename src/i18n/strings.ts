@@ -1,4 +1,3 @@
-import type {SupportedLocale} from '../contracts/save-contract.js';
 import {spanish} from './locales/es.js';
 
 const english = {
@@ -202,10 +201,6 @@ const english = {
   'parent.excursionTitle': 'Friday’s Verona route',
   'parent.excursionBody': 'Choose one candidate pair. The choice fills both unresolved excursion clues and can be changed later.',
   'parent.settings': 'Comfort settings',
-  'parent.language': 'Language',
-  'parent.languageHelp': 'Changes the app and story immediately on this device.',
-  'parent.languageSpanish': 'Español',
-  'parent.languageEnglish': 'English',
   'parent.sound': 'Use gentle sounds when available',
   'parent.reducedMotion': 'Reduce animation',
   'parent.offlineTitle': 'Offline and updates',
@@ -260,35 +255,18 @@ const english = {
 export type UiStringKey = keyof typeof english;
 export type StringValues = Readonly<Record<string, string | number>>;
 
-export const DEFAULT_LOCALE: SupportedLocale = 'es';
-let activeLocale: SupportedLocale = DEFAULT_LOCALE;
+export const DEFAULT_LOCALE = 'es' as const;
 
 const interpolate = (template: string, values: StringValues): string =>
   template.replace(/\{([a-zA-Z0-9]+)\}/g, (match, key: string) => String(values[key] ?? match));
 
-export function setActiveLocale(locale: SupportedLocale): void {
-  activeLocale = locale;
-}
-
-export function translateForLocale(
-  locale: SupportedLocale,
-  key: UiStringKey,
-  values: StringValues = {},
-  localizedStrings: Partial<Record<UiStringKey, string>> = spanish,
-): string {
-  const localized = locale === 'es' ? localizedStrings[key] : undefined;
-  return interpolate(localized ?? english[key], values);
-}
-
 export function translate(key: UiStringKey, values: StringValues = {}): string {
-  return translateForLocale(activeLocale, key, values);
+  return interpolate(spanish[key] ?? `Texto no disponible (${key}).`, values);
 }
 
-export function translateUnknown(key: string, values: StringValues = {}, locale = activeLocale): string {
-  const template = locale === 'es'
-    ? (spanish as Readonly<Record<string, string>>)[key] ?? (english as Readonly<Record<string, string>>)[key]
-    : (english as Readonly<Record<string, string>>)[key];
-  return template ? interpolate(template, values) : `Interface text unavailable (${key}).`;
+export function translateUnknown(key: string, values: StringValues = {}): string {
+  const template = (spanish as Readonly<Record<string, string>>)[key];
+  return template ? interpolate(template, values) : `Texto no disponible (${key}).`;
 }
 
 export const uiStringKeys = Object.freeze(Object.keys(english));

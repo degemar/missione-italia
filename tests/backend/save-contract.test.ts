@@ -22,8 +22,8 @@ describe('save validation, migration, and reconciliation', () => {
     const first = migrateSave(legacy, {scoredMissionIds: catalog.scoredMissionIds});
     const second = migrateSave(first.save, {scoredMissionIds: catalog.scoredMissionIds});
     expect(first.migrated).toBe(true);
-    expect(first.save.schemaVersion).toBe(2);
-    expect(first.save.settings.preferredLocale).toBe('en');
+    expect(first.save.schemaVersion).toBe(3);
+    expect(first.save.settings.preferredLocale).toBe('es');
     expect(first.save.settings.highContrast).toBe(false);
     expect(first.save.backup.enabled).toBe(false);
     expect(second).toMatchObject({migrated: false, save: first.save});
@@ -32,17 +32,17 @@ describe('save validation, migration, and reconciliation', () => {
   it('migrates V1 without changing family, route, mission progress, or settings', () => {
     const legacy = readFixture<Record<string, unknown>>('tests/fixtures/save/migration/v1.json');
     const result = migrateSave(legacy, {scoredMissionIds: catalog.scoredMissionIds});
-    expect(result).toMatchObject({fromVersion: 1, toVersion: 2, migrated: true});
+    expect(result).toMatchObject({fromVersion: 1, toVersion: 3, migrated: true});
     expect(result.save.family).toEqual(legacy.family);
     expect(result.save.route).toEqual(legacy.route);
     expect(result.save.missionProgress).toEqual(legacy.missionProgress);
-    expect(result.save.settings).toMatchObject({preferredLocale: 'en', sound: true, highContrast: true});
+    expect(result.save.settings).toMatchObject({preferredLocale: 'es', sound: true, highContrast: true});
   });
 
   it('refuses a newer schema without modifying it', () => {
     const future = readFixture<unknown>('tests/fixtures/save/migration/v2-unsupported.json');
     expect(() => migrateSave(future)).toThrow(UnsupportedSaveVersionError);
-    expect((future as {schemaVersion: number}).schemaVersion).toBe(3);
+    expect((future as {schemaVersion: number}).schemaVersion).toBe(4);
   });
 
   it('preserves unknown mission IDs but keeps them inactive', () => {

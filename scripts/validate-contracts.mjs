@@ -296,8 +296,8 @@ for (const code of ["WALK_COORDINATE", "WALK_DESTINATION_BOUNDS", "WALK_ORDER", 
 if (!failures.some(({code}) => code === "WALK_INVALID_ACCEPTED")) pass("invalid GeoJSON fixture is rejected for range, order, mission, and place defects");
 
 const saveRequired = ["schemaVersion", "tripKey", "contentVersion", "journeyState", "localRevision", "family", "route", "missionProgress", "excursionSelection", "settings", "backup"];
-const saveSchemaVersion = 2;
-const supportedLocales = ["es", "en"];
+const saveSchemaVersion = 3;
+const supportedLocales = ["es"];
 const journeyStates = ["fresh", "in-progress", "completed", "reset"];
 const missionStates = ["in-progress", "completed", "manual", "skipped"];
 const resolvedStates = new Set(["completed", "manual", "skipped"]);

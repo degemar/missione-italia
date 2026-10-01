@@ -1,10 +1,10 @@
 # Missione Italia — Spanish and artistic V2 roadmap
 
-**Goal:** transform the working local-first trip app into an original Spanish-first illustrated adventure for children without losing offline reliability, saved progress, or the free GitHub Pages deployment.
+**Goal:** transform the working local-first trip app into an original Spanish-only illustrated adventure for children without losing offline reliability, saved progress, or the free GitHub Pages deployment.
 
 ## Locked product decisions
 
-- Spanish is the default child-facing language; English is the fallback; Italian appears only as short travel phrases.
+- Spanish is the child-facing language; Italian appears only as short travel phrases.
 - Bussola, the lost compass, is the storyteller and guide. No second mascot is introduced.
 - Keep React 19, TypeScript, Vite, PWA, IndexedDB, and GitHub Pages. Supabase remains optional and outside the redesign critical path.
 - Mobile-first at 320–430 px; layouts expand cleanly to tablet/desktop. Touch targets remain at least 48 px.
@@ -86,18 +86,18 @@ Run: **Story → Backend/data → Frontend**.
 ### Backend/data
 
 - [x] `BE-R10` Extend typed content contracts for locale variants, narration metadata, caption text, and asset IDs. Evidence: `planning/R1_BACKEND_HANDOFF.md`.
-- [x] `BE-R11` Add `preferredLocale` with `es` default for new saves and a non-destructive migration for existing saves. Evidence: `planning/R1_BACKEND_HANDOFF.md`.
+- [x] `BE-R11` Add Spanish-only save settings and a non-destructive migration for existing saves. Evidence: `planning/R1_BACKEND_HANDOFF.md`.
 - [x] `BE-R12` Prove export/import and migration retain family setup, stamps, mission progress, and locale; reset intentionally clears progress while retaining family setup and locale. Evidence: `planning/R1_BACKEND_HANDOFF.md`.
 
 ### Frontend
 
-- [x] `FE-R10` Add locale resolution and a Parent Corner language control; avoid route reloads and content-key flashes. Evidence: `planning/R1_FRONTEND_HANDOFF.md`.
+- [x] `FE-R10` Resolve Spanish content at boot without a language control or content-key flashes. Evidence: `planning/R1_FRONTEND_HANDOFF.md`.
 - [x] `FE-R11` Replace embedded copy with typed keys and Spanish-default locale modules. Evidence: `planning/R1_FRONTEND_HANDOFF.md`.
-- [x] `FE-R12` Add missing-key tests and English fallback; Italian phrases remain explicitly scoped. Evidence: `planning/R1_FRONTEND_HANDOFF.md`.
+- [x] `FE-R12` Add missing-key tests; Italian phrases remain explicitly scoped. Evidence: `planning/R1_FRONTEND_HANDOFF.md`.
 
 **Gate:** the complete existing app runs in Spanish and an old V1 save opens with identical progress.
 
-**Gate status: CLOSED 30 September 2026.** The complete app resolves Spanish for new families, preserves migrated V1 progress and English preference, switches locale without navigation, and passes `npm run verify` (11 contract groups, 345 tests, production build, and PWA precache audit).
+**Gate status: CLOSED 1 October 2026.** The complete app resolves Spanish for every family, preserves migrated V1 progress while upgrading saves to schema 3, and passes the integrated verification gate.
 
 ## Wave R2 — design system and artwork
 

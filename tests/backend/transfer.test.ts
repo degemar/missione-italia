@@ -112,8 +112,8 @@ describe('save export and import', () => {
     const harness = await createHarness();
     const preview = await harness.repository.previewImport(canonicalJson(envelope));
     expect(preview).toMatchObject({migrated: true, sourceSchemaVersion: 0});
-    expect(preview.candidate.schemaVersion).toBe(2);
-    expect(preview.candidate.settings.preferredLocale).toBe('en');
+    expect(preview.candidate.schemaVersion).toBe(3);
+    expect(preview.candidate.settings.preferredLocale).toBe('es');
     harness.repository.close();
   });
 

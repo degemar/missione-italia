@@ -11,6 +11,11 @@ export interface LegacySaveV1 extends Omit<SaveEnvelopeV1, 'schemaVersion' | 'se
   settings: Omit<SaveEnvelopeV1['settings'], 'preferredLocale'> & {language: 'en'};
 }
 
+interface LegacySaveV2 extends Omit<SaveEnvelopeV1, 'schemaVersion' | 'settings'> {
+  schemaVersion: 2;
+  settings: Omit<SaveEnvelopeV1['settings'], 'preferredLocale'> & {preferredLocale: 'en' | 'es'};
+}
+
 export interface MigrationResult {
   save: SaveEnvelopeV1;
   fromVersion: number;
@@ -45,7 +50,7 @@ const migrateV0ToV1 = (input: unknown): LegacySaveV1 => {
   };
 };
 
-const migrateV1ToV2 = (input: unknown): SaveEnvelopeV1 => {
+const migrateV1ToV2 = (input: unknown): LegacySaveV2 => {
   if (!isRecord(input) || input.schemaVersion !== 1 || !isRecord(input.settings) || input.settings.language !== 'en') {
     throw new InvalidLegacySaveError('Invalid storage schema 1 record.');
   }
@@ -53,14 +58,27 @@ const migrateV1ToV2 = (input: unknown): SaveEnvelopeV1 => {
   const {italianPhrases, sound, reducedMotion, highContrast} = legacy.settings;
   return {
     ...legacy,
-    schemaVersion: SAVE_SCHEMA_VERSION,
+    schemaVersion: 2,
     settings: {preferredLocale: 'en', italianPhrases, sound, reducedMotion, highContrast},
+  };
+};
+
+const migrateV2ToV3 = (input: unknown): SaveEnvelopeV1 => {
+  if (!isRecord(input) || input.schemaVersion !== 2 || !isRecord(input.settings)) {
+    throw new InvalidLegacySaveError('Invalid storage schema 2 record.');
+  }
+  const legacy = input as unknown as LegacySaveV2;
+  return {
+    ...legacy,
+    schemaVersion: SAVE_SCHEMA_VERSION,
+    settings: {...legacy.settings, preferredLocale: 'es'},
   };
 };
 
 export const STORAGE_MIGRATIONS = [
   {from: 0, to: 1, migrate: migrateV0ToV1},
   {from: 1, to: 2, migrate: migrateV1ToV2},
+  {from: 2, to: 3, migrate: migrateV2ToV3},
 ] as const;
 
 export const migrateSave = (input: unknown, validationContext: SaveValidationContext = {}): MigrationResult => {

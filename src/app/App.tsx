@@ -18,16 +18,16 @@ import {
   StoryScreen,
   WelcomeScreen,
 } from '../components/screens.js';
-import {selectContentLocale} from '../content/content-localization.js';
+import {selectSpanishContent} from '../content/content-localization.js';
 import {getEffectiveMission, loadContentBundle, loadSpanishContentResources} from '../content/content-repository.js';
-import type {ContentBundle, Mission, RoleId, SpanishContentResources} from '../content/types.js';
-import type {ResolvedMissionState, SaveEnvelopeV1, SupportedLocale} from '../contracts/save-contract.js';
+import type {Mission, RoleId} from '../content/types.js';
+import type {ResolvedMissionState, SaveEnvelopeV1} from '../contracts/save-contract.js';
 import {
   allScoredMissionsResolved,
   nextUnresolvedScoredMission,
   resolvedScoredCount,
 } from '../game/progress.js';
-import {setActiveLocale, translate as t, translateForLocale} from '../i18n/strings.js';
+import {translate as t} from '../i18n/strings.js';
 import {
   createDiagnosticPreview,
   createDiagnosticSnapshot,
@@ -87,8 +87,6 @@ export function App() {
   const [diagnosticPreview, setDiagnosticPreview] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'unavailable'>('idle');
   const controllerRef = useRef<LocalGameController | null>(null);
-  const baseBundleRef = useRef<ContentBundle | null>(null);
-  const spanishContentRef = useRef<SpanishContentResources | null>(null);
   const platformControllerRef = useRef<PlatformStateController | null>(null);
   const diagnosticBufferRef = useRef<LocalDiagnosticBuffer | null>(null);
   const storageHealthAdapterRef = useRef<StorageHealthAdapter | null>(null);
@@ -135,21 +133,14 @@ export function App() {
     const boot = async () => {
       try {
         const baseBundle = await loadContentBundle();
-        let spanishContent: SpanishContentResources | null = null;
-        try {
-          spanishContent = await loadSpanishContentResources(baseBundle);
-        } catch {
-          spanishContent = null;
-        }
+        const spanishContent = await loadSpanishContentResources(baseBundle);
         created = await LocalGameController.create(baseBundle);
         const loaded = await created.hydrate();
         if (cancelled) {
           created.close();
           return;
         }
-        baseBundleRef.current = baseBundle;
-        spanishContentRef.current = spanishContent;
-        const bundle = selectContentLocale(baseBundle, loaded.save?.settings.preferredLocale ?? 'es', spanishContent);
+        const bundle = selectSpanishContent(baseBundle, spanishContent);
         controllerRef.current = created;
         dispatch({type: 'BOOT_SUCCESS', bundle, save: loaded.save, durability: loaded.durability, warning: loaded.warning});
         if (loaded.durability.mode === 'memory-only') diagnosticBufferRef.current?.record('MI_STORAGE_UNAVAILABLE');
@@ -179,12 +170,9 @@ export function App() {
 
   const bundle = state.bundle;
   const save = state.save;
-  const locale = save?.settings.preferredLocale ?? 'es';
-  setActiveLocale(locale);
-
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+    document.documentElement.lang = 'es';
+  }, []);
   const resolved = bundle && save ? resolvedScoredCount(bundle, save) : 0;
   const total = bundle ? bundle.missions.filter((mission) => mission.scored).length : 0;
 
@@ -299,24 +287,6 @@ export function App() {
     const controller = controllerRef.current;
     if (!controller) return;
     await commit(() => controller.updateSettings({[setting]: value}), {id: 'PARENT'}, t('status.settingsSaved'));
-  };
-
-  const updateParentLocale = async (preferredLocale: SupportedLocale) => {
-    const controller = controllerRef.current;
-    const baseBundle = baseBundleRef.current;
-    if (!controller || !baseBundle) return;
-    const result = await commit(
-      () => controller.updateSettings({preferredLocale}),
-      {id: 'PARENT'},
-      null,
-    );
-    if (!result) return;
-    setActiveLocale(result.save.settings.preferredLocale);
-    dispatch({
-      type: 'SET_BUNDLE',
-      bundle: selectContentLocale(baseBundle, result.save.settings.preferredLocale, spanishContentRef.current),
-    });
-    dispatch({type: 'SET_NOTICE', notice: translateForLocale(result.save.settings.preferredLocale, 'status.settingsSaved')});
   };
 
   const requestPersistence = async () => {
@@ -625,7 +595,6 @@ export function App() {
               void commit(() => controller.selectExcursionPair(pairId), {id: 'PARENT'}, t('status.routeSaved'));
             }}
             onSetting={(setting, value) => void updateParentSetting(setting, value)}
-            onLocale={(nextLocale) => void updateParentLocale(nextLocale)}
             onInspectStorage={() => void inspectStorage()}
             onRequestPersistence={() => void requestPersistence()}
             onCreateDiagnostics={() => void createDiagnostics()}

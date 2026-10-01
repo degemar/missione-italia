@@ -38,7 +38,7 @@ export interface FamilySetupInput {
   sound: boolean;
 }
 
-export type ParentSettingInput = Partial<Pick<SaveEnvelopeV1['settings'], 'sound' | 'reducedMotion' | 'preferredLocale'>>;
+export type ParentSettingInput = Partial<Pick<SaveEnvelopeV1['settings'], 'sound' | 'reducedMotion'>>;
 
 export interface GameController {
   hydrate(): Promise<LoadSaveResult>;
@@ -215,12 +215,11 @@ export class LocalGameController implements GameController {
       (save) => {
         const sound = input.sound ?? save.settings.sound;
         const reducedMotion = input.reducedMotion ?? save.settings.reducedMotion;
-        const preferredLocale = input.preferredLocale ?? save.settings.preferredLocale;
-        if (sound === save.settings.sound && reducedMotion === save.settings.reducedMotion && preferredLocale === save.settings.preferredLocale) return save;
+        if (sound === save.settings.sound && reducedMotion === save.settings.reducedMotion) return save;
         return {
           ...save,
           localRevision: save.localRevision + 1,
-          settings: {...save.settings, sound, reducedMotion, preferredLocale},
+          settings: {...save.settings, sound, reducedMotion},
         };
       },
     );

@@ -1,5 +1,4 @@
 import {spanishRewardLabels} from '../i18n/locales/es-rewards.js';
-import type {SupportedLocale} from '../contracts/save-contract.js';
 import type {
   ContentBundle,
   LocalizedPlayableContent,
@@ -58,17 +57,17 @@ function localizeMission(base: Mission, localized: LocalizedPlayableContent): Mi
   };
 }
 
-const buildBundle = (source: ContentBundle, manifest: TripManifest, locale: SupportedLocale): ContentBundle => {
+const buildBundle = (source: ContentBundle, manifest: TripManifest): ContentBundle => {
   const chapters = [...manifest.chapters].sort((left, right) => left.order - right.order);
   const missions = [...manifest.missions].sort((left, right) => left.order - right.order);
-  const rewards = locale === 'es' ? {
+  const rewards = {
     ...source.rewards,
     powers: source.rewards.powers.map((power) => ({...power, label: spanishRewardLabels.powers[power.id as keyof typeof spanishRewardLabels.powers] ?? power.label})),
     stamps: source.rewards.stamps.map((stamp) => ({...stamp, label: spanishRewardLabels.stamps[stamp.id as keyof typeof spanishRewardLabels.stamps] ?? stamp.label})),
-  } : source.rewards;
+  };
   return {
     ...source,
-    locale,
+    locale: 'es',
     manifest,
     rewards,
     chapters,
@@ -80,12 +79,10 @@ const buildBundle = (source: ContentBundle, manifest: TripManifest, locale: Supp
   };
 };
 
-export function selectContentLocale(
+export function selectSpanishContent(
   base: ContentBundle,
-  locale: SupportedLocale,
-  spanish: SpanishContentResources | null,
+  spanish: SpanishContentResources,
 ): ContentBundle {
-  if (locale !== 'es' || !spanish) return base.locale === 'en' ? base : buildBundle(base, base.manifest, 'en');
   const overlay = spanish.localized;
   const candidatePairs = base.manifest.excursionSelection.candidatePairs.map((pair) => {
     const localized = (overlay.excursionSelection.candidatePairs as Record<string, {label?: string; reason?: string}> | undefined)?.[pair.id];
@@ -113,5 +110,5 @@ export function selectContentLocale(
       return localized ? localizeMission(mission, localized) : mission;
     }),
   };
-  return buildBundle(base, manifest, 'es');
+  return buildBundle(base, manifest);
 }
