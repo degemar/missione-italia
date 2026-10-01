@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">Bussola: cuatro poses</title><desc id="desc">Cuatro brújulas de latón, con agujas y ángulos distintos para cada momento de la aventura.</desc>
+  <defs><filter id="grain"><feTurbulence baseFrequency=".8" numOctaves="1" seed="8" type="fractalNoise"/><feComposite in="SourceGraphic" operator="in"/><feBlend in="SourceGraphic" mode="multiply"/></filter></defs>
+  <g fill="none" stroke="#062C45" stroke-linejoin="round" stroke-width="7">
+    <g transform="translate(90 90) rotate(-9)"><circle r="64" fill="#D99A38"/><circle r="48" fill="#FFF7DF"/><path d="M0-77v-17M0-94l-12 14M0-94l12 14"/><path fill="#E7342C" d="m0-37 13 37L0 25-13 37z"/><path fill="#006B78" d="m0 37-13-37 13 12 13-12z"/><circle r="6" fill="#F7C84B"/></g>
+    <g transform="translate(270 90) rotate(7)"><circle r="64" fill="#D99A38"/><circle r="48" fill="#FFF7DF"/><path d="M0-77v-17M0-94l-12 14M0-94l12 14"/><path fill="#E7342C" d="m0-37 24 31L0 22-12 39z"/><path fill="#006B78" d="m0 37-24-31 13 16 11-10z"/><circle r="6" fill="#F7C84B"/></g>
+    <g transform="translate(450 90) rotate(-3)"><circle r="64" fill="#D99A38"/><circle r="48" fill="#FFF7DF"/><path d="M0-77v-17M0-94l-12 14M0-94l12 14"/><path fill="#E7342C" d="m-32-19 69 7-22 8 9 21z"/><path fill="#006B78" d="m32 19-69-7 22-8-9-21z"/><circle r="6" fill="#F7C84B"/></g>
+    <g transform="translate(630 90) rotate(4)"><circle r="64" fill="#D99A38"/><circle r="48" fill="#FFF7DF"/><path d="M0-77v-17M0-94l-12 14M0-94l12 14"/><path fill="#E7342C" d="m-21-30 42 49-21-7-21 7z"/><path fill="#006B78" d="m21 30-42-49 21 7 21-7z"/><circle r="6" fill="#F7C84B"/></g>
+  </g>
+  <g opacity=".08" filter="url(#grain)"><rect width="720" height="180" fill="#062C45"/></g>
+</svg>

@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "1.0.0",
+  "basePath": "/missione-italia/",
+  "revisionAlgorithm": "sha256",
+  "maximumEntryBytes": 5242880,
+  "entries": [
+    {
+      "url": "/missione-italia/assets/brand/apple-touch-icon.png",
+      "revision": "895bdcb2f06db31d3c3af696cd78ab9d8573f3a48e067c5eda7b1b01c5f0f894",
+      "bytes": 40889,
+      "gzipBytes": 40922
+    },
+    {
+      "url": "/missione-italia/assets/brand/pwa-192x192.png",
+      "revision": "46255405ae186b77aec69940094a8c06af2cb79babb190b328092044a3a3f9c5",
+      "bytes": 45752,
+      "gzipBytes": 45785
+    },
+    {
+      "url": "/missione-italia/assets/brand/pwa-512x512.png",
+      "revision": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb",
+      "bytes": 313549,
+      "gzipBytes": 313667
+    },
+    {
+      "url": "/missione-italia/assets/brand/pwa-maskable-512x512.png",
+      "revision": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb",
+      "bytes": 313549,
+      "gzipBytes": 313667
+    },
+    {
+      "url": "/missione-italia/assets/index-CWzTJtme.js",
+      "revision": "df11d830164ac29f0a99da75579e5148f080244e14024368d448154df429d4e1",
+      "bytes": 410644,
+      "gzipBytes": 119326
+    },
+    {
+      "url": "/missione-italia/assets/index-XV9XIfo5.css",
+      "revision": "bb64c93668079e0f24269b960fa5e5ada775a19391e5f4ca98253dd622d6bc9e",
+      "bytes": 18200,
+      "gzipBytes": 4612
+    },
+    {
+      "url": "/missione-italia/assets/workbox-window.prod.es5-Bd17z0YL.js",
+      "revision": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
+      "bytes": 5653,
+      "gzipBytes": 2199
+    },
+    {
+      "url": "/missione-italia/content/assets.json",
+      "revision": "a5d187d7fe01f3bc4f33f59950576130b88d5f11eb2ff55b5087b1425f84d090",
+      "bytes": 2147,
+      "gzipBytes": 578
+    },
+    {
+      "url": "/missione-italia/content/content-package.json",
+      "revision": "6248fe0d5332f1a78c89c2343eb687aafeac88a9f80910b9d65cc325c656d241",
+      "bytes": 1205,
+      "gzipBytes": 629
+    },
+    {
+      "url": "/missione-italia/content/examples/mission.example.json",
+      "revision": "2a4a986f7f2094a62a21143297a780b9c520a1974e815ac93d109856f0e5ca43",
+      "bytes": 2641,
+      "gzipBytes": 1188
+    },
+    {
+      "url": "/missione-italia/content/locales/narration.es.json",
+      "revision": "ab5d87e93adc23ba3a262c865654ed41980830fedbf37a155c0577ef1d6b84d5",
+      "bytes": 5321,
+      "gzipBytes": 823
+    },
+    {
+      "url": "/missione-italia/content/locales/trip-manifest.es.json",
+      "revision": "7245c0ee05d672e97e068acf85ff6a69a86797c7197e9466b044f16e4ce191bd",
+      "bytes": 48594,
+      "gzipBytes": 13705
+    },
+    {
+      "url": "/missione-italia/content/rewards.json",
+      "revision": "2a42430af135dd6a0aaff5b509a35bccc966f7eb5a35fed918dd7781a0e4541f",
+      "bytes": 659,
+      "gzipBytes": 282
+    },
+    {
+      "url": "/missione-italia/content/sources.json",
+      "revision": "95be460c6b8cd976c8ebf33517369d35e82e5ec8c6c7817443183da844525a9e",
+      "bytes": 19198,
+      "gzipBytes": 3974
+    },
+    {
+      "url": "/missione-italia/content/trip-manifest.json",
+      "revision": "1349d9848c5bc0f7ba6e0fab8fe9b4a7e9f9fe464d187ae4ac7dc80a0bbc94e6",
+      "bytes": 64842,
+      "gzipBytes": 15331
+    },
+    {
+      "url": "/missione-italia/index.html",
+      "revision": "d8bd8885d47c5c90f2db81be37b62837bf9643d5c04de549cbbcc2de45d2f6c5",
+      "bytes": 872,
+      "gzipBytes": 401
+    },
+    {
+      "url": "/missione-italia/manifest.webmanifest",
+      "revision": "ca16bed32e67d54a7002bad6ec10ade20f79d158972ef6794f0a5a287a0434be",
+      "bytes": 724,
+      "gzipBytes": 340
+    }
+  ],
+  "totals": {
+    "files": 17,
+    "bytes": 1294439,
+    "gzipBytes": 877429
+  },
+  "budgets": {
+    "targetPrecacheBytes": 15728640,
+    "maximumPrecacheBytes": 26214400,
+    "withinTarget": true
+  },
+  "excludedByPolicy": [
+    "OpenStreetMap tiles",
+    "Google Maps URLs",
+    "Supabase responses",
+    "diagnostics",
+    "family data and photos",
+    "source masters and source maps"
+  ]
+}

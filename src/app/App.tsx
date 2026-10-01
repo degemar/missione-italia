@@ -34,6 +34,7 @@ import {
   LocalDiagnosticBuffer,
 } from '../platform/diagnostics.js';
 import {InfrastructureErrorBoundary} from '../platform/InfrastructureErrorBoundary.js';
+import {applyReducedMotion, getInitialReducedMotion} from '../platform/motion-preference.js';
 import {
   createInitialPlatformState,
   PlatformStateController,
@@ -86,12 +87,18 @@ export function App() {
   const [persistenceResult, setPersistenceResult] = useState<PersistenceRequestResult['status'] | null>(null);
   const [diagnosticPreview, setDiagnosticPreview] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'unavailable'>('idle');
+  const savedReducedMotion = state.save?.settings.reducedMotion;
   const controllerRef = useRef<LocalGameController | null>(null);
   const platformControllerRef = useRef<PlatformStateController | null>(null);
   const diagnosticBufferRef = useRef<LocalDiagnosticBuffer | null>(null);
   const storageHealthAdapterRef = useRef<StorageHealthAdapter | null>(null);
+  const initialReducedMotionRef = useRef(getInitialReducedMotion());
   if (!diagnosticBufferRef.current) diagnosticBufferRef.current = new LocalDiagnosticBuffer();
   if (!storageHealthAdapterRef.current) storageHealthAdapterRef.current = new StorageHealthAdapter();
+
+  useEffect(() => {
+    if (savedReducedMotion !== undefined) applyReducedMotion(savedReducedMotion);
+  }, [savedReducedMotion]);
   const {
     readiness,
     updateAvailable,
@@ -286,6 +293,7 @@ export function App() {
   const updateParentSetting = async (setting: 'sound' | 'reducedMotion', value: boolean) => {
     const controller = controllerRef.current;
     if (!controller) return;
+    if (setting === 'reducedMotion') applyReducedMotion(value);
     await commit(() => controller.updateSettings({[setting]: value}), {id: 'PARENT'}, t('status.settingsSaved'));
   };
 
@@ -627,7 +635,7 @@ export function App() {
       onUpdate={updateAvailable && state.screen.id !== 'PARENT' ? () => void applyUpdate() : undefined}
       updateDisabled={!canApplyUpdate}
       onParentOpen={parentAvailable ? openParent : undefined}
-      reducedMotion={save?.settings.reducedMotion ?? false}
+      reducedMotion={save?.settings.reducedMotion ?? initialReducedMotionRef.current}
     >
       <InfrastructureErrorBoundary
         failureKind="render"

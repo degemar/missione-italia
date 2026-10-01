@@ -237,7 +237,16 @@ export interface SourceRegister {
 
 export interface AssetRegister {
   schemaVersion: string;
-  assets: Array<{id: string; path: string; mediaType: string; license: string; offlineCritical: boolean; sha256: string}>;
+  assets: Array<{
+    id: string;
+    path: string;
+    mediaType: string;
+    license: string;
+    offlineCritical: boolean;
+    sha256: string;
+    altIntent: 'informative' | 'decorative' | 'label-equivalent' | 'not-rendered';
+    provenance: string;
+  }>;
 }
 
 export interface ContentPackage {

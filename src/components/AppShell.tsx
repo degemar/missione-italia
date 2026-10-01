@@ -3,6 +3,7 @@ import type {ReactNode} from 'react';
 
 import {translate as t} from '../i18n/strings.js';
 import {ParentEntry} from './ParentEntry.js';
+import {StampMark} from './StampTheatre.js';
 
 interface AppShellProps {
   children: ReactNode;
@@ -46,7 +47,7 @@ export function AppShell({
           ) : null}
         </div>
         <div className="brand-lockup" aria-label={t('app.label')}>
-          <Compass aria-hidden="true" weight="duotone" />
+          <StampMark title={t('app.label')} />
           <span>{t('app.name')}</span>
         </div>
         {total > 0 ? (

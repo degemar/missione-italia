@@ -25,6 +25,8 @@
   --focus: #005fcc;
   --border: 2px solid var(--ink);
   --shadow: 4px 5px 0 var(--ink);
+  --stamp-shadow: 5px 6px 0 var(--ink);
+  --paper-line: rgb(20 33 43 / 11%);
 }
 
 * {
@@ -134,7 +136,9 @@ svg {
   width: min(100%, 430px);
   min-height: 100vh;
   margin: 0 auto;
-  background: var(--paper);
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--paper-line) 0.8px, transparent 0.8px);
+  background-size: 8px 8px;
   box-shadow: 0 0 28px rgb(20 33 43 / 18%);
 }
 
@@ -174,6 +178,66 @@ svg {
   width: 24px;
   height: 24px;
 }
+
+.stamp-mark {
+  width: 30px;
+  height: 30px;
+  color: var(--tomato);
+}
+
+.stamp-card {
+  border: var(--border);
+  border-radius: 21px 13px 19px 15px;
+  box-shadow: var(--stamp-shadow);
+}
+
+.stamp-card--paper { background: var(--surface); }
+.stamp-card--tomato { background: var(--tomato-tint); }
+.stamp-card--teal { background: var(--teal-tint); }
+.stamp-card--gold { background: var(--gold-tint); }
+.stamp-card--violet { background: var(--violet-tint); }
+
+.stamp-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 14px 10px 14px 10px;
+  box-shadow: 3px 4px 0 var(--ink);
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.stamp-button:active { transform: translate(2px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+.stamp-button--tomato { color: #fff; background: var(--tomato); }
+.stamp-button--teal { color: #fff; background: var(--teal); }
+.stamp-button--gold { background: var(--gold-tint); }
+.stamp-button--violet { color: #fff; background: var(--violet); }
+
+.theatre-confetti { position: relative; display: block; height: 24px; }
+.theatre-confetti i { position: absolute; width: 7px; height: 13px; background: var(--tomato); transform: rotate(24deg); animation: confetti-pop 900ms cubic-bezier(.2,.8,.2,1) infinite alternate; }
+.theatre-confetti i:nth-child(1) { left: 8%; background: var(--gold); animation-delay: -300ms; }
+.theatre-confetti i:nth-child(2) { left: 28%; background: var(--violet); animation-delay: -650ms; }
+.theatre-confetti i:nth-child(3) { left: 49%; background: var(--teal); animation-delay: -180ms; }
+.theatre-confetti i:nth-child(4) { left: 69%; background: var(--tomato); animation-delay: -450ms; }
+.theatre-confetti i:nth-child(5) { left: 89%; background: var(--gold); animation-delay: -750ms; }
+
+@keyframes confetti-pop { from { translate: 0 5px; } to { translate: 5px -7px; } }
+
+.design-system { width: min(100%, 700px); min-height: 100vh; margin: 0 auto; padding: 28px 16px 48px; background: var(--paper); }
+.design-system__hero { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; }
+.design-system__hero .stamp-mark { width: 64px; height: 64px; }
+.design-system__hero h1 { margin-bottom: 5px; }
+.design-system__hero p:last-child { margin: 0; color: var(--muted); }
+.design-system__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.design-system__card { min-height: 180px; padding: 16px; }
+.design-system__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 26px 0; }
+.design-system__actions .stamp-button:last-child { grid-column: 1 / -1; }
+.design-system__celebration { display: grid; place-items: center; padding: 18px; text-align: center; }
+.design-system__celebration .stamp-mark { width: 72px; height: 72px; color: var(--success); }
 
 .story-progress {
   margin: 4px 0 0;
@@ -1127,6 +1191,15 @@ select {
 .reduce-motion *,
 .reduce-motion *::before,
 .reduce-motion *::after {
+  scroll-behavior: auto !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+:root[data-motion="reduce"] *,
+:root[data-motion="reduce"] *::before,
+:root[data-motion="reduce"] *::after {
   scroll-behavior: auto !important;
   animation-duration: 0.01ms !important;
   animation-iteration-count: 1 !important;

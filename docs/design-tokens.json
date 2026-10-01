@@ -1,0 +1,211 @@
+{
+  "meta": {
+    "name": "Missione Italia Stamp Theatre",
+    "version": "0.2.0",
+    "viewportCssPx": { "minWidth": 320, "maxWidth": 430 },
+    "referenceSyntax": "brace-delimited dot path",
+    "chapterLookup": "semantic.chapter[id] ?? semantic.chapter.default"
+  },
+  "color": {
+    "base": {
+      "paper": { "$type": "color", "$value": "#FFF7DF" },
+      "paperRaised": { "$type": "color", "$value": "#FFFFFF" },
+      "ink": { "$type": "color", "$value": "#062C45" },
+      "inkMuted": { "$type": "color", "$value": "#3D5668" },
+      "tomato": { "$type": "color", "$value": "#B42E2B" },
+      "tomatoTint": { "$type": "color", "$value": "#F8DDDA" },
+      "stageRed": { "$type": "color", "$value": "#E7342C" },
+      "lakeTeal": { "$type": "color", "$value": "#006B78" },
+      "lakeTealTint": { "$type": "color", "$value": "#D9F0ED" },
+      "sunGold": { "$type": "color", "$value": "#DFA500" },
+      "sunGoldTint": { "$type": "color", "$value": "#FFF0B8" },
+      "violet": { "$type": "color", "$value": "#684A9F" },
+      "violetTint": { "$type": "color", "$value": "#ECE3F8" },
+      "focusBlue": { "$type": "color", "$value": "#005FCC" },
+      "success": { "$type": "color", "$value": "#17643D" },
+      "successTint": { "$type": "color", "$value": "#DDF2E5" },
+      "warning": { "$type": "color", "$value": "#765000" },
+      "warningTint": { "$type": "color", "$value": "#FFF0C2" },
+      "danger": { "$type": "color", "$value": "#972B32" },
+      "dangerTint": { "$type": "color", "$value": "#F9DFE1" },
+      "disabledSurface": { "$type": "color", "$value": "#D9DCDA" },
+      "disabledInk": { "$type": "color", "$value": "#536068" }
+    },
+    "semantic": {
+      "canvas": { "$type": "color", "$value": "{color.base.paper}" },
+      "surface": { "$type": "color", "$value": "{color.base.paperRaised}" },
+      "text": { "$type": "color", "$value": "{color.base.ink}" },
+      "textMuted": { "$type": "color", "$value": "{color.base.inkMuted}" },
+      "textOnStrong": { "$type": "color", "$value": "{color.base.paperRaised}" },
+      "primary": { "$type": "color", "$value": "{color.base.tomato}" },
+      "focus": { "$type": "color", "$value": "{color.base.focusBlue}" },
+      "success": { "$type": "color", "$value": "{color.base.success}" },
+      "warning": { "$type": "color", "$value": "{color.base.warning}" },
+      "danger": { "$type": "color", "$value": "{color.base.danger}" },
+      "disabledSurface": { "$type": "color", "$value": "{color.base.disabledSurface}" },
+      "disabledText": { "$type": "color", "$value": "{color.base.disabledInk}" }
+    }
+  },
+  "font": {
+    "family": {
+      "display": { "$type": "fontFamily", "$value": ["Fredoka", "Arial Rounded MT Bold", "system-ui", "sans-serif"] },
+      "body": { "$type": "fontFamily", "$value": ["Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Arial", "system-ui", "sans-serif"] }
+    },
+    "weight": {
+      "regular": { "$type": "fontWeight", "$value": 400 },
+      "semibold": { "$type": "fontWeight", "$value": 600 },
+      "bold": { "$type": "fontWeight", "$value": 700 }
+    },
+    "size": {
+      "parentMeta": { "$type": "dimension", "$value": "16px" },
+      "childBody": { "$type": "dimension", "$value": "18px" },
+      "readAloud": { "$type": "dimension", "$value": "20px" },
+      "heading3": { "$type": "dimension", "$value": "22px" },
+      "heading2": { "$type": "dimension", "$value": "26px" },
+      "heading1": { "$type": "dimension", "$value": "32px" },
+      "display": { "$type": "dimension", "$value": "40px" }
+    },
+    "lineHeight": {
+      "tight": { "$type": "number", "$value": 1.15 },
+      "heading": { "$type": "number", "$value": 1.2 },
+      "body": { "$type": "number", "$value": 1.5 },
+      "readAloud": { "$type": "number", "$value": 1.55 }
+    },
+    "measure": {
+      "childMax": { "$type": "number", "$value": 34 },
+      "parentMax": { "$type": "number", "$value": 46 }
+    }
+  },
+  "space": {
+    "0": { "$type": "dimension", "$value": "0px" },
+    "1": { "$type": "dimension", "$value": "4px" },
+    "2": { "$type": "dimension", "$value": "8px" },
+    "3": { "$type": "dimension", "$value": "12px" },
+    "4": { "$type": "dimension", "$value": "16px" },
+    "5": { "$type": "dimension", "$value": "20px" },
+    "6": { "$type": "dimension", "$value": "24px" },
+    "8": { "$type": "dimension", "$value": "32px" },
+    "10": { "$type": "dimension", "$value": "40px" },
+    "12": { "$type": "dimension", "$value": "48px" },
+    "16": { "$type": "dimension", "$value": "64px" }
+  },
+  "radius": {
+    "small": { "$type": "dimension", "$value": "8px" },
+    "medium": { "$type": "dimension", "$value": "12px" },
+    "large": { "$type": "dimension", "$value": "16px" },
+    "card": { "$type": "dimension", "$value": "24px" },
+    "controlChild": { "$type": "dimension", "$value": "16px" },
+    "controlParent": { "$type": "dimension", "$value": "8px" },
+    "round": { "$type": "dimension", "$value": "999px" }
+  },
+  "border": {
+    "thin": { "$type": "dimension", "$value": "1px" },
+    "standard": { "$type": "dimension", "$value": "2px" },
+    "strong": { "$type": "dimension", "$value": "3px" },
+    "color": { "$type": "color", "$value": "{color.base.ink}" }
+  },
+  "shadow": {
+    "card": { "$type": "shadow", "$value": "0 3px 0 rgba(20,33,43,0.18)" },
+    "raised": { "$type": "shadow", "$value": "0 6px 18px rgba(20,33,43,0.18)" },
+    "none": { "$type": "shadow", "$value": "none" }
+  },
+  "icon": {
+    "small": { "$type": "dimension", "$value": "20px" },
+    "standard": { "$type": "dimension", "$value": "24px" },
+    "large": { "$type": "dimension", "$value": "32px" },
+    "hero": { "$type": "dimension", "$value": "40px" },
+    "strokeWeight": { "$type": "number", "$value": 2 }
+  },
+  "touch": {
+    "minimum": { "$type": "dimension", "$value": "48px" },
+    "preferredPrimaryHeight": { "$type": "dimension", "$value": "56px" },
+    "gap": { "$type": "dimension", "$value": "8px" }
+  },
+  "layout": {
+    "viewportMinWidth": { "$type": "dimension", "$value": "320px" },
+    "viewportMaxWidth": { "$type": "dimension", "$value": "430px" },
+    "contentInline": { "$type": "dimension", "$value": "16px" },
+    "contentBlockStart": { "$type": "dimension", "$value": "16px" },
+    "safeTop": { "$type": "cssExpression", "$value": "env(safe-area-inset-top, 0px)" },
+    "safeRight": { "$type": "cssExpression", "$value": "env(safe-area-inset-right, 0px)" },
+    "safeBottom": { "$type": "cssExpression", "$value": "env(safe-area-inset-bottom, 0px)" },
+    "safeLeft": { "$type": "cssExpression", "$value": "env(safe-area-inset-left, 0px)" },
+    "stickyBottomPadding": { "$type": "cssExpression", "$value": "calc(16px + env(safe-area-inset-bottom, 0px))" },
+    "viewportBlock": { "$type": "cssExpression", "$value": "100dvh" },
+    "viewportBlockFallback": { "$type": "cssExpression", "$value": "100svh" }
+  },
+  "layer": {
+    "base": { "$type": "number", "$value": 0 },
+    "sticky": { "$type": "number", "$value": 10 },
+    "sheet": { "$type": "number", "$value": 20 },
+    "modal": { "$type": "number", "$value": 30 },
+    "toast": { "$type": "number", "$value": 40 }
+  },
+  "motion": {
+    "duration": {
+      "none": { "$type": "duration", "$value": "0ms" },
+      "tap": { "$type": "duration", "$value": "80ms" },
+      "responseMax": { "$type": "duration", "$value": "100ms" },
+      "fast": { "$type": "duration", "$value": "150ms" },
+      "standard": { "$type": "duration", "$value": "220ms" },
+      "slow": { "$type": "duration", "$value": "300ms" },
+      "celebrationSkipAfter": { "$type": "duration", "$value": "600ms" },
+      "celebration": { "$type": "duration", "$value": "1200ms" },
+      "celebrationMax": { "$type": "duration", "$value": "2500ms" }
+    },
+    "delay": {
+      "none": { "$type": "duration", "$value": "0ms" },
+      "revealStagger": { "$type": "duration", "$value": "60ms" },
+      "rewardSettle": { "$type": "duration", "$value": "120ms" }
+    },
+    "easing": {
+      "standard": { "$type": "cubicBezier", "$value": [0.2, 0, 0, 1] },
+      "enter": { "$type": "cubicBezier", "$value": [0, 0, 0, 1] },
+      "exit": { "$type": "cubicBezier", "$value": [0.3, 0, 1, 1] },
+      "emphasis": { "$type": "cubicBezier", "$value": [0.16, 1, 0.3, 1] }
+    },
+    "distance": {
+      "none": { "$type": "dimension", "$value": "0px" },
+      "short": { "$type": "dimension", "$value": "8px" },
+      "sheet": { "$type": "dimension", "$value": "16px" }
+    },
+    "scale": {
+      "pressed": { "$type": "number", "$value": 0.98 },
+      "rewardStart": { "$type": "number", "$value": 0.88 },
+      "rewardPeak": { "$type": "number", "$value": 1.04 },
+      "rest": { "$type": "number", "$value": 1 }
+    },
+    "performance": {
+      "targetFramesPerSecond": { "$type": "number", "$value": 60 },
+      "frameBudgetMilliseconds": { "$type": "number", "$value": 16.67 },
+      "maxConcurrentMovingElements": { "$type": "number", "$value": 2 }
+    },
+    "reduced": {
+      "feedback": { "$type": "duration", "$value": "80ms" },
+      "stateChange": { "$type": "duration", "$value": "100ms" },
+      "spatial": { "$type": "duration", "$value": "0ms" },
+      "decorative": { "$type": "duration", "$value": "0ms" }
+    }
+  },
+  "semantic": {
+    "role": {
+      "spotter": { "label": "Observador", "icon": "binoculars", "shape": "circle", "accent": "{color.base.tomato}", "tint": "{color.base.tomatoTint}" },
+      "detective": { "label": "Detective", "icon": "magnifying-glass", "shape": "diamond", "accent": "{color.base.violet}", "tint": "{color.base.violetTint}" },
+      "navigator": { "label": "Navegante", "icon": "compass", "shape": "triangle", "accent": "{color.base.lakeTeal}", "tint": "{color.base.lakeTealTint}" }
+    },
+    "chapter": {
+      "default": { "accent": "{color.base.tomato}", "tint": "{color.base.tomatoTint}", "markerShape": "hexagon", "motif": "route-mark" },
+      "road": { "accent": "{color.base.violet}", "tint": "{color.base.violetTint}", "markerShape": "diamond", "motif": "folded-route" },
+      "venice": { "accent": "{color.base.lakeTeal}", "tint": "{color.base.lakeTealTint}", "markerShape": "circle", "motif": "ripple-arch" },
+      "lagoon-islands": { "accent": "{color.base.tomato}", "tint": "{color.base.tomatoTint}", "markerShape": "starburst", "motif": "maker-pattern" },
+      "verona": { "accent": "{color.base.sunGold}", "tint": "{color.base.sunGoldTint}", "markerShape": "shield", "motif": "converging-arches" }
+    },
+    "completion": {
+      "completed": { "label": "Pista resuelta", "icon": "check-circle", "shape": "circle", "accent": "{color.base.success}" },
+      "manual": { "label": "Hecho de otra manera", "icon": "hand-tap", "shape": "diamond", "accent": "{color.base.violet}" },
+      "skipped": { "label": "Para más tarde", "icon": "bookmark-simple", "shape": "flag", "accent": "{color.base.lakeTeal}" }
+    },
+    "parent": { "label": "ADULT", "icon": "lock-key", "radius": "{radius.controlParent}" },
+    "child": { "radius": "{radius.controlChild}" }
+  }
+}

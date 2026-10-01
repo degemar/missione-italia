@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title desc">
+  <title id="title">Escenas de capítulo del Teatro de Sellos</title><desc id="desc">Cuatro escenas originales: ruta, Venecia, islas de la laguna y Verona.</desc>
+  <g fill="none" stroke="#062C45" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+    <g transform="translate(0 0)"><rect x="8" y="8" width="164" height="164" rx="22" fill="#ECE3F8"/><path d="M36 132c23-64 54-64 100-98M33 65h30l-8 19h31l-10 21h34"/><path fill="#E7342C" d="m130 29 20 10-17 14z"/></g>
+    <g transform="translate(180 0)"><rect x="8" y="8" width="164" height="164" rx="22" fill="#D9F0ED"/><path d="M32 128c25-18 51-18 76 0s39 18 42 18M35 111h112M57 111V76c0-28 48-28 48 0v35"/><path fill="#F7C84B" d="m119 55 17 8-15 13z"/></g>
+    <g transform="translate(360 0)"><rect x="8" y="8" width="164" height="164" rx="22" fill="#F8DDDA"/><path d="M28 126c24-17 49-17 74 0s36 17 43 17M37 106l20-36 24 36 24-52 28 52M43 43l20 15 20-15 20 15 20-15"/><circle cx="126" cy="63" r="17" fill="#F7C84B"/></g>
+    <g transform="translate(540 0)"><rect x="8" y="8" width="164" height="164" rx="22" fill="#FFF0B8"/><path d="M31 126h120M36 126V93h20v33M56 126V76h20v50M76 126V59h20v67M96 126V76h20v50M116 126V93h20v33"/><path fill="#E7342C" d="m83 35 17 31-3 20z"/></g>
+  </g>
+</svg>

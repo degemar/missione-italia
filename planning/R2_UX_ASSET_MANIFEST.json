@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "source-art-approved-for-frontend-integration",
+  "license": "Original Missione Italia vector artwork; project use",
+  "runtimeBoundary": "These source sheets remain outside public/ and are not runtime assets or precache entries. Infra creates registered derivatives only when a screen consumes them.",
+  "assets": [
+    {
+      "id": "r2-bussola-poses",
+      "path": "planning/r2-stamp-theatre-art/bussola-poses.svg",
+      "sha256": "c0bf5cae15d42d3ebc5473fcf597960942a31c40ddd344f47d60694da6f998ac",
+      "bytes": 1820,
+      "altIntent": "Informative for first Bussola introduction; decorative beside its name thereafter.",
+      "export": "One 160px transparent SVG or WebP derivative per named pose; no embedded text."
+    },
+    {
+      "id": "r2-chapter-motifs",
+      "path": "planning/r2-stamp-theatre-art/chapter-motifs.svg",
+      "sha256": "ba3a9231308d84f737187f834a9d949ae0e76fe5c146b18a5ff226c904184518",
+      "bytes": 1362,
+      "altIntent": "Decorative; the visible Spanish chapter title carries the destination meaning.",
+      "export": "Four 164px chapter panels: road, Venice, lagoon islands, Verona."
+    },
+    {
+      "id": "r2-stamp-set",
+      "path": "planning/r2-stamp-theatre-art/stamp-set.svg",
+      "sha256": "3510038afc771a83b767c0d6af55513e5bfc84396f3a1f25e9bad85d4ad12af8",
+      "bytes": 1364,
+      "altIntent": "Decorative beside the visible reward label; label-equivalent only when displayed without text.",
+      "export": "Six separate 96px and 192px transparent stamp derivatives."
+    },
+    {
+      "id": "r2-utility-states",
+      "path": "planning/r2-stamp-theatre-art/utility-states.svg",
+      "sha256": "b8840bca2c94444909930456cde3656f504b53f005ccbf500717a83d559b3c9f",
+      "bytes": 795,
+      "altIntent": "Decorative; each empty or recoverable state has its own visible Spanish heading and action.",
+      "export": "Two 160px illustrations: saved ticket and recoverable signal cloud."
+    }
+  ]
+}

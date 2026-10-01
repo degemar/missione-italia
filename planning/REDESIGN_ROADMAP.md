@@ -105,24 +105,26 @@ Run: **UX/UI → Infrastructure → Frontend**.
 
 ### UX/UI
 
-- [ ] `UX-R10` Freeze the selected color, type, spacing, radius, shadow, texture, icon, illustration, and motion tokens.
-- [ ] `UX-R11` Specify shadcn-based primitives and every normal, pressed, focused, disabled, loading, success, error, offline, and reduced-motion state.
-- [ ] `UX-R12` Create the Bussola expression/pose set, chapter hero scenes, route landmarks, stamps, quiz objects, and empty/error illustrations.
-- [ ] `UX-R13` Define responsive composition for 320, 360, 390, 430, 768, and 1024 px widths.
+- [x] `UX-R10` Freeze the selected color, type, spacing, radius, shadow, texture, icon, illustration, and motion tokens. Evidence: `planning/R2_UX_HANDOFF.md`, `docs/design-tokens.json`.
+- [x] `UX-R11` Specify shadcn-based primitives and every normal, pressed, focused, disabled, loading, success, error, offline, and reduced-motion state. Evidence: `planning/R2_UX_HANDOFF.md`.
+- [x] `UX-R12` Create the Bussola expression/pose set, chapter hero scenes, route landmarks, stamps, quiz objects, and empty/error illustrations. Evidence: `planning/r2-stamp-theatre-art/`, `planning/R2_UX_ASSET_MANIFEST.json`.
+- [x] `UX-R13` Define responsive composition for 320, 360, 390, 430, 768, and 1024 px widths. Evidence: `planning/R2_UX_HANDOFF.md`.
 
 ### Infrastructure/licensing
 
-- [ ] `INF-R10` Add only approved dependencies and record exact licences/versions.
-- [ ] `INF-R11` Build deterministic SVG/WebP/audio optimization and filename/hash rules.
-- [ ] `INF-R12` Add asset-integrity, orphan, missing-alt, and size-budget checks.
+- [x] `INF-R10` Add only approved dependencies and record exact licences/versions. **No R2 dependency added; the existing React/CSS/Vite/Phosphor stack is sufficient.**
+- [x] `INF-R11` Build deterministic SVG/WebP/audio optimization and filename/hash rules. **`npm run validate:assets` enforces registered media type, lowercase filename, hash, dimensions, SVG safety/path policy, and audio signature rules.**
+- [x] `INF-R12` Add asset-integrity, orphan, missing-alt, and size-budget checks. **The same deterministic gate rejects orphaned files/policies, unregistered references, missing Spanish alt metadata, and byte-budget drift.**
 
 ### Frontend
 
-- [ ] `FE-R20` Implement tokens and the local component layer without changing feature behavior.
-- [ ] `FE-R21` Implement reduced-motion from first render and keep all celebrations understandable without animation or sound.
-- [ ] `FE-R22` Build a visual-development route covering every primitive and state outside the child journey.
+- [x] `FE-R20` Implement tokens and the local component layer without changing feature behavior. Evidence: `src/components/StampTheatre.tsx`, `src/styles/global.css`.
+- [x] `FE-R21` Implement reduced-motion from first render and keep all celebrations understandable without animation or sound. Evidence: `src/platform/motion-preference.ts`, `src/main.tsx`.
+- [x] `FE-R22` Build a visual-development route covering every primitive and state outside the child journey. Evidence: `src/app/DevDesignSystem.tsx` at `#design-system` in development.
 
 **Gate:** primitives and artwork pass contrast, focus, touch, reduced-motion, responsive, provenance, and budget review before screens migrate.
+
+**Gate status: CLOSED 1 October 2026.** The integrated gate passed type checking, linting, 11 contract groups, asset integrity, 340 tests, and production/PWA build. Screens remain in their existing behavioral form until R3.
 
 ## Wave R3 — screen rebuild
 
@@ -132,7 +134,7 @@ Run: **Frontend → UX/UI review → Story review**.
 - [ ] `FE-R31` Rebuild atlas, chapter cards, route progress, and day context.
 - [ ] `FE-R32` Rebuild story, mission, quiz, hint, role, checkpoint, and fallback states.
 - [ ] `FE-R33` Rebuild celebration, stamp reveal, Passport, and return epilogue.
-- [ ] `FE-R34` Rebuild Parent Corner, language, accessibility, storage, install, and reset states.
+- [ ] `FE-R34` Rebuild Parent Corner, accessibility, storage, install, and reset states.
 - [ ] `FE-R35` Preserve focus, scroll, navigation, offline, update, and exact-screen return behavior across every migration.
 - [ ] `UX-R20` Review each completed screen against the selected treatment and state contract.
 - [ ] `ST-R20` Review Spanish wrapping, reading length, captions, and factual context in the implemented screens.

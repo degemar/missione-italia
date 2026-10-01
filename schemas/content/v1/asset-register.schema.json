@@ -13,14 +13,16 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["id", "path", "mediaType", "license", "offlineCritical"],
+        "required": ["id", "path", "mediaType", "license", "offlineCritical", "sha256", "altIntent", "provenance"],
         "properties": {
           "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 96},
           "path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))[A-Za-z0-9._/-]+$", "maxLength": 240},
           "mediaType": {"type": "string", "enum": ["image/avif", "image/png", "image/svg+xml", "image/webp", "audio/mpeg", "audio/ogg"]},
           "license": {"type": "string", "minLength": 1, "maxLength": 160},
           "offlineCritical": {"type": "boolean"},
-          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "altIntent": {"type": "string", "enum": ["informative", "decorative", "label-equivalent", "not-rendered"]},
+          "provenance": {"type": "string", "minLength": 1, "maxLength": 240}
         }
       }
     }

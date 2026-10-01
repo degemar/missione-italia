@@ -7,7 +7,9 @@
       "mediaType": "image/png",
       "license": "OpenAI-generated original for Missione Italia; project use",
       "offlineCritical": false,
-      "sha256": "92ce7573bae68f6c336b5745debdc3f01375b378146f2e034238ef91fab19a6d"
+      "sha256": "92ce7573bae68f6c336b5745debdc3f01375b378146f2e034238ef91fab19a6d",
+      "altIntent": "not-rendered",
+      "provenance": "public/assets/brand/README.md"
     },
     {
       "id": "bussola-app-icon-192",
@@ -15,7 +17,9 @@
       "mediaType": "image/png",
       "license": "Derived without cropping from the Missione Italia original",
       "offlineCritical": true,
-      "sha256": "46255405ae186b77aec69940094a8c06af2cb79babb190b328092044a3a3f9c5"
+      "sha256": "46255405ae186b77aec69940094a8c06af2cb79babb190b328092044a3a3f9c5",
+      "altIntent": "informative",
+      "provenance": "public/assets/brand/README.md"
     },
     {
       "id": "bussola-app-icon-512",
@@ -23,7 +27,9 @@
       "mediaType": "image/png",
       "license": "Derived without cropping from the Missione Italia original",
       "offlineCritical": true,
-      "sha256": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb"
+      "sha256": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb",
+      "altIntent": "label-equivalent",
+      "provenance": "public/assets/brand/README.md"
     },
     {
       "id": "bussola-app-icon-maskable-512",
@@ -31,7 +37,9 @@
       "mediaType": "image/png",
       "license": "Derived without cropping from the Missione Italia original",
       "offlineCritical": true,
-      "sha256": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb"
+      "sha256": "df3798f06f4265942b6ee771984a8abb7f0b7108769fbdfedbf1adeebd6850bb",
+      "altIntent": "label-equivalent",
+      "provenance": "public/assets/brand/README.md"
     },
     {
       "id": "bussola-app-icon-apple-touch",
@@ -39,7 +47,9 @@
       "mediaType": "image/png",
       "license": "Derived without cropping from the Missione Italia original",
       "offlineCritical": true,
-      "sha256": "895bdcb2f06db31d3c3af696cd78ab9d8573f3a48e067c5eda7b1b01c5f0f894"
+      "sha256": "895bdcb2f06db31d3c3af696cd78ab9d8573f3a48e067c5eda7b1b01c5f0f894",
+      "altIntent": "label-equivalent",
+      "provenance": "public/assets/brand/README.md"
     }
   ]
 }
