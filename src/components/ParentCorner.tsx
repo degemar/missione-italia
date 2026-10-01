@@ -34,6 +34,7 @@ import type {TripMaintenanceAction} from '../platform/trip-data-maintenance.js';
 import type {PersistenceRequestResult} from '../storage/index.js';
 import {AccessibleDialog} from './AccessibleDialog.js';
 import {InstallGuide} from './InstallGuide.js';
+import './parent-corner-r3.css';
 
 interface ParentCornerProps {
   readonly bundle: ContentBundle;
@@ -107,15 +108,15 @@ export function ParentCorner(props: ParentCornerProps) {
   };
 
   return (
-    <section className="screen-stack parent-corner">
-      <header className="screen-intro parent-corner__intro">
-        <p className="eyebrow"><LockKey aria-hidden="true" weight="bold" /> {t('common.adult')}</p>
+    <section className="screen-stack parent-corner parent-theatre">
+      <header className="screen-intro parent-corner__intro parent-theatre__masthead">
+        <p className="eyebrow parent-theatre__eyebrow"><LockKey aria-hidden="true" weight="bold" /> {t('common.adult')}</p>
         <h1 data-screen-heading tabIndex={-1}>{t('parent.title')}</h1>
         <p>{t('parent.notAuthentication')}</p>
       </header>
 
       {mission ? (
-        <section className="parent-section" aria-labelledby="parent-mission-heading">
+        <section className="parent-section parent-section--mission" aria-labelledby="parent-mission-heading">
           <h2 id="parent-mission-heading">{t('parent.currentMission')}</h2>
           <p><strong>{mission.title}</strong></p>
           <div className="parent-role-list">
@@ -145,7 +146,7 @@ export function ParentCorner(props: ParentCornerProps) {
         </section>
       ) : null}
 
-      <section className="parent-section" aria-labelledby="parent-chapters-heading">
+      <section className="parent-section parent-section--chapters" aria-labelledby="parent-chapters-heading">
         <h2 id="parent-chapters-heading">{t('parent.chapters')}</h2>
         <div className="parent-list">
           {props.bundle.chapters.map((chapter) => {
@@ -164,7 +165,7 @@ export function ParentCorner(props: ParentCornerProps) {
         </div>
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-route-heading">
+      <section className="parent-section parent-section--route" aria-labelledby="parent-route-heading">
         <h2 id="parent-route-heading">{t('parent.excursionTitle')}</h2>
         <p>{t('parent.excursionBody')}</p>
         <div className="route-options">
@@ -187,7 +188,7 @@ export function ParentCorner(props: ParentCornerProps) {
         </div>
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-settings-heading">
+      <section className="parent-section parent-section--settings" aria-labelledby="parent-settings-heading">
         <h2 id="parent-settings-heading">{t('parent.settings')}</h2>
         <label className="toggle-row">
           <input
@@ -211,7 +212,7 @@ export function ParentCorner(props: ParentCornerProps) {
         </label>
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-offline-heading">
+      <section className="parent-section parent-section--offline" aria-labelledby="parent-offline-heading">
         <h2 id="parent-offline-heading">{t('parent.offlineTitle')}</h2>
         <p>{offline === 'online' ? t('parent.online') : offline === 'offline-ready' ? t('parent.offlineReady') : t('parent.offlineNotReady')}</p>
         {update !== 'hidden' ? (
@@ -227,7 +228,7 @@ export function ParentCorner(props: ParentCornerProps) {
         ) : null}
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-storage-heading">
+      <section className="parent-section parent-section--storage" aria-labelledby="parent-storage-heading">
         <h2 id="parent-storage-heading"><HardDrive aria-hidden="true" weight="bold" /> {t('parent.storageTitle')}</h2>
         <p>{props.save.backup.enabled ? t('parent.localAuthority') : t('parent.localOnly')}</p>
         {props.storageHealth ? (
@@ -244,13 +245,13 @@ export function ParentCorner(props: ParentCornerProps) {
         </div>
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-help-heading">
+      <section className="parent-section parent-section--help" aria-labelledby="parent-help-heading">
         <h2 id="parent-help-heading">{t('parent.helpTitle')}</h2>
         <p>{t('parent.helpBody')}</p>
         <InstallGuide />
       </section>
 
-      <section className="parent-section" aria-labelledby="parent-diagnostics-heading">
+      <section className="parent-section parent-section--diagnostics" aria-labelledby="parent-diagnostics-heading">
         <h2 id="parent-diagnostics-heading"><Database aria-hidden="true" weight="bold" /> {t('parent.diagnosticsTitle')}</h2>
         <p>{t('parent.diagnosticsBody')}</p>
         <button className="parent-button secondary-button" type="button" disabled={props.busy} onClick={props.onCreateDiagnostics}>{t('parent.previewDiagnostics')}</button>

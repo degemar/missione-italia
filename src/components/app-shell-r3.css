@@ -1,0 +1,25 @@
+.theatre-shell { position: relative; isolation: isolate; background: #fff8e7; }
+.theatre-shell::before { position: fixed; z-index: -1; inset: 0; content: ''; background: radial-gradient(circle at 12% 8%, #fff3b7 0 2px, transparent 3px) 0 0 / 31px 31px, linear-gradient(145deg, #b7e6df 0 50%, #d9f0ed 50%); opacity: .6; }
+.theatre-top-bar { overflow: hidden; padding-bottom: 12px; border-bottom: 3px solid var(--ink); background: #fff8e7; box-shadow: 0 4px 0 rgb(20 33 43 / 12%); }
+.theatre-top-bar__sky { position: absolute; inset: 0 0 auto; height: 7px; background: repeating-linear-gradient(90deg, var(--tomato) 0 18px, var(--gold) 18px 36px, var(--teal) 36px 54px, var(--violet) 54px 72px); }
+.theatre-top-bar__sky i { display: none; }
+.theatre-top-bar__actions { position: relative; min-height: 43px; padding-top: 4px; }
+.theatre-nav-button { min-height: 38px; padding: 6px 8px; border: 2px solid transparent; border-radius: 999px; color: var(--teal); background: #e1f3ef; font-size: .76rem; }
+.theatre-nav-button--passport { color: var(--violet); background: #f0e8fb; }
+.theatre-nav-button--ghost { width: 44px; }
+.theatre-brand { position: relative; gap: 9px; margin: -2px auto 1px; color: var(--ink); }
+.theatre-brand__ticket { display: grid; width: 37px; height: 37px; place-items: center; border: 2px solid var(--ink); border-radius: 13px 8px 13px 8px; color: var(--tomato); background: var(--gold-tint); box-shadow: 2px 3px 0 var(--ink); transform: rotate(-5deg); }
+.theatre-brand__ticket .stamp-mark { width: 27px; height: 27px; }
+.theatre-brand__words { display: grid; line-height: 1; text-align: left; }
+.theatre-brand__words small { color: var(--tomato); font-size: .58rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.theatre-brand__words strong { margin-top: 3px; font-size: 1.05rem; letter-spacing: -.03em; }
+.theatre-progress { display: grid; grid-template-columns: minmax(44px, 82px) auto; align-items: center; justify-content: center; gap: 7px; margin-top: 7px; }
+.theatre-progress__track { height: 8px; overflow: hidden; border: 1.5px solid var(--ink); border-radius: 99px; background: #fff; }
+.theatre-progress__track i { display: block; height: 100%; border-right: 1px solid var(--ink); background: var(--tomato); transition: width 420ms cubic-bezier(.2,.8,.2,1); }
+.theatre-progress .story-progress { margin: 0; color: var(--ink); font-size: .7rem; letter-spacing: .03em; }
+.theatre-parent-entry { position: absolute; top: max(11px, env(safe-area-inset-top)); right: 12px; transform: scale(.84); transform-origin: top right; }
+.theatre-parent-entry .parent-entry-button { min-height: 38px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; box-shadow: 2px 3px 0 var(--ink); }
+.theatre-parent-entry .parent-entry-button span:not(.parent-hold-progress) { display: none; }
+.theatre-parent-entry .parent-hold-progress { bottom: 3px; left: 4px; right: 4px; }
+.theatre-shell .screen { position: relative; }
+@media (max-width: 350px) { .theatre-parent-entry { right: 8px; } .theatre-brand__words strong { font-size: .93rem; } }

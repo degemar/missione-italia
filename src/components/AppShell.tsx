@@ -4,6 +4,7 @@ import type {ReactNode} from 'react';
 import {translate as t} from '../i18n/strings.js';
 import {ParentEntry} from './ParentEntry.js';
 import {StampMark} from './StampTheatre.js';
+import './app-shell-r3.css';
 
 interface AppShellProps {
   children: ReactNode;
@@ -31,31 +32,33 @@ export function AppShell({
   reducedMotion = false,
 }: AppShellProps) {
   return (
-    <div className={`app-shell${reducedMotion ? ' reduce-motion' : ''}`}>
-      <header className="top-bar">
-        <div className="top-bar__actions">
+    <div className={`app-shell theatre-shell${reducedMotion ? ' reduce-motion' : ''}`}>
+      <header className="top-bar theatre-top-bar">
+        <div className="theatre-top-bar__sky" aria-hidden="true"><i /><i /><i /></div>
+        <div className="top-bar__actions theatre-top-bar__actions">
           {onBack ? (
-            <button className="icon-text-button" type="button" onClick={onBack}>
-              {t('common.back')}
+            <button className="icon-text-button theatre-nav-button" type="button" onClick={onBack}>
+              <span aria-hidden="true">←</span>{t('common.back')}
             </button>
-          ) : <span className="top-bar__spacer" aria-hidden="true" />}
+          ) : <span className="top-bar__spacer theatre-nav-button--ghost" aria-hidden="true" />}
           {onPassport ? (
-            <button className="icon-text-button" type="button" onClick={onPassport}>
+            <button className="icon-text-button theatre-nav-button theatre-nav-button--passport" type="button" onClick={onPassport}>
               <MapPinLine aria-hidden="true" weight="bold" />
               {t('atlas.passport')}
             </button>
           ) : null}
         </div>
-        <div className="brand-lockup" aria-label={t('app.label')}>
-          <StampMark title={t('app.label')} />
-          <span>{t('app.name')}</span>
+        <div className="brand-lockup theatre-brand" aria-label={t('app.label')}>
+          <span className="theatre-brand__ticket" aria-hidden="true"><StampMark title={t('app.label')} /></span>
+          <span className="theatre-brand__words"><small>{t('app.label')}</small><strong>{t('app.name')}</strong></span>
         </div>
         {total > 0 ? (
-          <p className="story-progress" aria-live="polite">
-            {t('app.progress', {resolved, total})}
-          </p>
+          <div className="theatre-progress" aria-live="polite">
+            <span className="theatre-progress__track" aria-hidden="true"><i style={{width: `${Math.round((resolved / total) * 100)}%`}} /></span>
+            <p className="story-progress">{t('app.progress', {resolved, total})}</p>
+          </div>
         ) : null}
-        {onParentOpen ? <ParentEntry onConfirmed={onParentOpen} /> : null}
+        {onParentOpen ? <div className="theatre-parent-entry"><ParentEntry onConfirmed={onParentOpen} /></div> : null}
       </header>
       {banners.map((banner) => (
         <div className="state-banner" role="status" key={banner}>

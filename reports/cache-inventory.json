@@ -29,16 +29,16 @@
       "gzipBytes": 313667
     },
     {
-      "url": "/missione-italia/assets/index-CWzTJtme.js",
-      "revision": "df11d830164ac29f0a99da75579e5148f080244e14024368d448154df429d4e1",
-      "bytes": 410644,
-      "gzipBytes": 119326
+      "url": "/missione-italia/assets/index-CQbHJIFa.css",
+      "revision": "5447018c59a4f7acd620ea4bda26f3abef66ebecadd03b8250cc6ca377207d14",
+      "bytes": 32823,
+      "gzipBytes": 7444
     },
     {
-      "url": "/missione-italia/assets/index-XV9XIfo5.css",
-      "revision": "bb64c93668079e0f24269b960fa5e5ada775a19391e5f4ca98253dd622d6bc9e",
-      "bytes": 18200,
-      "gzipBytes": 4612
+      "url": "/missione-italia/assets/index-DAMqiEM1.js",
+      "revision": "7f51685fd7f663223bd743ea875d2e2cf05d26a79483d2b3b5b19a0fd5361df6",
+      "bytes": 414166,
+      "gzipBytes": 120101
     },
     {
       "url": "/missione-italia/assets/workbox-window.prod.es5-Bd17z0YL.js",
@@ -96,7 +96,7 @@
     },
     {
       "url": "/missione-italia/index.html",
-      "revision": "d8bd8885d47c5c90f2db81be37b62837bf9643d5c04de549cbbcc2de45d2f6c5",
+      "revision": "0c555a60ca2417281dd991ab36c15fc3eadf9c687266026816538055dd645089",
       "bytes": 872,
       "gzipBytes": 401
     },
@@ -109,8 +109,8 @@
   ],
   "totals": {
     "files": 17,
-    "bytes": 1294439,
-    "gzipBytes": 877429
+    "bytes": 1312584,
+    "gzipBytes": 881036
   },
   "budgets": {
     "targetPrecacheBytes": 15728640,
