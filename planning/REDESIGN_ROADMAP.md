@@ -145,14 +145,16 @@ Run: **Frontend → UX/UI review → Story review**.
 
 Run: **Story → Audio production → Infrastructure → Frontend**.
 
-- [ ] `ST-R30` Freeze narration scripts with pronunciation notes for Italian place names.
-- [ ] `AUD-R01` Generate and edit warm Spanish narration offline; normalize loudness and export compact MP3 files.
-- [ ] `AUD-R02` Record voice/tool provenance and confirm the generated voice can be distributed.
-- [ ] `INF-R20` Add versioned audio manifests, lazy cache, offline availability state, and optional download/remove controls.
-- [ ] `FE-R40` Add accessible play/pause/replay/progress controls with captions, no autoplay, and silent text fallback.
-- [ ] `FE-R41` Stop audio on navigation, calls/backgrounding, or explicit parent action; narration never affects mission completion.
+- [x] `ST-R30` Freeze narration scripts with pronunciation notes for Italian place names. Evidence: `public/content/locales/narration.es.json`, `public/content/locales/trip-manifest.es.json`, `planning/r4-research/`.
+- [x] `AUD-R01` Generate and edit warm Spanish narration offline; normalize loudness and export compact MP3 files. Evidence: `public/audio/narration/v1/`, `planning/R4_AUDIO_PRODUCTION_HANDOFF.md`.
+- [x] `AUD-R02` Record voice/tool provenance and confirm the generated voice can be distributed. Evidence: `THIRD_PARTY_NOTICES.md`, `planning/R4_AUDIO_PRODUCTION_HANDOFF.md`.
+- [x] `INF-R20` Add versioned audio manifests, lazy cache, offline availability state, and optional download/remove controls. Evidence: `planning/R4_INFRA_AUDIO_HANDOFF.md`.
+- [x] `FE-R40` Add accessible play/pause/replay/progress controls with captions, no autoplay, and silent text fallback. Evidence: `src/components/NarrationControls.tsx`, `src/components/NarrationDownloads.tsx`.
+- [x] `FE-R41` Stop audio on navigation, calls/backgrounding, or explicit parent action; narration never affects mission completion. Evidence: `src/audio/narrator-controller.ts`, `tests/frontend/narrator-controller.test.ts`.
 
 **Gate:** storyteller works offline after download, captions match audio, first load stays within budget, and the app remains fully playable with audio unavailable.
+
+**Gate status: CLOSED 1 October 2026.** The integrated gate passed all 11 content-contract groups, verified 32 narration clips at 4,299,472 bytes, passed 372 tests, and completed the production/PWA build without precaching narration audio.
 
 ## Wave R5 — release and rollback
 

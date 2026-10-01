@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://missione-italia.local/schemas/content/v1/narration-pack.schema.json",
+  "title": "Missione Italia narration pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "packId",
+    "packVersion",
+    "contentVersion",
+    "status",
+    "locale",
+    "autoplay",
+    "captionPolicy",
+    "maximumPackBytes",
+    "format",
+    "chapters"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "packId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "packVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "contentVersion": {"type": "string", "minLength": 1},
+    "status": {"enum": ["awaiting-audio-production", "production-ready"]},
+    "locale": {"const": "es"},
+    "autoplay": {"const": false},
+    "captionPolicy": {"const": "exact-script"},
+    "maximumPackBytes": {"const": 8388608},
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mediaType", "codec", "sampleRateHz", "channels", "bitrateKbps"],
+      "properties": {
+        "mediaType": {"const": "audio/mpeg"},
+        "codec": {"const": "mp3"},
+        "sampleRateHz": {"const": 24000},
+        "channels": {"const": 1},
+        "bitrateKbps": {"const": 48}
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/chapter"}
+    }
+  },
+  "$defs": {
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chapterId", "entries"],
+      "properties": {
+        "chapterId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "entries": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/entry"}
+        }
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "segmentId",
+        "scriptRef",
+        "captionRef",
+        "url",
+        "chapterId",
+        "bytes",
+        "durationMs",
+        "sha256",
+        "lufs",
+        "truePeakDbtp",
+        "generator",
+        "model",
+        "modelRevision",
+        "voicePreset",
+        "generatedAt"
+      ],
+      "properties": {
+        "segmentId": {"type": "string", "pattern": "^[A-Z0-9]+(?:-[A-Z0-9]+)*$"},
+        "scriptRef": {"type": "string", "minLength": 1},
+        "captionRef": {"type": "string", "minLength": 1},
+        "url": {
+          "type": "string",
+          "pattern": "^audio/narration/v1/[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\\.mp3$"
+        },
+        "chapterId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "bytes": {"type": "integer", "minimum": 1, "maximum": 1048576},
+        "durationMs": {"type": "integer", "minimum": 1, "maximum": 60000},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "lufs": {"type": "number", "minimum": -19, "maximum": -17},
+        "truePeakDbtp": {"type": "number", "maximum": -1},
+        "generator": {"type": "string", "minLength": 1},
+        "model": {"type": "string", "minLength": 1},
+        "modelRevision": {"type": "string", "minLength": 1},
+        "voicePreset": {"type": "string", "minLength": 1},
+        "generatedAt": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

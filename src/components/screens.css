@@ -68,6 +68,8 @@
 .screen-chapter .mission-card::before { position: absolute; top: 0; right: 0; width: 44px; height: 44px; border-bottom: 2px solid var(--ink); border-left: 2px solid var(--ink); border-radius: 0 0 0 100%; background: var(--gold-tint); content: ''; }
 .screen-chapter .mission-card:nth-child(3n+2)::before { background: var(--teal-tint); }
 .screen-chapter .mission-card:nth-child(3n)::before { background: var(--violet-tint); }
+.screen-chapter .chapter-closing { display: grid; align-items: stretch; }
+.screen-chapter .chapter-closing > p { display: flex; align-items: center; gap: 9px; margin: 0; }
 
 .mission-stage { min-height: 92px; justify-content: space-around; border-bottom: 3px dashed var(--ink); }
 .mission-stage .stamp-mark { width: 64px; height: 64px; color: var(--tomato); transform: rotate(-12deg); }

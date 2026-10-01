@@ -6,40 +6,200 @@
   "voice": {
     "character": "Bussola",
     "pronunciationNote": "BÚS-so-la",
-    "style": "Cálida, curiosa y ágil; una idea clara por frase."
+    "style": "Cálida, cinematográfica y curiosa; comparte secretos, no imparte una lección."
   },
   "segments": [
-    {"id": "OPENING-STORY", "screen": "opening", "scriptRef": "narrative.opening.storyBeat", "captionRef": "narrative.opening.storyBeat"},
-    {"id": "CH-ROAD-OPEN", "screen": "chapter-opening", "scriptRef": "chapters.road.openingBeat", "captionRef": "chapters.road.openingBeat"},
-    {"id": "CH-ROAD-CLOSE", "screen": "chapter-closing", "scriptRef": "chapters.road.closingBeat", "captionRef": "chapters.road.closingBeat"},
-    {"id": "CH-VENICE-OPEN", "screen": "chapter-opening", "scriptRef": "chapters.venice.openingBeat", "captionRef": "chapters.venice.openingBeat"},
-    {"id": "CH-VENICE-CLOSE", "screen": "chapter-closing", "scriptRef": "chapters.venice.closingBeat", "captionRef": "chapters.venice.closingBeat"},
-    {"id": "CH-LAGOON-OPEN", "screen": "chapter-opening", "scriptRef": "chapters.lagoon-islands.openingBeat", "captionRef": "chapters.lagoon-islands.openingBeat"},
-    {"id": "CH-LAGOON-CLOSE", "screen": "chapter-closing", "scriptRef": "chapters.lagoon-islands.closingBeat", "captionRef": "chapters.lagoon-islands.closingBeat"},
-    {"id": "CH-VERONA-OPEN", "screen": "chapter-opening", "scriptRef": "chapters.verona.openingBeat", "captionRef": "chapters.verona.openingBeat"},
-    {"id": "CH-VERONA-CLOSE", "screen": "chapter-closing", "scriptRef": "chapters.verona.closingBeat", "captionRef": "chapters.verona.closingBeat"},
-    {"id": "ROAD-01-STORY", "screen": "mission-story", "scriptRef": "missions.ROAD-01.storyBeat", "captionRef": "missions.ROAD-01.storyBeat"},
-    {"id": "ROAD-02-STORY", "screen": "mission-story", "scriptRef": "missions.ROAD-02.storyBeat", "captionRef": "missions.ROAD-02.storyBeat"},
-    {"id": "ROAD-03-STORY", "screen": "mission-story", "scriptRef": "missions.ROAD-03.storyBeat", "captionRef": "missions.ROAD-03.storyBeat"},
-    {"id": "VEN-01-STORY", "screen": "mission-story", "scriptRef": "missions.VEN-01.storyBeat", "captionRef": "missions.VEN-01.storyBeat"},
-    {"id": "VEN-02-STORY", "screen": "mission-story", "scriptRef": "missions.VEN-02.storyBeat", "captionRef": "missions.VEN-02.storyBeat"},
-    {"id": "VEN-03-STORY", "screen": "mission-story", "scriptRef": "missions.VEN-03.storyBeat", "captionRef": "missions.VEN-03.storyBeat"},
-    {"id": "VEN-04-STORY", "screen": "mission-story", "scriptRef": "missions.VEN-04.storyBeat", "captionRef": "missions.VEN-04.storyBeat"},
-    {"id": "ISL-01-STORY", "screen": "mission-story", "scriptRef": "missions.ISL-01.storyBeat", "captionRef": "missions.ISL-01.storyBeat"},
-    {"id": "ISL-02-STORY", "screen": "mission-story", "scriptRef": "missions.ISL-02.storyBeat", "captionRef": "missions.ISL-02.storyBeat"},
-    {"id": "ISL-03-STORY", "screen": "mission-story", "scriptRef": "missions.ISL-03.storyBeat", "captionRef": "missions.ISL-03.storyBeat"},
-    {"id": "VER-01-STORY", "screen": "mission-story", "scriptRef": "missions.VER-01.storyBeat", "captionRef": "missions.VER-01.storyBeat"},
-    {"id": "VER-02-STORY", "screen": "mission-story", "scriptRef": "missions.VER-02.storyBeat", "captionRef": "missions.VER-02.storyBeat"},
-    {"id": "VER-03-STORY", "screen": "mission-story", "scriptRef": "missions.VER-03.storyBeat", "captionRef": "missions.VER-03.storyBeat"},
-    {"id": "VER-04-STORY", "screen": "mission-story", "scriptRef": "missions.VER-04.storyBeat", "captionRef": "missions.VER-04.storyBeat"},
-    {"id": "VER-04-SIGURTA-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-04.variants.sigurta-team-maze.storyBeat", "captionRef": "missions.VER-04.variants.sigurta-team-maze.storyBeat"},
-    {"id": "VER-04-SIRMIONE-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-04.variants.sirmione-castle-water.storyBeat", "captionRef": "missions.VER-04.variants.sirmione-castle-water.storyBeat"},
-    {"id": "VER-04-RAIN-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-04.variants.verona-natural-history.storyBeat", "captionRef": "missions.VER-04.variants.verona-natural-history.storyBeat"},
-    {"id": "VER-05-STORY", "screen": "mission-story", "scriptRef": "missions.VER-05.storyBeat", "captionRef": "missions.VER-05.storyBeat"},
-    {"id": "VER-05-BORGHETTO-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-05.variants.borghetto-water-mill.storyBeat", "captionRef": "missions.VER-05.variants.borghetto-water-mill.storyBeat"},
-    {"id": "VER-05-LAZISE-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-05.variants.lazise-bonus-spotter.storyBeat", "captionRef": "missions.VER-05.variants.lazise-bonus-spotter.storyBeat"},
-    {"id": "VER-05-RAIN-STORY", "screen": "mission-variant-story", "scriptRef": "missions.VER-05.variants.verona-childrens-museum.storyBeat", "captionRef": "missions.VER-05.variants.verona-childrens-museum.storyBeat"},
-    {"id": "VER-06-STORY", "screen": "mission-story", "scriptRef": "missions.VER-06.storyBeat", "captionRef": "missions.VER-06.storyBeat"},
-    {"id": "RETURN-EP-STORY", "screen": "epilogue-story", "scriptRef": "missions.RETURN-EP.storyBeat", "captionRef": "missions.RETURN-EP.storyBeat"}
+    {
+      "id": "OPENING-STORY",
+      "screen": "opening",
+      "scriptRef": "narrative.opening.storyBeat",
+      "captionRef": "narrative.opening.storyBeat"
+    },
+    {
+      "id": "CH-ROAD-OPEN",
+      "screen": "chapter-opening",
+      "scriptRef": "chapters.road.openingBeat",
+      "captionRef": "chapters.road.openingBeat"
+    },
+    {
+      "id": "CH-ROAD-CLOSE",
+      "screen": "chapter-closing",
+      "scriptRef": "chapters.road.closingBeat",
+      "captionRef": "chapters.road.closingBeat"
+    },
+    {
+      "id": "CH-VENICE-OPEN",
+      "screen": "chapter-opening",
+      "scriptRef": "chapters.venice.openingBeat",
+      "captionRef": "chapters.venice.openingBeat"
+    },
+    {
+      "id": "CH-VENICE-CLOSE",
+      "screen": "chapter-closing",
+      "scriptRef": "chapters.venice.closingBeat",
+      "captionRef": "chapters.venice.closingBeat"
+    },
+    {
+      "id": "CH-LAGOON-OPEN",
+      "screen": "chapter-opening",
+      "scriptRef": "chapters.lagoon-islands.openingBeat",
+      "captionRef": "chapters.lagoon-islands.openingBeat"
+    },
+    {
+      "id": "CH-LAGOON-CLOSE",
+      "screen": "chapter-closing",
+      "scriptRef": "chapters.lagoon-islands.closingBeat",
+      "captionRef": "chapters.lagoon-islands.closingBeat"
+    },
+    {
+      "id": "CH-VERONA-OPEN",
+      "screen": "chapter-opening",
+      "scriptRef": "chapters.verona.openingBeat",
+      "captionRef": "chapters.verona.openingBeat"
+    },
+    {
+      "id": "CH-VERONA-CLOSE",
+      "screen": "chapter-closing",
+      "scriptRef": "chapters.verona.closingBeat",
+      "captionRef": "chapters.verona.closingBeat"
+    },
+    {
+      "id": "ROAD-01-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ROAD-01.storyBeat",
+      "captionRef": "missions.ROAD-01.storyBeat"
+    },
+    {
+      "id": "ROAD-02-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ROAD-02.storyBeat",
+      "captionRef": "missions.ROAD-02.storyBeat"
+    },
+    {
+      "id": "ROAD-03-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ROAD-03.storyBeat",
+      "captionRef": "missions.ROAD-03.storyBeat"
+    },
+    {
+      "id": "VEN-01-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VEN-01.storyBeat",
+      "captionRef": "missions.VEN-01.storyBeat"
+    },
+    {
+      "id": "VEN-02-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VEN-02.storyBeat",
+      "captionRef": "missions.VEN-02.storyBeat"
+    },
+    {
+      "id": "VEN-03-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VEN-03.storyBeat",
+      "captionRef": "missions.VEN-03.storyBeat"
+    },
+    {
+      "id": "VEN-04-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VEN-04.storyBeat",
+      "captionRef": "missions.VEN-04.storyBeat"
+    },
+    {
+      "id": "ISL-01-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ISL-01.storyBeat",
+      "captionRef": "missions.ISL-01.storyBeat"
+    },
+    {
+      "id": "ISL-02-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ISL-02.storyBeat",
+      "captionRef": "missions.ISL-02.storyBeat"
+    },
+    {
+      "id": "ISL-03-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.ISL-03.storyBeat",
+      "captionRef": "missions.ISL-03.storyBeat"
+    },
+    {
+      "id": "VER-01-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-01.storyBeat",
+      "captionRef": "missions.VER-01.storyBeat"
+    },
+    {
+      "id": "VER-02-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-02.storyBeat",
+      "captionRef": "missions.VER-02.storyBeat"
+    },
+    {
+      "id": "VER-03-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-03.storyBeat",
+      "captionRef": "missions.VER-03.storyBeat"
+    },
+    {
+      "id": "VER-04-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-04.storyBeat",
+      "captionRef": "missions.VER-04.storyBeat"
+    },
+    {
+      "id": "VER-04-SIGURTA-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-04.variants.sigurta-team-maze.storyBeat",
+      "captionRef": "missions.VER-04.variants.sigurta-team-maze.storyBeat"
+    },
+    {
+      "id": "VER-04-SIRMIONE-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-04.variants.sirmione-castle-water.storyBeat",
+      "captionRef": "missions.VER-04.variants.sirmione-castle-water.storyBeat"
+    },
+    {
+      "id": "VER-04-RAIN-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-04.variants.verona-natural-history.storyBeat",
+      "captionRef": "missions.VER-04.variants.verona-natural-history.storyBeat"
+    },
+    {
+      "id": "VER-05-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-05.storyBeat",
+      "captionRef": "missions.VER-05.storyBeat"
+    },
+    {
+      "id": "VER-05-BORGHETTO-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-05.variants.borghetto-water-mill.storyBeat",
+      "captionRef": "missions.VER-05.variants.borghetto-water-mill.storyBeat"
+    },
+    {
+      "id": "VER-05-LAZISE-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-05.variants.lazise-bonus-spotter.storyBeat",
+      "captionRef": "missions.VER-05.variants.lazise-bonus-spotter.storyBeat"
+    },
+    {
+      "id": "VER-05-RAIN-STORY",
+      "screen": "mission-variant-story",
+      "scriptRef": "missions.VER-05.variants.verona-childrens-museum.storyBeat",
+      "captionRef": "missions.VER-05.variants.verona-childrens-museum.storyBeat"
+    },
+    {
+      "id": "VER-06-STORY",
+      "screen": "mission-story",
+      "scriptRef": "missions.VER-06.storyBeat",
+      "captionRef": "missions.VER-06.storyBeat"
+    },
+    {
+      "id": "RETURN-EP-STORY",
+      "screen": "epilogue-story",
+      "scriptRef": "missions.RETURN-EP.storyBeat",
+      "captionRef": "missions.RETURN-EP.storyBeat"
+    }
   ]
 }

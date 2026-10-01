@@ -12,6 +12,7 @@ describe('offline boundary', () => {
     expect(PRECACHE_GLOB_PATTERNS.join(' ')).toContain('json');
     expect(PRECACHE_GLOB_PATTERNS.join(' ')).toContain('png');
     expect(PRECACHE_GLOB_IGNORES).toContain('**/bussola-app-icon-source.png');
+    expect(PRECACHE_GLOB_IGNORES).toContain('**/audio/narration/**/*.mp3');
     expect(PRECACHE_GLOB_IGNORES).toContain('**/*.map');
     expect(MAX_PRECACHE_BYTES).toBe(5 * 1024 * 1024);
   });
@@ -22,6 +23,7 @@ describe('offline boundary', () => {
     'https://project.supabase.co/rest/v1/save',
     '/diagnostics/session.json',
     '/family-data/photo.png',
+    '/missione-italia/audio/narration/v1/venice/ven-01-story.mp3',
   ])('rejects nonessential or private cache target %s', (url) => {
     expect(isAllowedPrecacheUrl(url)).toBe(false);
   });

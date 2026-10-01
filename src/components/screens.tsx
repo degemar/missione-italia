@@ -20,6 +20,7 @@ import {getRoleAssignments} from '../game/roles.js';
 import {translate as t, type UiStringKey} from '../i18n/strings.js';
 import {assetUrl} from '../content/content-urls.js';
 import {StampButton, StampCard, StampMark, TheatreConfetti} from './StampTheatre.js';
+import {NarrationControls, type NarrationBinding} from './NarrationControls.js';
 import './screens.css';
 
 const roleLabelKeys: Record<RoleId, UiStringKey> = {
@@ -212,10 +213,11 @@ export function SetupScreen({
   );
 }
 
-export function OpeningScreen({opening, step, busy, onNext}: {
+export function OpeningScreen({opening, step, busy, narration, onNext}: {
   opening: TripManifest['narrative']['opening'];
   step: 0 | 1 | 2;
   busy: boolean;
+  narration: NarrationBinding | null;
   onNext: () => void;
 }) {
   const action = step === 0 ? t('opening.wake') : step === 1 ? t('opening.next') : t('opening.atlas');
@@ -226,7 +228,7 @@ export function OpeningScreen({opening, step, busy, onNext}: {
         <p className="step-count">{t('opening.step', {current: step + 1, total: 3})}</p>
       </ScreenIntro>
       <StampCard as="article" tone="teal" className="read-aloud-card">
-        {step === 0 ? <><p>{opening.storyBeat}</p><p className="youngest-cue">{opening.youngestAction}</p></> : null}
+        {step === 0 ? <><p id="opening-story-caption">{opening.storyBeat}</p><NarrationControls binding={narration} captionId="opening-story-caption" /><p className="youngest-cue">{opening.youngestAction}</p></> : null}
         {step === 1 ? <p>{opening.familyOath}</p> : null}
         {step === 2 ? <ol className="tutorial-list">{opening.tutorialSteps.map((item) => <li key={item}>{item}</li>)}</ol> : null}
       </StampCard>
@@ -296,10 +298,12 @@ export function AtlasScreen({bundle, save, manuallyUnlocked, onChapter, onPasspo
   );
 }
 
-export function ChapterScreen({bundle, save, chapter, onMission}: {
+export function ChapterScreen({bundle, save, chapter, openingNarration, closingNarration, onMission}: {
   bundle: ContentBundle;
   save: SaveEnvelopeV1;
   chapter: Chapter;
+  openingNarration: NarrationBinding | null;
+  closingNarration: NarrationBinding | null;
   onMission: (mission: Mission) => void;
 }) {
   const progress = getChapterProgress(chapter, save);
@@ -315,7 +319,8 @@ export function ChapterScreen({bundle, save, chapter, onMission}: {
     <section className="screen-stack screen-chapter" data-chapter={chapter.id}>
       <div className="chapter-stage" aria-hidden="true"><Bussola /><span>{chapter.power}</span></div>
       <ScreenIntro eyebrow={t('chapter.eyebrow', {power: chapter.power})} title={chapter.title}>
-        <p>{chapter.openingBeat}</p>
+        <p id={`chapter-${chapter.id}-opening-caption`}>{chapter.openingBeat}</p>
+        <NarrationControls binding={openingNarration} captionId={`chapter-${chapter.id}-opening-caption`} />
       </ScreenIntro>
       {hasExcursionSlots ? (
         <p className="parent-instruction">
@@ -347,7 +352,12 @@ export function ChapterScreen({bundle, save, chapter, onMission}: {
           );
         })}
       </div>
-      {progress.complete ? <p className="chapter-closing"><CheckCircle aria-hidden="true" weight="fill" />{chapter.closingBeat}</p> : null}
+      {progress.complete ? (
+        <div className="chapter-closing">
+          <p id={`chapter-${chapter.id}-closing-caption`}><CheckCircle aria-hidden="true" weight="fill" />{chapter.closingBeat}</p>
+          <NarrationControls binding={closingNarration} captionId={`chapter-${chapter.id}-closing-caption`} />
+        </div>
+      ) : null}
     </section>
   );
 }
@@ -401,8 +411,9 @@ export function MissionCardScreen({mission, effective, save, roleShift, busy, pa
   );
 }
 
-export function StoryScreen({mission, onLookUp, onPause, busy}: {
+export function StoryScreen({mission, narration, onLookUp, onPause, busy}: {
   mission: EffectiveMission;
+  narration: NarrationBinding | null;
   onLookUp: () => void;
   onPause: () => void;
   busy: boolean;
@@ -411,7 +422,10 @@ export function StoryScreen({mission, onLookUp, onPause, busy}: {
     <section className="screen-stack screen-story">
       <div className="story-stage" aria-hidden="true"><Bussola /><span>✦</span><span>✦</span><span>✦</span></div>
       <ScreenIntro eyebrow={t('story.eyebrow')} title={t('story.title')} />
-      <StampCard as="article" tone="teal" className="read-aloud-card"><p>{mission.storyBeat}</p></StampCard>
+      <StampCard as="article" tone="teal" className="read-aloud-card">
+        <p id={`mission-${mission.id}-story-caption`}>{mission.storyBeat}</p>
+        <NarrationControls binding={narration} captionId={`mission-${mission.id}-story-caption`} />
+      </StampCard>
       <aside className="safety-card">
         <h2><LockKey aria-hidden="true" weight="bold" />{t('story.safety')}</h2>
         <ul>{mission.safety.map((item) => <li key={item}>{item}</li>)}</ul>
@@ -667,14 +681,17 @@ export function PassportScreen({bundle, save, onHome, onEpilogue}: {
   );
 }
 
-export function EpilogueScreen({mission, busy, onStart}: {mission: Mission; busy: boolean; onStart: () => void}) {
+export function EpilogueScreen({mission, narration, busy, onStart}: {mission: Mission; narration: NarrationBinding | null; busy: boolean; onStart: () => void}) {
   return (
     <section className="screen-stack screen-epilogue">
       <div className="epilogue-stage" aria-hidden="true"><Bussola /><TheatreConfetti /></div>
       <ScreenIntro eyebrow={t('epilogue.eyebrow')} title={mission.title}>
         <p className="lead">{mission.objective}</p>
       </ScreenIntro>
-      <article className="read-aloud-card"><p>{mission.storyBeat}</p></article>
+      <article className="read-aloud-card">
+        <p id="epilogue-story-caption">{mission.storyBeat}</p>
+        <NarrationControls binding={narration} captionId="epilogue-story-caption" />
+      </article>
       <div className="role-summary">
         {mission.roles.map((role) => <div className={`role-pill role-pill--${role.role}`} key={role.role}><RoleIcon role={role.role} /><span>{role.action}</span></div>)}
       </div>

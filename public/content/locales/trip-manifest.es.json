@@ -5,167 +5,876 @@
   "fallbackLocale": "en",
   "narrative": {
     "opening": {
-      "storyBeat": "Hola, exploradores. Soy Bussola, una pequeña brújula con una aguja temblorosa. Cuatro poderes viajeros —Curiosidad, Asombro, Creatividad y Trabajo en equipo— se han escapado de mis puntas. No se los llevó ningún villano; simplemente olvidé cómo prestar atención. En este viaje, tres miradas distintas pueden ayudarme a recordar. Cada pista segura cuenta, y un adulto puede guardar o saltar cualquier pista.",
-      "youngestAction": "El explorador más pequeño toca Despertar a Bussola.",
-      "familyOath": "Permanecemos juntos, miramos con amabilidad y dejamos que cada explorador ayude. Nos detenemos cuando lo dice un adulto. Pistas distintas, un mismo equipo.",
-      "tutorialSteps": {"meet":"Conoced a Bussola y despertad la brújula.","roles":"Elegid o intercambiad Vigía, Detective y Guía.","observe":"Mirad juntos y después dejad que el adulto confirme, guarde o salte la pista."}
+      "storyBeat": "Hola, exploradores. Soy Bussola. Mi aguja aún recuerda el norte, pero ha olvidado por qué merece la pena viajar. Cuatro luces duermen en mis puntas: Curiosidad, Asombro, Creatividad y Trabajo en equipo. El Atlas ya ha preparado cada misterio. Vuestras tres miradas harán el resto. Despertadme y abramos la primera página.",
+      "youngestAction": "Primera mano: toca Despertar a Bussola.",
+      "familyOath": "Tres miradas, un mismo equipo. Cada pista abre una página del Atlas.",
+      "tutorialSteps": {
+        "meet": "Despertad a Bussola y abrid el Atlas.",
+        "roles": "Bussola reparte cada turno y explica la acción.",
+        "observe": "La app muestra la pista, ofrece una ayuda y revela la respuesta."
+      }
     },
     "states": {
-      "interrupted":"Pista en pausa. Bussola guardará vuestro lugar mientras la familia atiende lo que necesite.",
-      "resume":"Bienvenidos de nuevo. La pista os espera exactamente donde la dejasteis.",
-      "skip":"Pista guardada. Nadie se queda atrás.",
-      "manual":"Un adulto ha confirmado esta pista. El equipo puede continuar.",
-      "retry":"Probad otra pista o guardad esta.",
-      "offline":"Bussola está sin conexión, pero todas las misiones y alternativas siguen funcionando.",
-      "closedVenue":"El lugar está cerrado. Usad la versión exterior o las tarjetas; nunca es obligatorio entrar.",
-      "tiredLegs":"Con piernas cansadas, elegid la versión corta, sentada o manual. También cuenta.",
-      "badWeather":"El tiempo ha cambiado la ruta, no el equipo. Elegid la versión resguardada, interior o con tarjetas.",
-      "endingWithSkips":"Cada viaje tiene pistas distintas. Vuestro equipo ha traído la brújula a casa.",
-      "endingAllObserved":"Habéis observado todas las pistas previstas y los cuatro poderes de la brújula brillan.",
-      "mondaySilent":"El lunes no se abre ninguna historia. Bussola descansa y continúa el martes."
+      "interrupted": "El Atlas cierra esta página con cuidado. La aventura queda justo aquí.",
+      "resume": "La página vuelve a abrirse en la última pista.",
+      "skip": "Bussola guarda esta pista entre dos páginas. La historia puede continuar.",
+      "manual": "Bussola abre el camino ilustrado y la aventura continúa.",
+      "retry": "La pista sigue visible. Bussola os mostrará otro detalle.",
+      "offline": "Sin conexión, el Atlas conserva todas las historias y sus pistas.",
+      "closedVenue": "La puerta real puede estar cerrada; el teatro ilustrado ya está abierto.",
+      "tiredLegs": "Bussola acerca la aventura a la pantalla para jugar sentados.",
+      "badWeather": "La lluvia cambia el decorado. El misterio sigue dentro del Atlas.",
+      "endingWithSkips": "Cada viaje abre páginas distintas. Bussola ya sabe volver con ellas.",
+      "endingAllObserved": "Las cuatro luces brillan y todas las páginas de este viaje están despiertas.",
+      "mondaySilent": "El lunes, Bussola duerme. El martes, el Atlas vuelve a crujir."
     }
   },
   "chapters": {
-    "road":{"title":"La aguja temblorosa","openingBeat":"Bussola aún señala el norte, pero su punta de Curiosidad está apagada. Antes de que el coche se mueva, el adulto abre tres pistas para hacer sentados. Los niños observarán cambios, patrones y palabras amables mientras quien conduce mantiene la vista en la carretera.","closingBeat":"Las pistas de países, los patrones seguros y cinco palabras amables encajan en una punta de la brújula. La Curiosidad brilla; Bussola duerme el lunes y espera la ciudad del agua del martes."},
-    "venice":{"title":"La ciudad que flota","openingBeat":"Bussola despierta en una ciudad donde los barcos hacen trabajos de calle y los caminos de piedra cruzan el agua. Para recuperar el Asombro, el equipo buscará un león, leerá un puente, comparará barcos y hará una parada tranquila para escuchar.","closingBeat":"El león alado, el patrón del puente, los barcos de trabajo y la pista tranquila muestran cuatro formas de leer Venecia. El Asombro brilla sin que nadie tenga que correr, entrar en un lugar ni acercarse a un borde."},
-    "lagoon-islands":{"title":"Las islas creadoras","openingBeat":"La esfera de latón de Bussola se ha quedado en blanco. Murano y Burano esconden pistas creadoras en formas de vidrio, símbolos de viaje, casas brillantes e historias de encaje. La familia observará con respeto e inventará un patrón propio.","closingBeat":"Un patrón de vidrio, una ruta por la laguna guiada por un adulto y tres historias de Burano claramente etiquetadas llenan la esfera de Bussola. La Creatividad brilla porque el equipo no copió nada frágil y creó algo nuevo."},
-    "verona":{"title":"La ciudad del trabajo en equipo","openingBeat":"Bussola llega a Verona con Curiosidad, Asombro y Creatividad despiertos, pero su aguja tira en tres direcciones. Los arcos romanos, una célebre tradición literaria, el Adigio y la ruta del viernes que elija el adulto pondrán a prueba cómo tres papeles se convierten en un equipo.","closingBeat":"La familia combina descubrimientos distintos en vez de perseguir una ruta perfecta. El Trabajo en equipo alinea las cuatro puntas de la brújula, y cada pista completada, manual o guardada pertenece a la misma aventura."}
+    "road": {
+      "title": "La primera punta",
+      "openingBeat": "El Atlas abre una ruta entre dos países. Primero faltan dos páginas de pasaporte; después, una montaña de papel empieza a latir; al final, cinco palabras esperan detrás de un telón. Si resolvemos los tres misterios, la Curiosidad volverá a la aguja.",
+      "closingBeat": "Dos páginas, un latido y cinco focos encajan en la primera punta de Bussola. La Curiosidad ya tiene ojos, ritmo y voz. El lunes descansará; el martes abrirá la ciudad del agua."
+    },
+    "venice": {
+      "title": "Los secretos del agua",
+      "openingBeat": "Venecia recibe a Bussola con tres pistas imposibles: una garra con alas, un mapa roto en islas y un archivo de barcos que ha perdido sus páginas. Una cuarta onda se esconde donde el agua, los avisos y la marea dibujan un mapa invisible.",
+      "closingBeat": "El guardián, la huella del puente, las tres estelas y el mapa de ondas vuelven a unirse. Bussola ya sabe que una ciudad puede hablar con piedra, agua, imágenes y silencio. El Asombro está despierto."
+    },
+    "lagoon-islands": {
+      "title": "El taller de las islas",
+      "openingBeat": "La esfera de Bussola se vuelve transparente. Dentro hay una flor escondida en vidrio, un bosque de madera que dibuja caminos y un hilo capaz de sostener su propio dibujo. Murano y Burano guardan tres secretos de creación.",
+      "closingBeat": "La flor se multiplica, el camino aparece entre el agua y el hilo vuelve a dibujar en el aire. Bussola comprende que crear es combinar, transformar y distinguir una historia de un hecho. La Creatividad brilla."
+    },
+    "verona": {
+      "title": "La ciudad de las capas",
+      "openingBeat": "En Verona, una pluma de piedra cae sobre el Atlas, una carta llega con tres fechas y cinco arcos golpean bajo el Adigio. La ruta elegida ya tiene su propia página. Bussola tendrá que descubrir cómo piezas de épocas distintas pueden sostener una sola historia.",
+      "closingBeat": "Piedra, pluma, río y caminos distintos se convierten en cinco arcos. Bussola deja de buscar piezas iguales: aprende a unirlas. El Trabajo en equipo enciende la cuarta punta de la brújula."
+    }
   },
   "excursionSelection": {
-    "thursdayShortTrip":{"rule":"Cualquier salida en coche del jueves sustituye al bloque de tarde VER-03; nunca se añade como otra misión con puntuación."},
+    "thursdayShortTrip": {
+      "rule": "Si el jueves incluye una salida corta, el Atlas guarda VER-03 para otro momento; nunca añade una misión extra."
+    },
     "candidatePairs": {
-      "sigurta-borghetto":{"label":"Sigurtà + Borghetto","reason":"Un conjunto cercano con juego activo en el jardín, una pausa larga para comer y un paseo corto por el pueblo."},
-      "sirmione-lazise":{"label":"Sirmione + Lazise","reason":"Paisajes de lago y castillo, con más aparcamiento y caminata; Lazise sigue siendo opcional y sin presión."},
-      "verona-rain":{"label":"Alternativa interior en Verona","reason":"Para lluvia intensa o cierre por mal tiempo; el Museo de los Niños requiere que un adulto compruebe la reserva."}
+      "sigurta-borghetto": {
+        "label": "Sigurtà + Borghetto",
+        "reason": "Jardín por la mañana y Borghetto por la tarde. La historia enlaza laberinto, molino y leyenda."
+      },
+      "sirmione-lazise": {
+        "label": "Sirmione + Lazise",
+        "reason": "Castillo y lago por la mañana; muralla y puerto completan la aventura de la tarde."
+      },
+      "verona-rain": {
+        "label": "Aventura interior en Verona",
+        "reason": "Dos capítulos ilustrados bajo techo: fósiles por la mañana y seis puertas de ciencia por la tarde."
+      }
     }
   },
   "missions": {
     "ROAD-01": {
-      "title":"Detectives de países","storyBeat":"Las primeras tarjetas de Curiosidad de Bussola han caído desordenadas. Desde sus asientos, los exploradores pueden ayudar sin mirar el teléfono. Al llegar a un nuevo país, el adulto anunciará una pista segura: una bandera, un idioma o una señal. El Vigía observa, el Detective compara y el Guía ordena las tarjetas. Dos pistas bastan para estabilizar la aguja.","objective":"Observar dos pistas de países elegidas por el adulto sin levantarse del asiento.","locationLabel":"Coche en marcha para los niños; el adulto prepara la misión antes de salir o en una parada segura",
-      "roles":{"spotter":"Señala una bandera, un idioma o una señal elegida por el adulto.","detective":"Di una diferencia entre las dos pistas.","navigator":"Ordena las tarjetas de países anunciadas por el adulto."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"La Curiosidad despierta cuando el equipo observa unido los cambios."}},
-      "completion":{"retryLine":"Buscad una pista elegida por el adulto o usad las tarjetas de países.","explanation":"Las banderas, las palabras y el estilo de las señales pueden cambiar al cruzar fronteras. El adulto nombra el país; los niños solo comparan pistas visibles.","successLine":"Primera pista de frontera guardada: la Curiosidad está despertando."},
-      "fallbacks":{"noGps":"El adulto nombra el país actual; no hay detección automática de fronteras.","closedVenue":"No se aplica; usad las tarjetas impresas o sin conexión.","badWeather":"Usad señales vistas por la ventana o las tarjetas sin conexión.","tiredLegs":"Completadla sentados o de forma manual."},"safety":["El adulto inicia la misión antes de conducir o en una parada segura.","Quien conduce no mira la pantalla; todos siguen con el cinturón puesto."]
+      "title": "El pasaporte de los dos países",
+      "storyBeat": "Una ráfaga ha arrancado dos páginas del Pasaporte de Bussola. Una lleva una cruz blanca en un cuadrado rojo; la otra, tres franjas verticales: verde, blanca y roja. Pero las palabras también se han mezclado. Recuperad primero la tarjeta de Suiza, después la de Italia y abrid la última puerta. Tres pruebas. Un sello. La Curiosidad vuelve a señalar el camino.",
+      "objective": "Recuperar las páginas de Suiza e Italia y abrir su candado de palabras.",
+      "locationLabel": "Historia ilustrada de Bussola · modo viaje",
+      "roles": {
+        "spotter": "Toca el cuadrado rojo con la cruz blanca.",
+        "detective": "Ordena el tricolor: verde, blanco y rojo.",
+        "navigator": "Une cada tarjeta de palabras con su país."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "El Pasaporte perdido y sus páginas voladoras pertenecen a la aventura de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "Bussola vuelve a mostrar forma, colores y palabras. Seguid la pista que parpadea.",
+        "explanation": "La página suiza usa la cruz blanca sobre rojo; la italiana reúne tres franjas verticales: verde, blanca y roja.",
+        "successLine": "Dos páginas recuperadas. La Curiosidad abre la primera puerta."
+      },
+      "fallbacks": {
+        "noGps": "El Pasaporte vive dentro del Atlas; no necesita ubicación.",
+        "closedVenue": "Las tres pruebas ilustradas ya están abiertas.",
+        "badWeather": "El misterio continúa entero en la pantalla.",
+        "tiredLegs": "Modo sentado: tres toques y el mismo sello."
+      },
+      "safety": [
+        "Modo viaje · juega desde tu asiento.",
+        "El Pasaporte se resuelve entero en la pantalla."
+      ]
     },
     "ROAD-02": {
-      "title":"Caza de túneles alpinos","storyBeat":"La aguja de Bussola parpadea con un ritmo de luz y oscuridad. Puede que la ruta tenga un túnel, pero la aplicación nunca adivina qué carretera sigue la familia. Si el adulto anuncia un túnel, el Vigía marca el comienzo, el Detective compara oscuridad y luz y el Guía lleva la cuenta. Si no aparece ninguno, tres tarjetas de patrones resuelven la misma pista.","objective":"Contar un túnel anunciado por el adulto o usar las tarjetas de patrones sin conexión.","locationLabel":"Elemento confirmado de la ruta o alternativa en una parada segura",
-      "roles":{"spotter":"Levanta un dedo cuando el adulto anuncie el inicio de un túnel.","detective":"Compara las tarjetas de patrones claros y oscuros.","navigator":"Lleva la cuenta; no nombres un túnel hasta que lo confirme el adulto."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"Cada recuento seguro estabiliza la aguja de Bussola."}},
-      "completion":{"retryLine":"Probad un patrón oscuro-claro-oscuro o dejad que el adulto confirme un túnel anunciado.","explanation":"La misión no depende de la ruta: un túnel real solo cuenta si lo confirma el adulto, y el patrón sin conexión vale igual.","successLine":"Patrón de túnel descifrado."},
-      "fallbacks":{"noGps":"El adulto anuncia el elemento; no se comprueba la ruta ni la proximidad.","closedVenue":"Usad la secuencia impresa claro, oscuro, claro; el niño elige oscuro después.","badWeather":"Usad la secuencia claro-oscuro-claro si hay poca visibilidad.","tiredLegs":"Completadla sentados con una sola coincidencia de patrón."},"safety":["Quien conduce nunca mira ni toca la aplicación.","No se desabrocha el cinturón, no se asoma nadie, no se usa flash ni se promete una ruta exacta."]
+      "title": "El latido bajo la montaña",
+      "storyBeat": "Las montañas parecen dormidas. Pero Bussola oye algo muy abajo, detrás de la roca: pum… pausa… pum. Es el Latido Alpino. Se ha partido en tres señales —luz, roca y ritmo— y la Curiosidad no puede avanzar hasta reunirlas. La montaña ya ha dejado todas las pistas dentro del Atlas.",
+      "objective": "Reunir luz, roca y ritmo para recomponer el Latido Alpino.",
+      "locationLabel": "Misterio ilustrado para jugar desde el asiento",
+      "roles": {
+        "spotter": "Completa el código sol, sombra, sol, sombra.",
+        "detective": "Encuentra la fuerza lenta que levantó los Alpes.",
+        "navigator": "Descubre por qué una montaña guarda rocas distintas."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "El Latido Alpino de luz, roca y ritmo pertenece al teatro de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "La montaña repite su pista: luz, roca y ritmo. Mirad el símbolo que vuelve a pulsar.",
+        "explanation": "Los Alpes nacieron del movimiento lentísimo de placas de la Tierra. En sus túneles aparecen capas y rocas diferentes.",
+        "successLine": "Pum, pum, pum. El Latido Alpino vuelve a cruzar la aguja."
+      },
+      "fallbacks": {
+        "noGps": "El latido no depende de la carretera ni de un túnel real.",
+        "closedVenue": "Las tres cámaras viven dentro de Bussola.",
+        "badWeather": "Los símbolos de luz, roca y ritmo siguen visibles.",
+        "tiredLegs": "Modo breve: completad el código de luz y escuchad el final."
+      },
+      "safety": [
+        "Modo pasajero · misión desde el asiento.",
+        "Todos los retos suceden en la pantalla."
+      ]
     },
     "ROAD-03": {
-      "title":"Primeras palabras en italiano","storyBeat":"Bussola recuerda cinco pequeñas herramientas que no ocupan sitio en la maleta: palabras amables en italiano. El explorador más pequeño relaciona cada palabra con un gesto, el Detective la empareja con su significado en español y el Guía elige una frase para usar más adelante. Nadie tiene que actuar ante un desconocido. Un saludo con la mano, una tarjeta o un ensayo tranquilo en familia despiertan la voz amable de la Curiosidad.","objective":"Relacionar cinco palabras italianas de cortesía con significados o gestos.","locationLabel":"En el coche, sentados, o en cualquier parada tranquila",
-      "roles":{"spotter":"Relaciona una tarjeta de saludo con un gesto de la mano.","detective":"Empareja cada frase con su significado en español.","navigator":"Elige una frase que la familia pueda usar después."},
-      "phrases":{"ciao":{"meaning":"hola o adiós","pronunciation":"chao","gesture":"Haz un pequeño saludo con la mano."},"buongiorno":{"meaning":"buenos días","pronunciation":"buón-yor-no","gesture":"Forma un sol naciente con las dos manos."},"grazie":{"meaning":"gracias","pronunciation":"grá-tsie","gesture":"Pon una mano sobre el corazón."},"per favore":{"meaning":"por favor","pronunciation":"per fa-vó-re","gesture":"Abre una palma con amabilidad."},"arrivederci":{"meaning":"adiós","pronunciation":"arri-ve-dér-chi","gesture":"Despídete lentamente con la mano."}},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"Las palabras amables dan a la Curiosidad una voz amistosa."}},
-      "completion":{"retryLine":"Relacionad una palabra con su significado o gesto; basta con una.","explanation":"Ciao puede significar hola o adiós. Las otras cuatro tarjetas añaden un saludo matinal, gracias, por favor y una despedida más concreta.","successLine":"Grazie, exploradores: la Curiosidad brilla."},
-      "fallbacks":{"noGps":"Jugad en cualquier lugar.","closedVenue":"No hace falta ningún lugar concreto.","badWeather":"Jugad en interior o en el coche.","tiredLegs":"Usad solo los gestos."},"safety":["Ningún niño tiene que hablar con desconocidos.","El adulto lee la ayuda de pronunciación; nunca es necesario el audio."]
+      "title": "El teatrino de las cinco palabras",
+      "storyBeat": "Bussola intenta saludar a Italia… pero de su boca solo sale una nubecita de papel. Su voz se ha escondido detrás del telón. Cinco focos esperan cinco palabras italianas. Cada palabra correcta encenderá una luz. Cuando brille la última, el teatrino devolverá a Bussola su voz.",
+      "objective": "Encender cinco focos relacionando cada palabra italiana con su escena.",
+      "locationLabel": "Teatrino de papel · listo en cualquier lugar",
+      "roles": {
+        "spotter": "Enciende el foco del saludo de la mañana.",
+        "detective": "Une gracias y por favor con sus escenas.",
+        "navigator": "Abre las dos puertas de ciao y la cinta de arrivederci."
+      },
+      "phrases": {
+        "ciao": {
+          "meaning": "hola o adiós",
+          "pronunciation": "CHAO",
+          "gesture": "La máscara entra por una puerta y se despide por la otra."
+        },
+        "buongiorno": {
+          "meaning": "buenos días",
+          "pronunciation": "buon-YÓR-no",
+          "gesture": "El foco del sol dibuja un amanecer."
+        },
+        "grazie": {
+          "meaning": "gracias",
+          "pronunciation": "GRÁ-tsie",
+          "gesture": "El foco del corazón agradece la campanita."
+        },
+        "per favore": {
+          "meaning": "por favor",
+          "pronunciation": "per fa-VÓ-re",
+          "gesture": "Una mano abierta recibe la llave."
+        },
+        "arrivederci": {
+          "meaning": "hasta volvernos a ver / adiós",
+          "pronunciation": "ar-ri-ve-DÉR-chi",
+          "gesture": "Una cinta da la vuelta y regresa al escenario."
+        }
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "Los cinco focos y el teatrino de papel pertenecen a la aventura de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "El teatrino vuelve a iluminar el objeto de la escena. Buscad la palabra que encaja.",
+        "explanation": "Ciao sirve al llegar o despedirse entre amigos; buongiorno abre el día; grazie agradece; per favore acompaña una petición; arrivederci espera volver a verse.",
+        "successLine": "Cinco palabras, cinco luces: la Curiosidad ya tiene voz."
+      },
+      "fallbacks": {
+        "noGps": "El teatrino funciona en cualquier lugar.",
+        "closedVenue": "No necesita ninguna puerta real.",
+        "badWeather": "El escenario de papel sigue abierto.",
+        "tiredLegs": "Modo cuento: un toque por foco y el mismo final."
+      },
+      "safety": [
+        "Teatrino en pantalla.",
+        "El audio es opcional."
+      ]
     },
     "VEN-01": {
-      "title":"Encuentra el león alado","storyBeat":"Bussola ha llegado a Venecia, pero el Asombro sigue escondido. Un león puede ayudar… aunque el león de esta ciudad lleva alas. Deteneos en un lugar público y seguro y mirad juntos hacia arriba. El Vigía busca las alas, el Detective descubre qué hace especial al animal y el Guía comprueba que todo el equipo pueda detenerse antes de que el adulto mire la respuesta.","objective":"Encontrar un león alado desde un lugar público y seguro.","locationLabel":"Cualquier león alado visible con seguridad en Venecia",
-      "roles":{"spotter":"Señala las alas.","detective":"Elige qué hace especial a este león.","navigator":"Confirma que el equipo puede detenerse con seguridad antes de volver al teléfono."},
-      "choices":{"wings":{"label":"Tiene alas","hint":"Mira encima del lomo del león."},"fins":{"label":"Tiene aletas","hint":"Mira otra vez encima de su lomo."},"wheels":{"label":"Tiene ruedas","hint":"Mira otra vez encima de su lomo."}},
-      "facts":{"SRC-VEN-LION-01":{"label":"HECHO","text":"El león alado de San Marcos es un símbolo de Venecia."}},
-      "completion":{"retryLine":"Mirad otra vez. Buscad la forma que aparece encima del lomo del león.","explanation":"El león alado representa a San Marcos y es uno de los símbolos más conocidos de Venecia. Puede aparecer en esculturas, banderas y carteles.","successLine":"León encontrado: el Asombro ya tiene su primera pista."},
-      "fallbacks":{"noGps":"El adulto elige cualquier león visible con seguridad.","closedVenue":"Usad las tarjetas y elegid entre un león normal y uno alado.","badWeather":"Usad las tarjetas; las alas son la pista decisiva.","tiredLegs":"Completadla sentados o manualmente."},"safety":["Deteneos juntos; el adulto sostiene el teléfono.","No crucéis ni entréis en una multitud por una pista."]
+      "title": "El guardián imposible",
+      "storyBeat": "Bussola oye tres sonidos que nunca deberían ir juntos: el ras de una garra, el ffff de unas alas y el frufrú de una página de piedra. En su cristal aparecen una pata, una pluma y un libro: “Encontrad al guardián que camina, vuela y guarda palabras”. Está escondido a plena vista.",
+      "objective": "Resolver tres pistas y revelar el guardián alado de Venecia.",
+      "locationLabel": "En la ruta por Venecia o con la pista ilustrada de Bussola",
+      "roles": {
+        "spotter": "Guarda en la memoria garra, ala y libro.",
+        "detective": "Elige la criatura que reúne las tres pistas.",
+        "navigator": "Abre el libro de piedra y descubre su palabra."
+      },
+      "choices": {
+        "wings": {
+          "label": "Un león con alas",
+          "hint": "Garra y plumas: las dos pistas encajan aquí."
+        },
+        "fins": {
+          "label": "Un león con aletas",
+          "hint": "Las aletas resolverían otro misterio; Bussola oyó plumas."
+        },
+        "wheels": {
+          "label": "Un león con ruedas",
+          "hint": "Esta ciudad guarda su emblema en unas alas."
+        }
+      },
+      "facts": {
+        "SRC-VEN-LION-01": {
+          "label": "HECHO",
+          "text": "El león alado de San Marcos es un símbolo de Venecia."
+        }
+      },
+      "completion": {
+        "retryLine": "Garra, pluma y libro siguen estampados en el mapa. Buscad la criatura con alas.",
+        "explanation": "El león alado representa a San Marcos y Venecia lo repite en esculturas, banderas y fachadas.",
+        "successLine": "Garra, ala, libro: el guardián ha despertado el Asombro."
+      },
+      "fallbacks": {
+        "noGps": "Bussola abre el guardián ilustrado y conserva todo el misterio.",
+        "closedVenue": "No hace falta entrar en ningún lugar.",
+        "badWeather": "La pista ilustrada reúne garra, ala y libro.",
+        "tiredLegs": "Modo sentado: el guardián aparece en tres tarjetas."
+      },
+      "safety": [
+        "La pista se busca desde el camino, lejos del borde del agua.",
+        "La ilustración resuelve el misterio sin moveros."
+      ]
     },
     "VEN-02": {
-      "title":"Detectives de puentes","storyBeat":"Venecia mantiene muchos caminos unidos con puentes, y Bussola quiere su huella. Deteneos antes de sacar el teléfono. El Vigía elige un arco, un patrón de escalones o un material. El Detective lo compara con otro detalle. El Guía y el adulto eligen el lado seguro. El equipo lee el puente: no corre sobre él ni se inclina para ver mejor.","objective":"Comparar dos detalles seguros de un puente sin inclinarse sobre la barandilla.","locationLabel":"Cualquier puente seguro de Venecia; el dato de Rialto solo aparece si corresponde",
-      "roles":{"spotter":"Señala un arco, un patrón de escalones o un material.","detective":"Compara dos detalles del puente.","navigator":"Elige con el adulto el lado seguro donde detenerse."},
-      "facts":{"SRC-VEN-RIALTO-01":{"label":"HECHO","text":"El puente de Rialto se construyó entre 1588 y 1592 y fue el único puente del Gran Canal hasta el siglo XIX."}},
-      "completion":{"retryLine":"Elegid un arco, escalón o material y comparadlo con otro detalle.","explanation":"El puente de piedra de Rialto se construyó entre 1588 y 1592 y fue el único del Gran Canal hasta el siglo XIX.","successLine":"Patrón de puente recogido."},
-      "fallbacks":{"noGps":"Sirve cualquier puente.","closedVenue":"Es una pista exterior; no hace falta entrar.","badWeather":"A cubierto, comparad las tarjetas de arco redondeado y arco apuntado.","tiredLegs":"Comparad esas dos tarjetas sentados."},"safety":["Dejad de caminar y mantened la vista arriba mientras el adulto sostiene el teléfono.","Permaneced junto a un adulto y detrás de la barandilla; no os inclinéis, trepéis, corráis ni bloqueéis el puente."]
+      "title": "La huella del puente",
+      "storyBeat": "¡Alerta en el mapa! Venecia se ha separado en islitas y Bussola necesita volver a coserlas. Cada unión se abre con la huella de un puente: la forma de su camino, la piel de su material y el ritmo que se repite. Capturad las tres pistas y aparecerá un sello que ningún otro puente podría dejar.",
+      "objective": "Crear una huella de puente con forma, material y ritmo.",
+      "locationLabel": "El siguiente puente visible o el puente ilustrado de Bussola",
+      "roles": {
+        "spotter": "Elige la silueta del camino: escalones, plano o rampa.",
+        "detective": "Toca la piel que más se ve: piedra, madera, metal o mezcla.",
+        "navigator": "Encuentra el ritmo que se repite en la ilustración."
+      },
+      "facts": {
+        "SRC-VEN-RIALTO-01": {
+          "label": "HECHO",
+          "text": "El Puente de Rialto se construyó entre 1588 y 1592 y fue el único del Gran Canal hasta el siglo XIX."
+        }
+      },
+      "completion": {
+        "retryLine": "Bussola acerca el detalle. Elegid la forma, la piel o el ritmo que mejor encaja.",
+        "explanation": "La huella combina tres observaciones. Después abre el expediente de Rialto, un puente de piedra con siglos de historia.",
+        "successLine": "Tres pistas. Un puente irrepetible. Venecia vuelve a unirse."
+      },
+      "fallbacks": {
+        "noGps": "Bussola despliega su puente de práctica.",
+        "closedVenue": "Esta misión no necesita entrada.",
+        "badWeather": "Modo refugio: el puente ilustrado conserva la historia.",
+        "tiredLegs": "Modo sentado: Bussola acerca cada detalle."
+      },
+      "safety": [
+        "Mirad el puente desde el camino; no hace falta buscar otra vista.",
+        "Si no se distingue, Bussola abre su puente ilustrado."
+      ]
     },
     "VEN-03": {
-      "title":"Detectives de barcos","storyBeat":"Bussola esperaba ruedas, pero Venecia muestra barcos con formas y trabajos distintos. Desde un lugar seguro tras una barrera, el Vigía elige una forma, un color con icono o un movimiento. El Detective lo compara con otro barco. El Guía clasifica las tarjetas sin conexión en personas, paquetes o trabajo. El adulto, no el juego, toma todas las decisiones reales de transporte.","objective":"Comparar dos barcos observados con seguridad sin elegir transporte.","locationLabel":"Vista segura del agua detrás de una barrera o tarjetas sin conexión",
-      "roles":{"spotter":"Señala una forma, un color con icono o un movimiento.","detective":"Di una diferencia entre dos barcos.","navigator":"Clasifica las tarjetas por personas, paquetes o trabajo."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"El Asombro crece cuando el equipo observa cómo funciona una ciudad."}},
-      "completion":{"retryLine":"Comparad una forma, icono o movimiento, o emparejad dos tarjetas de barcos.","explanation":"Los barcos pueden mover personas, paquetes, suministros o trabajadores por una ciudad de canales. La misión solo pide observar, nunca elegir transporte.","successLine":"Dos pistas de barcos comparadas."},
-      "fallbacks":{"noGps":"Sirve cualquier vista segura del agua.","closedVenue":"Comparad las tarjetas de barco largo y bajo y barco corto y alto.","badWeather":"Clasificad las tarjetas de personas, paquetes y trabajo a cubierto.","tiredLegs":"Comparad dos tarjetas sentados o completadla manualmente."},"safety":["Dejad de caminar, mirad arriba y permaneced detrás del borde o barrera.","El adulto toma todas las decisiones de transporte; no sigáis a un barco por una pista."]
+      "title": "El archivo secreto de los barcos",
+      "storyBeat": "En nuestro cuento, una ola de tinta ha entrado en el Archivo de Agua de Bussola. Ha borrado un nombre, el cargamento de un ferry y el oficio de una barca que cuida la ciudad. Tres páginas flotan fuera de lugar. Recuperad el nombre, las ruedas y el emblema verde para que Venecia vuelva a moverse.",
+      "objective": "Restaurar tres páginas del Archivo de Agua.",
+      "locationLabel": "Archivo ilustrado de Bussola · listo en cualquier lugar",
+      "roles": {
+        "spotter": "Encuentra la placa con la corona en la primera página.",
+        "detective": "Devuelve al ferry el emblema de vehículos y pasajeros.",
+        "navigator": "Completa la página de la ciudad que se cuida."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "La ola de tinta y las páginas flotantes pertenecen al Archivo de Agua de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "La página repite su pista con un icono grande. Seguid la estela que parpadea.",
+        "explanation": "En Venecia, barcos distintos pueden mover personas, vehículos, suministros y trabajos de ciudad.",
+        "successLine": "Tres páginas. Tres estelas. Una ciudad en movimiento."
+      },
+      "fallbacks": {
+        "noGps": "El Archivo de Agua vive dentro de Bussola.",
+        "closedVenue": "Las tres páginas no necesitan entrada.",
+        "badWeather": "El archivo ilustrado sigue abierto bajo techo.",
+        "tiredLegs": "Modo sentado: una tarjeta grande por página."
+      },
+      "safety": [
+        "Pausa de canal · equipo quieto.",
+        "El Archivo de Agua vive entero en la pantalla."
+      ]
     },
     "VEN-04": {
-      "title":"Caza de sonidos del canal","storyBeat":"La pantalla de Bussola no puede recoger esta pista. Primero, deteneos en un lugar seguro; después el adulto baja el teléfono. Durante diez segundos tranquilos, el Vigía elige un icono de sonido o tarjeta visual, el Detective compara cerca y lejos o constante y repentino, y el Guía inicia y termina la pausa. Oír es opcional: tres pistas visuales o sonidos imaginados recuperan el Asombro igual de bien.","objective":"Detenidos, observar tres sonidos o emparejar tres pistas visuales.","locationLabel":"Cualquier lugar seguro y quieto junto a un canal, o alternativa tranquila",
-      "roles":{"spotter":"Elige un icono de sonido o una pista visual.","detective":"Compara cerca/lejos o constante/repentino.","navigator":"Inicia y termina la pausa tranquila de diez segundos."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"El Asombro puede oírse, verse o imaginarse en silencio."}},
-      "completion":{"retryLine":"Elegid un icono de sonido o una pista visual; el modo silencioso es una respuesta completa.","explanation":"Una ciudad puede leerse por su ritmo, movimiento y distancias cambiantes, no solo por palabras o imágenes.","successLine":"Tres pistas cuidadosas recogidas: el Asombro brilla."},
-      "fallbacks":{"noGps":"Jugad en cualquier lugar seguro.","closedVenue":"No hace falta ningún lugar concreto.","badWeather":"A cubierto, comparad las tarjetas visuales de onda, campana y pisada.","tiredLegs":"Jugad sentados; una tarjeta visual es válida."},"safety":["Dejad de caminar antes de que el teléfono salga de la mano del adulto.","No grabéis a desconocidos ni exijáis usar el sonido."]
+      "title": "El mapa que se escucha",
+      "storyBeat": "Bussola despliega un mapa de Venecia, pero sus líneas azules han desaparecido. Una ráfaga las convirtió en tres ondas invisibles y las escondió dentro de caracolas de papel. La primera recuerda por dónde late la ciudad; la segunda guarda un mensaje entre barcos; la tercera conoce un código de marea. Abridlas y devolved cada onda a su lugar.",
+      "objective": "Reconstruir tres ondas del mapa invisible: agua, aviso y marea.",
+      "locationLabel": "Mapa ilustrado de Bussola · ventana de canal opcional",
+      "roles": {
+        "spotter": "Devuelve la ruta azul al mapa de agua.",
+        "detective": "Encuentra la escena que necesita un mensaje en la niebla.",
+        "navigator": "Elige el código visual de tres barras."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "Las caracolas de papel y las ondas escapadas pertenecen al misterio de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "La caracola vuelve a mostrar agua, niebla o barras. Seguid la forma resaltada.",
+        "explanation": "Venecia puede leerse como un mapa de agua, señales y alturas cambiantes.",
+        "successLine": "Tres ondas. Un mapa invisible. Venecia vuelve a latir."
+      },
+      "fallbacks": {
+        "noGps": "El mapa invisible vive dentro de Bussola.",
+        "closedVenue": "Las tres caracolas funcionan en cualquier lugar.",
+        "badWeather": "El teatro de papel abre el mismo misterio bajo techo.",
+        "tiredLegs": "Modo sentado: agua, niebla y barras llegan a la pantalla."
+      },
+      "safety": [
+        "Pausa de canal · juntos y lejos del borde.",
+        "El mapa ilustrado funciona en cualquier lugar."
+      ]
     },
     "ISL-01": {
-      "title":"Laboratorio de patrones de vidrio","storyBeat":"La esfera de latón de Bussola necesita su primera marca creadora. Murano es conocida por el vidrio, pero esta misión no necesita tienda, horno ni entrada. Desde un lugar público, el Vigía encuentra una forma repetida o un reflejo sin tocar nada. El Detective dice qué se repite y qué cambia. El Guía ordena tres tarjetas en un patrón nuevo. La familia observa y después inventa su propio diseño.","objective":"Encontrar o crear un patrón de tres partes sin tocar mercancía.","locationLabel":"Espacio público de Murano, escaparate con permiso o tarjetas sin conexión",
-      "roles":{"spotter":"Señala una forma repetida o un reflejo.","detective":"Explica qué se repite y qué cambia.","navigator":"Ordena tres tarjetas de patrones."},
-      "facts":{"SRC-ISL-MURANO-01":{"label":"HECHO","text":"Murano es conocida internacionalmente por sus talleres vidrieros y su vidrio artístico."},"SRC-ISL-GLASS-01":{"label":"HECHO","text":"El Museo del Vidrio de Murano se fundó en 1861."}},
-      "completion":{"retryLine":"Encontrad una forma repetida o cread un patrón con tres tarjetas.","explanation":"Murano es conocida internacionalmente por el vidrio artístico, y su museo conserva vidrio creado en la isla durante siglos. El nuevo patrón pertenece al equipo.","successLine":"Patrón creador recogido."},
-      "fallbacks":{"noGps":"Sirve cualquier lugar de Murano elegido por el adulto.","closedVenue":"Entrar al museo o a un horno es opcional; continuad círculo, estrella, círculo con estrella.","badWeather":"Usad ese patrón de círculo y estrella a cubierto.","tiredLegs":"Completad círculo-estrella-círculo sentados."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","No toquéis mercancía ni equipos de taller; no hace falta ninguna foto."]
+      "title": "El secreto de las mil flores",
+      "storyBeat": "La esfera de Bussola se vuelve transparente. Dentro aparece una varita de vidrio imaginaria que susurra: “Guardo mil flores, pero no tengo ni una hoja”. Una estrella, un anillo y seis pétalos han saltado fuera de su dibujo. Reconstruid la roseta, descubrid qué aparece en la siguiente rodaja y cread una flor para la brújula.",
+      "objective": "Reconstruir una roseta, predecir su siguiente sección y crear una flor digital.",
+      "locationLabel": "Historia ilustrada de Bussola · bonus opcional en Murano",
+      "roles": {
+        "spotter": "Coloca la estrella en el centro.",
+        "detective": "Completa el anillo y predice la siguiente rodaja.",
+        "navigator": "Elige centro, borde y corona para la flor de Bussola."
+      },
+      "facts": {
+        "SRC-ISL-MURANO-01": {
+          "label": "HECHO",
+          "text": "Murano es conocida internacionalmente por sus talleres vidrieros y su vidrio artístico."
+        },
+        "SRC-ISL-GLASS-01": {
+          "label": "HECHO",
+          "text": "El Museo del Vidrio de Murano se fundó en 1861 y conserva siglos de creación en vidrio."
+        }
+      },
+      "completion": {
+        "retryLine": "La receta sigue visible: centro, anillo y pétalos. Bussola ilumina la capa que falta.",
+        "explanation": "Un dibujo puede viajar por el interior de una caña y reaparecer en cada sección. Muchas formas juntas crean el efecto millefiori: mil flores.",
+        "successLine": "La flor escondida se ha multiplicado: Creatividad encendida."
+      },
+      "fallbacks": {
+        "noGps": "La varita secreta está guardada en el Atlas.",
+        "closedVenue": "La historia completa no necesita museo, tienda ni taller.",
+        "badWeather": "La roseta se construye igual bajo techo.",
+        "tiredLegs": "Modo sentado: tres capas, una rodaja y una flor."
+      },
+      "safety": [
+        "La aventura principal sucede en la pantalla.",
+        "En el bonus, el vidrio se mira con los ojos y el dibujo se queda donde está."
+      ]
     },
     "ISL-02": {
-      "title":"Guía de la laguna","storyBeat":"Bussola sabe leer puntos cardinales, pero no los horarios de la laguna. Con la familia quieta, el Vigía empareja un símbolo de parada, el Detective compara etiquetas de parada, ruta y dirección, y el Guía lee solo la tarjeta de destino elegida por el adulto. Estas pistas practican la lectura de símbolos. Nunca eligen barco, andén, salida ni hora de embarque; el adulto comprueba el viaje real.","objective":"Emparejar símbolos de parada y ruta mientras el equipo está quieto.","locationLabel":"Zona de espera quieta o tarjetas de transporte sin conexión",
-      "roles":{"spotter":"Empareja un símbolo de parada visible con su tarjeta.","detective":"Compara etiquetas de ruta, parada y dirección.","navigator":"Lee la tarjeta de destino elegida por el adulto; no elijas el servicio real."},
-      "facts":{"SRC-VEN-TRANSIT-01":{"label":"HECHO","text":"El transporte acuático ACTV sirve Venecia y las rutas de la laguna conectan islas como Murano y Burano."}},
-      "completion":{"retryLine":"Emparejad un símbolo de parada, ruta o dirección con su tarjeta.","explanation":"El transporte público acuático de Venecia sirve la ciudad y conecta islas como Murano y Burano. Solo el adulto usa la información actual del servicio.","successLine":"Símbolo de la laguna emparejado."},
-      "fallbacks":{"noGps":"El adulto elige la parada; no se comprueba la proximidad.","closedVenue":"Emparejad las tarjetas de punto de parada, línea de ruta y flecha de dirección.","badWeather":"Emparejad uno de esos símbolos a cubierto y sin moveros.","tiredLegs":"Emparejad un símbolo sentados."},"safety":["Dejad de moveros, mirad arriba y permaneced juntos lejos del andén o del borde del agua.","El adulto comprueba el servicio en directo y toma todas las decisiones de embarque."]
+      "title": "El bosque que dibuja caminos",
+      "storyBeat": "Una gota cae sobre el mapa de Bussola. Las líneas azules se corren y no queda ni un camino. Entonces llega un sonido desde la laguna: toc… toc-toc-toc. No son árboles. Son letras de madera clavadas en el agua. Si desciframos su alfabeto, el camino invisible entre las islas volverá a aparecer.",
+      "objective": "Descifrar el alfabeto de madera y reconstruir un camino de agua.",
+      "locationLabel": "Trayecto por la laguna o ventana ilustrada de Bussola",
+      "roles": {
+        "spotter": "Distingue un poste, tres postes y la corona alta.",
+        "detective": "Encuentra la puerta del canal en la ilustración.",
+        "navigator": "Traza la cinta azul entre las señales de madera."
+      },
+      "facts": {
+        "SRC-VEN-TRANSIT-01": {
+          "label": "HECHO",
+          "text": "El transporte acuático sirve Venecia y conecta islas de la laguna como Murano y Burano."
+        }
+      },
+      "completion": {
+        "retryLine": "Toc, toc-toc-toc. Bussola vuelve a marcar el corredor azul entre la madera.",
+        "explanation": "En la laguna, la profundidad y las señales de madera ayudan a hacer visibles los caminos de agua.",
+        "successLine": "El bosque de madera ha devuelto el camino invisible."
+      },
+      "fallbacks": {
+        "noGps": "La laguna ilustrada contiene el camino completo.",
+        "closedVenue": "La aventura no depende de una parada ni de un servicio.",
+        "badWeather": "La ventana de papel sustituye el paisaje sin perder la historia.",
+        "tiredLegs": "Modo sentado: tocad la ruta azul ya dibujada."
+      },
+      "safety": [
+        "Desde el asiento, buscad madera que nace del agua.",
+        "La ventana ilustrada continúa la historia sin levantaros."
+      ]
     },
     "ISL-03": {
-      "title":"Código de colores y encaje","storyBeat":"Burano ofrece a Bussola tres pistas hermosas que no son el mismo tipo de verdad. Desde un camino público y respetuoso, el Vigía empareja dos colores nombrados con sus formas. El Detective clasifica un HECHO, una TRADICIÓN y una LEYENDA. El Guía elige un lugar donde parar lejos de casas y puertas. Después, el equipo une el patrón de color con una línea parecida al encaje sin tocar ni fotografiar a nadie.","objective":"Emparejar un patrón de casas y separar hecho, tradición y leyenda.","locationLabel":"Camino público de Burano sin bloquear viviendas; alternativa sin conexión",
-      "roles":{"spotter":"Empareja dos colores nombrados usando sus formas asociadas.","detective":"Clasifica las tarjetas HECHO, TRADICIÓN y LEYENDA.","navigator":"Elige con el adulto un lugar respetuoso lejos de las puertas."},
-      "facts":{"SRC-ISL-BURANO-TRAD-01":{"label":"TRADICIÓN","text":"Tradicionalmente se dice que las casas brillantes ayudaban a los pescadores a reconocer su hogar entre la niebla."},"SRC-ISL-BURANO-FACT-01":{"label":"HECHO","text":"La fuente oficial describe la práctica del arcoíris como relativamente reciente y vinculada a los límites de las propiedades."},"SRC-ISL-BURANO-LEG-01":{"label":"LEYENDA","text":"Un relato local imagina que la espuma del mar se convirtió en un velo de encaje."},"SRC-ISL-LACE-01":{"label":"HECHO","text":"El Museo del Encaje ocupa la histórica escuela de encaje de Burano, fundada en 1872."}},
-      "completion":{"retryLine":"Clasificad una tarjeta por su etiqueta impresa o usad el patrón de color y forma.","explanation":"La idea de los pescadores en la niebla es una tradición, el velo de espuma es una leyenda y el relato oficial vincula la práctica más reciente del arcoíris con los límites de las propiedades.","successLine":"Etiquetas de verdad clasificadas: la Creatividad brilla."},
-      "fallbacks":{"noGps":"Sirve cualquier vista pública respetuosa.","closedVenue":"Entrar al museo es opcional; emparejad círculo azul con estrella amarilla y clasificad las tres etiquetas.","badWeather":"Usad ese par de color y forma y clasificad las etiquetas a cubierto.","tiredLegs":"Clasificad una etiqueta sentados."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","No toquéis, entréis, bloqueéis ni fotografiéis viviendas, puertas o residentes; las pistas de color siempre incluyen formas."]
+      "title": "El hilo que dibuja en el aire",
+      "storyBeat": "En Burano, la aguja de Bussola atrapa un hilo blanco que no está cosido a ninguna tela. Solo consigue hacer tres nudos: NIEBLA, LÍMITE y ESPUMA. Son llaves perdidas de una escuela de encaje marcada con 1872. Descubrid qué historia guarda cada nudo y reparad el peldaño de hilo que falta.",
+      "objective": "Abrir tres llaves de historia y reparar la red del punto de Burano.",
+      "locationLabel": "Historia ilustrada de Bussola · ventana de color opcional en Burano",
+      "roles": {
+        "spotter": "Sigue el código de color y forma que permanece visible.",
+        "detective": "Abre NIEBLA, LÍMITE y ESPUMA con su llave correcta.",
+        "navigator": "Encuentra la red de peldaños y repara el rectángulo que falta."
+      },
+      "facts": {
+        "SRC-ISL-BURANO-TRAD-01": {
+          "label": "TRADICIÓN",
+          "text": "Una tradición popular dice que los colores ayudaban a los pescadores a reconocer sus casas entre la niebla."
+        },
+        "SRC-ISL-BURANO-FACT-01": {
+          "label": "HECHO",
+          "text": "El relato oficial del Comune relaciona el arcoíris de fachadas con los límites de pequeñas propiedades."
+        },
+        "SRC-ISL-BURANO-LEG-01": {
+          "label": "LEYENDA",
+          "text": "Una leyenda imagina que la espuma del mar se convirtió en un velo de encaje."
+        },
+        "SRC-ISL-LACE-01": {
+          "label": "HECHO",
+          "text": "La Escuela de Encaje de Burano abrió en 1872; el museo conserva diseños y piezas de varios siglos."
+        }
+      },
+      "completion": {
+        "retryLine": "La llave o el hueco conserva su forma. Bussola vuelve a resaltarla.",
+        "explanation": "Tradición, hecho en la fuente y leyenda cuentan cosas distintas. El hilo las une sin confundirlas.",
+        "successLine": "El hilo volvió a dibujar en el aire."
+      },
+      "fallbacks": {
+        "noGps": "El armario, las llaves y la red viven dentro del Atlas.",
+        "closedVenue": "La historia no necesita entrar en el museo.",
+        "badWeather": "El teatro de papel abre igual bajo techo.",
+        "tiredLegs": "Modo cuento: una gran elección por escena."
+      },
+      "safety": [
+        "La historia principal sucede en pantalla.",
+        "Las fachadas se observan desde el camino; la pista continúa en la pantalla."
+      ]
     },
     "VER-01": {
-      "title":"Máquina del tiempo de la Arena","storyBeat":"La primera pista de Verona de Bussola es más antigua que todos los miembros de la familia juntos, muchas veces. Desde un lugar seguro en Piazza Bra, los arcos exteriores de la Arena se convierten en una amable máquina del tiempo. El Vigía busca un arco repetido, el Detective compara piedra antigua con un elemento moderno de eventos y el Guía elige el punto de vista con el adulto. La misión se completa fuera; no hace falta entrada.","objective":"Encontrar un patrón de arcos repetidos desde Piazza Bra.","locationLabel":"Exterior de la Arena desde un lugar público seguro",
-      "roles":{"spotter":"Señala un arco que se repita.","detective":"Compara una parte de piedra antigua con un elemento moderno de eventos.","navigator":"Elige con el adulto un punto de observación seguro."},
-      "facts":{"SRC-VER-ARENA-01":{"label":"HECHO","text":"Los romanos construyeron la Arena de Verona hacia mediados del siglo I d. C."}},
-      "completion":{"retryLine":"Encontrad una abertura curva y después la misma forma otra vez.","explanation":"Los romanos construyeron la Arena de Verona hacia mediados del siglo I d. C. Sus arcos exteriores repetidos permiten ver la historia sin entrar.","successLine":"Patrón romano descifrado."},
-      "fallbacks":{"noGps":"El adulto elige el punto de vista exterior.","closedVenue":"La misión se completa fuera; nunca es obligatorio entrar.","badWeather":"A cubierto, continuad arco, arco, hueco con otro arco.","tiredLegs":"Usad ese patrón sentados o completadla manualmente."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","Contad la historia de la Arena sin detalles gráficos y no trepéis por la piedra."]
+      "title": "El ala que no vuela",
+      "storyBeat": "En Piazza Bra, Bussola estornuda una nube de polvo imaginario. Su aguja ya no señala el norte: dibuja una pluma. Aparece un mensaje: “De mi gran fachada solo queda el Ala”. Para reactivar la máquina del tiempo tendréis que encontrar un ala sin plumas, descifrar dos tonos de piedra y ordenar tres ecos separados por casi dos mil años.",
+      "objective": "Encontrar el Ala y devolver tres ecos a su tiempo.",
+      "locationLabel": "Exterior de la Arena o ilustración guardada en la app",
+      "roles": {
+        "spotter": "Encuentra el muro alto que forma el Ala.",
+        "detective": "Une los dos tonos claros de la piedra.",
+        "navigator": "Ordena siglo I, 1913 y hoy."
+      },
+      "facts": {
+        "SRC-VER-ARENA-01": {
+          "label": "HECHO",
+          "text": "Los romanos construyeron la Arena hacia mediados del siglo I."
+        }
+      },
+      "completion": {
+        "retryLine": "La pluma señala muro, piedra y tiempo. Bussola vuelve a iluminar la pista.",
+        "explanation": "La Arena nació en el siglo I y continúa reuniendo historias muchos siglos después.",
+        "successLine": "Ala encontrada. Los tres ecos vuelven a estar en su tiempo."
+      },
+      "fallbacks": {
+        "noGps": "La Arena dibujada contiene todas las pistas.",
+        "closedVenue": "La misión completa funciona desde fuera.",
+        "badWeather": "Bussola abre la silueta y los tonos de piedra en pantalla.",
+        "tiredLegs": "Modo sentado: muro, piedra y tiempo llegan al Atlas."
+      },
+      "safety": [
+        "Desde la plaza y sin tocar la piedra, buscad el muro que sobresale.",
+        "La pista dibujada resuelve el misterio desde donde estáis."
+      ]
     },
     "VER-02": {
-      "title":"El misterio del mensaje de Julieta","storyBeat":"Bussola ha recibido un mensaje mezclado cerca de la Casa de Julieta. Una tarjeta es historia documentada del edificio, otra explica cómo la literatura y la tradición relacionaron la casa con Julieta y otra es ficción de Bussola. El Vigía observa un detalle exterior, el Detective clasifica las etiquetas y el Guía elige una ruta corta o sentada hacia Piazza Erbe. Nunca es necesario entrar al patio ni al museo.","objective":"Clasificar etiquetas de historias y llevar un mensaje amable hacia Piazza Erbe.","locationLabel":"Ruta pública cerca de la Casa de Julieta y Piazza Erbe; no se presupone entrar",
-      "roles":{"spotter":"Encuentra un detalle de casa-torre o plaza desde la ruta pública.","detective":"Clasifica HECHO, TRADICIÓN y NUESTRA HISTORIA.","navigator":"Elige con el adulto la ruta corta o sentada."},
-      "facts":{"SRC-VER-JULIET-FACT-01":{"label":"HECHO","text":"La casa-torre está documentada desde 1351; su famoso balcón se añadió durante una restauración de 1939-1940."},"SRC-VER-JULIET-STORY-01":{"label":"TRADICIÓN","text":"La asociación del lugar con Julieta surgió tras versiones literarias y su posterior identificación como casa de los Capuleto."},"SRC-VER-ERBE-01":{"label":"HECHO","text":"Piazza Erbe es la plaza más antigua de Verona y ocupa el área del foro romano."},"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"El mensaje mezclado de Bussola es ficción creada para esta aventura familiar."}},
-      "completion":{"retryLine":"Leed primero las etiquetas: edificio documentado, tradición literaria o historia de Bussola.","explanation":"La casa es histórica, pero su famoso balcón se añadió en el siglo XX. Su identidad como casa de Julieta creció a partir de la literatura y la tradición posterior, no de pruebas de que viviera allí el personaje ficticio.","successLine":"Mensaje clasificado: la historia y los relatos pueden compartir una ciudad sin ser lo mismo."},
-      "fallbacks":{"noGps":"El adulto elige uno de los lugares o usa las tarjetas HECHO, TRADICIÓN y NUESTRA HISTORIA.","closedVenue":"Nunca hace falta entrar al patio ni a la casa.","badWeather":"Clasificad las tres tarjetas a cubierto o en el hotel.","tiredLegs":"Clasificad una sola tarjeta sentados."},"safety":["Dejad de caminar y mirad arriba; no entréis en una multitud ni bloqueéis puertas.","No toquéis la estatua ni dejéis mensajes físicos; el adulto controla cualquier reserva."]
+      "title": "El mensaje de las tres épocas",
+      "storyBeat": "De la aguja de Bussola cae un sobre sin remitente. Lleva tres sellos imposibles: una piedra marcada 1351, una pluma marcada 1531 y una luz de teatro marcada 1940. Dentro dice: “Soy una casa medieval, nací en un relato y mi balcón llegó siglos después”. Devolved cada sello a su época para descubrir quién lo envió.",
+      "objective": "Abrir tres sellos y ordenar las capas de la Casa de Julieta.",
+      "locationLabel": "Casa de Julieta o ilustración completa de Bussola",
+      "roles": {
+        "spotter": "Abre el sello de piedra y encuentra el sombrero de Cappello.",
+        "detective": "Sigue la pluma desde el relato de 1531 hasta el teatro.",
+        "navigator": "Encaja la piedra antigua dentro de la escena nueva del balcón."
+      },
+      "facts": {
+        "SRC-VER-JULIET-FACT-01": {
+          "label": "HECHO",
+          "text": "La casa está documentada desde 1351; el balcón famoso se añadió durante la restauración de 1939–1940."
+        },
+        "SRC-VER-JULIET-STORY-01": {
+          "label": "TRADICIÓN",
+          "text": "La relación del lugar con Julieta creció a partir de relatos literarios y viajeros."
+        },
+        "SRC-VER-ERBE-01": {
+          "label": "HECHO",
+          "text": "Piazza delle Erbe ocupa el área del antiguo foro romano de Verona."
+        },
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "El sobre imposible y sus tintas que discuten pertenecen a la aventura de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "Piedra, pluma y luz conservan sus fechas. Bussola vuelve a abrir el sello que falta.",
+        "explanation": "Una casa medieval, un personaje literario y una escenografía posterior pueden compartir un mismo lugar sin ser la misma clase de verdad.",
+        "successLine": "Tres épocas, una casa: el mensaje ya tiene firma."
+      },
+      "fallbacks": {
+        "noGps": "El sobre completo está guardado en el Atlas.",
+        "closedVenue": "No hace falta entrar para abrir los tres sellos.",
+        "badWeather": "La casa de papel conserva cada capa bajo techo.",
+        "tiredLegs": "Modo sentado: un sello grande por época."
+      },
+      "safety": [
+        "Mirad desde donde ya estáis. No hace falta acercarse ni entrar.",
+        "La ilustración contiene las tres épocas completas."
+      ]
     },
     "VER-03": {
-      "title":"Cruza el Adigio","storyBeat":"El Adigio serpentea por Verona y los cinco arcos de Ponte Pietra forman el siguiente código. Desde un acceso o mirador seguro, el Vigía señala cada arco, el Detective compara dos colores o materiales y el Guía decide con el adulto si cruzar, mirar o usar la tarjeta. La pista nunca pide inclinarse, correr ni cruzar por puntos.","objective":"Contar o emparejar cinco arcos desde un lugar seguro.","locationLabel":"Acceso o vista segura de Ponte Pietra, o tarjeta del puente",
-      "roles":{"spotter":"Señala los arcos uno a uno.","detective":"Compara dos colores o materiales de los arcos usando etiquetas y formas.","navigator":"Elige con el adulto cruzar, mirar o usar el modo sin conexión."},
-      "facts":{"SRC-VER-PONTE-01":{"label":"HECHO","text":"Ponte Pietra cruza el Adigio con cinco arcos y está abierto a peatones y bicicletas, no a coches."}},
-      "completion":{"retryLine":"Contad los arcos uno a uno o emparejad la tarjeta de cinco arcos.","explanation":"Ponte Pietra cruza el Adigio con cinco arcos y está abierto a peatones y bicicletas, no a coches.","successLine":"Cinco arcos, una pista de equipo."},
-      "fallbacks":{"noGps":"El adulto elige el punto de observación.","closedVenue":"Vista pública exterior o tarjeta sin conexión.","badWeather":"Mirad desde un lugar cubierto o usad la tarjeta.","tiredLegs":"No crucéis; contad desde un asiento seguro o completadla manualmente."},"safety":["Dejad de caminar, mirad arriba y permaneced junto a un adulto tras la barandilla.","No os inclinéis, trepéis ni crucéis por una pista; una salida en coche del jueves sustituye este bloque."]
+      "title": "El puente que volvió del río",
+      "storyBeat": "Bussola oye cinco golpes bajo el Adigio: toc, toc, toc, toc, toc. De la corriente aparecen cinco arcos desordenados y una voz susurra: “No pertenezco a una sola época. Me rompieron, me recogieron pieza a pieza y volví”. Despertad los arcos y devolved cada fragmento a su tiempo.",
+      "objective": "Despertar cinco arcos y reconstruir la memoria de Ponte Pietra.",
+      "locationLabel": "Ponte Pietra o teatro ilustrado completo de Bussola",
+      "roles": {
+        "spotter": "Toca cinco arcos y deja que Bussola los numere.",
+        "detective": "Ordena piedra, ladrillo y las tarjetas del archivo del río.",
+        "navigator": "Encaja las cinco piezas en la silueta del puente."
+      },
+      "facts": {
+        "SRC-VER-PONTE-01": {
+          "label": "HECHO",
+          "text": "Ponte Pietra cruza el Adigio con cinco arcos."
+        }
+      },
+      "completion": {
+        "retryLine": "Las piezas conservan número, textura y silueta. Seguid la marca que parpadea.",
+        "explanation": "Los cinco arcos guardan huellas de épocas distintas. En la historia de Bussola, el río abre un archivo para volver a relacionarlas.",
+        "successLine": "Cinco arcos. Cuatro tiempos. Un puente que volvió."
+      },
+      "fallbacks": {
+        "noGps": "El puente ilustrado es la aventura completa.",
+        "closedVenue": "No hace falta cruzar ni entrar en ningún lugar.",
+        "badWeather": "El archivo del río se abre bajo techo.",
+        "tiredLegs": "Modo sentado: cinco grandes piezas para tocar."
+      },
+      "safety": [
+        "Mirad desde donde ya estáis; la pista no necesita acercarse al agua.",
+        "El puente ilustrado conserva los cinco arcos."
+      ]
     },
     "VER-04": {
-      "title":"Franja de excursión de la mañana","storyBeat":"La pista del viernes por la mañana queda sellada hasta que el adulto elija una pareja candidata. El ID y la puntuación nunca cambian. Vaya donde vaya la familia, el Vigía busca una forma o pista natural, el Detective explica un patrón o elemento defensivo y el Guía elige la ruta corta con el adulto. Si no hay destino, el equipo puede usar la tarjeta, confirmar manualmente o saltar.","objective":"Completar la variante de mañana elegida o resolverla manualmente.","locationLabel":"Candidata elegida para el viernes por la mañana; por confirmar",
-      "roles":{"spotter":"Encuentra la forma o pista natural de la variante elegida.","detective":"Explica un patrón o elemento defensivo.","navigator":"Elige con el adulto la ruta corta o el modo manual."},
-      "variants": {
-        "sigurta-team-maze":{"title":"Laberinto de equipo de Sigurtà","locationLabel":"Ruta pública de visitantes del Parco Giardino Sigurtà o tarjetas de jardín","storyBeat":"La aguja matinal de Bussola apunta a un jardín de decisiones. Es un laberinto en equipo sin prisas, aunque la familia nunca entre en uno. El Vigía encuentra una hoja, flor o señal; el Detective identifica qué se repite; el Guía y el adulto eligen un camino marcado y la familia permanece unida. Un patrón completa la pista: no importan la velocidad, la distancia ni llegar al centro.","objective":"Usar una señal y un patrón natural para resolver una ruta de equipo sin prisas.","roles":{"spotter":"Señala una hoja, flor o señal desde la ruta compartida.","detective":"Explica qué se repite en el patrón elegido.","navigator":"Lee una señal elegida por el adulto y mantiene al equipo en un camino marcado."},"facts":{"SRC-TRIP-SIGURTA-VISIT-01":{"label":"HECHO","text":"La temporada actual de 2026 del parque incluye el 9 de octubre; en octubre cierra a las 18:00 y la última entrada es a las 17:00."}},"completion":{"retryLine":"Elegid un patrón natural cercano; no hay línea de meta.","explanation":"La ruta del jardín es la pista: basta una forma natural repetida y un camino compartido. El adulto vuelve a comprobar horarios y tiempo actuales.","successLine":"Patrón del jardín resuelto juntos."},"fallbacks":{"noGps":"El adulto elige cualquier camino marcado; no se comprueba la posición.","closedVenue":"Clasificad las tarjetas de hoja, flor y señal o completad manualmente.","badWeather":"Elegid la pareja de lluvia de Verona, clasificad las tarjetas o saltad; el mal tiempo intenso puede cerrar el parque.","tiredLegs":"Usad un patrón de tarjetas o completad sentados/manualmente."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","Permaneced juntos; no corráis, os separéis en el laberinto, toquéis plantas ni toméis atajos."]},
-        "sirmione-castle-water":{"title":"Castillo sobre el agua","locationLabel":"Exterior del castillo de Sirmione desde un acceso público seguro o tarjeta","storyBeat":"El castillo de Sirmione parece crecer desde el agua, pero Bussola solo necesita un código de formas exteriores. Desde un acceso seguro, el Vigía busca un muro, almena o forma del puerto; el Detective la empareja con las tarjetas defensivas; el Guía elige el mirador con el adulto. Entrar es opcional y ninguna pista pide acercarse a un borde o apretarse entre una multitud.","objective":"Emparejar una forma de muro, almena y agua desde la vista exterior segura o las tarjetas.","roles":{"spotter":"Señala un muro, almena o forma del puerto.","detective":"Empareja el elemento con una tarjeta de forma defensiva.","navigator":"Elige con el adulto el mirador exterior."},"facts":{"SRC-TRIP-SIRMIONE-01":{"label":"HECHO","text":"El castillo del siglo XIV tiene murallas, almenas de cola de golondrina, pasarelas y un puerto que protegía barcos."}},"completion":{"retryLine":"Usad la tarjeta exterior para encontrar una parte alta del muro o la forma del puerto.","explanation":"El castillo Scaligero del siglo XIV incluye almenas de cola de golondrina y un puerto fortificado que protegía barcos.","successLine":"Código de formas del castillo emparejado."},"fallbacks":{"noGps":"El adulto elige el mirador; no se comprueba la ubicación.","closedVenue":"Emparejad las tarjetas de muro, almena y puerto.","badWeather":"Usad esas tres tarjetas o la pareja de lluvia de Verona.","tiredLegs":"Emparejad un elemento desde el punto seguro más cercano o con una tarjeta."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","Permaneced con un adulto; ninguna pista requiere acercarse al agua, trepar o cruzar multitudes."]},
-        "verona-natural-history":{"title":"Rescate de patrones en interior","locationLabel":"Museo de Historia Natural si está abierto, o modo hotel/tarjetas manuales","storyBeat":"La lluvia ha doblado el mapa exterior, así que Bussola abre un estuche de patrones interiores. Si el adulto elige el museo, el Vigía señala un fósil, animal o patrón sin tocarlo; el Detective explica qué se repite o cambia; el Guía elige una sala o termina tras una pista. Si no se puede entrar, las tres tarjetas crean el mismo rescate en el hotel.","objective":"Encontrar un patrón de fósil, animal o forma, o resolver la tarjeta.","roles":{"spotter":"Señala un patrón de fósil, animal o forma sin tocarlo.","detective":"Explica una repetición o cambio del patrón.","navigator":"Elige una sala aprobada por el adulto o termina después de una tarjeta."},"facts":{},"completion":{"retryLine":"Basta una forma interior o una tarjeta sin conexión.","explanation":"La ruta de lluvia prueba el mismo Trabajo en equipo: tres papeles combinan una observación sin depender de la entrada.","successLine":"Patrón interior rescatado."},"fallbacks":{"noGps":"El adulto elige museo, hotel o tarjetas.","closedVenue":"En el hotel, comparad las tarjetas de espiral, raya y punto.","badWeather":"Esta ya es la versión de lluvia intensa.","tiredLegs":"Elegid una tarjeta sentados o una vitrina cercana y terminad."},"safety":["Dejad de caminar antes de que el adulto use el teléfono.","Seguid las normas, permaneced juntos y no toquéis las vitrinas."]}
+      "title": "La misión secreta de la mañana",
+      "storyBeat": "Bussola guarda la aventura de la mañana en un sobre cerrado. En cuanto la ruta quede elegida, el Atlas abrirá una historia completa: sombras verdes, un puerto de papel o un océano escondido en piedra.",
+      "objective": "Abrir automáticamente la historia de mañana asociada a la ruta elegida.",
+      "locationLabel": "Página de ruta del viernes",
+      "roles": {
+        "spotter": "Abre la primera forma del relato que muestre el Atlas.",
+        "detective": "Resuelve la pista central que Bussola deja preparada.",
+        "navigator": "Une las tres piezas en el sello de la mañana."
       },
-      "completion":{"retryLine":"Elegid una pista visible de la variante, usad su tarjeta o resolved manualmente.","explanation":"La candidata elegida cambia los detalles de la historia, no el ID, la recompensa ni las opciones de finalización válidas.","successLine":"Ruta de mañana resuelta."},"fallbacks":{"noGps":"El adulto elige manualmente la variante y el lugar.","closedVenue":"Usad la versión exterior/sin conexión o la finalización manual.","badWeather":"Elegid verona-rain o saltad sin penalización.","tiredLegs":"Usad la observación más corta o la finalización manual."},"safety":["El adulto controla conducción, aparcamiento, entradas y ruta.","No se corre, se separa nadie en un laberinto, se trepa ni se buscan pistas junto al agua."]
+      "variants": {
+        "sigurta-team-maze": {
+          "title": "El polirinto de las mil quinientas sombras",
+          "locationLabel": "Sigurtà o polirinto ilustrado de Bussola",
+          "storyBeat": "La aguja verde de Bussola se divide en mil quinientas sombras. Todas susurran direcciones distintas. Son los tejos del polirinto: un laberinto con varias salidas. Una bifurcación ha escondido el Norte. Para recuperarlo no hace falta llegar al centro: basta descifrar una Y, un muro vivo y una torre.",
+          "objective": "Recuperar el Norte resolviendo una bifurcación, un muro vivo y el secreto del polirinto.",
+          "roles": {
+            "spotter": "Toca la Y que se abre en dos caminos.",
+            "detective": "Encuentra el muro hecho de hojas.",
+            "navigator": "Descubre por qué un polirinto tiene varias salidas."
+          },
+          "facts": {
+            "SRC-TRIP-SIGURTA-VISIT-01": {
+              "label": "HECHO",
+              "text": "Sigurtà publica la información actual de temporada y acceso en su página oficial."
+            }
+          },
+          "completion": {
+            "retryLine": "Y, hojas y torre permanecen visibles. Bussola ilumina la señal que falta.",
+            "explanation": "La aventura enseña que puede haber varias salidas sin convertir una ruta en la única respuesta correcta.",
+            "successLine": "Mil quinientas sombras, una dirección recuperada."
+          },
+          "fallbacks": {
+            "noGps": "La Y, el muro y la torre ilustrada contienen la misión.",
+            "closedVenue": "El polirinto de papel conserva todas las pistas.",
+            "badWeather": "El Atlas abre la misma historia bajo techo.",
+            "tiredLegs": "Modo sentado: tres formas grandes y el mismo Norte."
+          },
+          "safety": [
+            "Una bifurcación, un equipo: cruzadla juntos.",
+            "La ilustración contiene la ruta completa."
+          ]
+        },
+        "sirmione-castle-water": {
+          "title": "El puerto que engañó al viento",
+          "locationLabel": "Sirmione o fortaleza de papel de Bussola",
+          "storyBeat": "Bussola descubre un castillo cuyas murallas abrazan un pequeño puerto dentro del lago. De pronto, el viento del norte roba tres piezas de su escudo: una almena, un muro y una gota de agua. En nuestra historia, si reconstruimos el dibujo, las embarcaciones de papel volverán a encontrar refugio.",
+          "objective": "Reconstruir el escudo de almena, muro y agua del puerto fortificado.",
+          "roles": {
+            "spotter": "Encuentra la almena con forma de cola de golondrina.",
+            "detective": "Devuelve el agua a la puerta de los barcos.",
+            "navigator": "Une almena, muro y lago en el escudo final."
+          },
+          "facts": {
+            "SRC-TRIP-SIRMIONE-01": {
+              "label": "HECHO",
+              "text": "El castillo del siglo XIV conserva murallas, almenas de cola de golondrina y un puerto que protegía barcos."
+            }
+          },
+          "completion": {
+            "retryLine": "Almena, muro y agua siguen dibujados en el escudo. Buscad el hueco que coincide.",
+            "explanation": "La dársena fortificada protegía embarcaciones dentro del lago. El viento que roba piezas pertenece a nuestra historia.",
+            "successLine": "Tres piezas cerradas: el puerto vuelve a guardar el lago."
+          },
+          "fallbacks": {
+            "noGps": "La fortaleza de papel contiene la aventura completa.",
+            "closedVenue": "Entrar al castillo no cambia el resultado.",
+            "badWeather": "El puerto ilustrado abre igual bajo techo.",
+            "tiredLegs": "Modo sentado: tres piezas grandes cierran el escudo."
+          },
+          "safety": [
+            "La pista se resuelve desde el camino.",
+            "El agua forma parte del dibujo, no del recorrido."
+          ]
+        },
+        "verona-natural-history": {
+          "title": "El mar dormido bajo Verona",
+          "locationLabel": "Museo de Historia Natural o piedra ilustrada de Bussola",
+          "storyBeat": "Una gota de lluvia hace girar la aguja de Bussola hacia atrás: diez años, mil años… casi cincuenta millones. Se detiene ante una piedra de Bolca. Dentro aparece la silueta de un pez. Para despertar el océano de piedra tendremos que recuperar una aleta, una hoja y una ola.",
+          "objective": "Viajar al tiempo profundo y reconstruir el mensaje fósil de Bolca.",
+          "roles": {
+            "spotter": "Encuentra el pez escondido en la piedra.",
+            "detective": "Elige la tarjeta del tiempo más profundo.",
+            "navigator": "Une aleta, hoja y ola para regresar al presente."
+          },
+          "facts": {},
+          "completion": {
+            "retryLine": "Aleta, hoja y ola siguen marcadas en la piedra. Bussola ilumina la capa que falta.",
+            "explanation": "La aventura de Bussola viaja por la piedra, el tiempo y las huellas de un mundo desaparecido.",
+            "successLine": "Casi cincuenta millones de años: el mar de piedra ha hablado."
+          },
+          "fallbacks": {
+            "noGps": "La piedra fósil ilustrada contiene la misión completa.",
+            "closedVenue": "La historia no depende de entrar al museo.",
+            "badWeather": "Esta aventura ya vive bajo techo.",
+            "tiredLegs": "Modo sentado: una gran elección por capa."
+          },
+          "safety": [
+            "Historia ilustrada · lista en cualquier lugar.",
+            "La ventana del museo es opcional."
+          ]
+        }
+      },
+      "completion": {
+        "retryLine": "El sobre mantiene visible la forma que falta.",
+        "explanation": "Cada ruta contiene su propio cuento, sus pistas y su final.",
+        "successLine": "La página de la mañana ya tiene su sello."
+      },
+      "fallbacks": {
+        "noGps": "La historia ilustrada no necesita ubicación.",
+        "closedVenue": "El sobre contiene la aventura completa.",
+        "badWeather": "El Atlas abre la historia interior elegida.",
+        "tiredLegs": "Modo sentado: las mismas pistas llegan a la pantalla."
+      },
+      "safety": [
+        "La app abre la historia de la ruta elegida.",
+        "La aventura ilustrada contiene el camino completo."
+      ]
     },
     "VER-05": {
-      "title":"Franja de excursión de la tarde","storyBeat":"La franja del viernes por la tarde usa la pista compañera de la pareja elegida por el adulto. El Vigía encuentra una rueda, muro, agua o forma de exposición; el Detective etiqueta una frase como HECHO, LEYENDA o NUESTRA HISTORIA; el Guía elige una sola pista y da el bloque por terminado. La familia nunca añade otra parada solo por puntos: una tarjeta, confirmación manual o salto protege el final.","objective":"Completar la variante de tarde elegida o resolverla manualmente.","locationLabel":"Candidata elegida para el viernes por la tarde; por confirmar",
-      "roles":{"spotter":"Señala la forma de agua, rueda, muro o exposición de la variante.","detective":"Etiqueta una frase como hecho, leyenda o nuestra historia.","navigator":"Elige una sola pista y da el bloque por terminado."},
-      "variants": {
-        "borghetto-water-mill":{"title":"El misterio del molino de agua","locationLabel":"Ruta pública de Borghetto lejos del borde del río o tarjetas","storyBeat":"Borghetto ofrece a Bussola una pista con dos etiquetas. Los viejos molinos y casas de piedra pertenecen a la historia documentada; el Nudo del Amor, a la leyenda. Lejos del río, el Vigía busca una rueda o forma de piedra, el Detective separa HECHO y LEYENDA y el Guía elige una vista pública corta con el adulto. Funciona sin comer, entrar ni tocar nada.","objective":"Encontrar una forma de molino y etiquetar correctamente el Nudo del Amor como leyenda.","roles":{"spotter":"Señala una rueda, casa de piedra o forma de puente desde la ruta segura.","detective":"Clasifica la tarjeta del molino como HECHO y la del Nudo del Amor como LEYENDA.","navigator":"Elige con el adulto un punto de vista público y corto."},"choices":{"legend":{"label":"El Nudo del Amor es una leyenda","hint":"La fuente lo cuenta como un relato local."},"building-record":{"label":"El Nudo del Amor es un registro de construcción","hint":"Mira otra vez la etiqueta impresa en la tarjeta del relato."}},"facts":{"SRC-TRIP-BORGHETTO-01":{"label":"HECHO","text":"Borghetto conserva casas de piedra, antiguos molinos de agua y el Ponte Visconteo fortificado."},"SRC-TRIP-KNOT-LEG-01":{"label":"LEYENDA","text":"El relato del Nudo del Amor relaciona los tortellini locales con Silvia, Malco y una tela de seda anudada."}},"completion":{"retryLine":"Mirad otra vez: la tarjeta del nudo está etiquetada LEYENDA.","explanation":"Los molinos y casas de piedra de Borghetto son historia física del lugar. El relato de Silvia, Malco y una tela amarilla anudada es una leyenda local.","successLine":"Hecho del molino y leyenda del nudo clasificados."},"fallbacks":{"noGps":"El adulto elige una vista pública segura; no se comprueba proximidad.","closedVenue":"No hace falta entrar; usad la versión exterior o las tarjetas.","badWeather":"Usad las tarjetas a cubierto o elegid la pareja de lluvia de Verona.","tiredLegs":"Emparejad una forma sentados y etiquetad la leyenda."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","Permaneced con un adulto lejos del río; no entréis en casas ni toquéis los molinos."]},
-        "lazise-bonus-spotter":{"title":"Vigía extra de Lazise","locationLabel":"Parada pública en Lazise elegida por el adulto, tarjetas en el coche aparcado o salto","storyBeat":"Después de Sirmione, Bussola ofrece un extra que puede seguir siendo pequeño. Si la familia para en Lazise, el Vigía elige un muro, ventana o barco desde un lugar seguro; el Detective lo convierte en símbolo del equipo; el Guía decide con el adulto si una pista basta. Si el día ya está lleno, una tarjeta o un salto completan la franja con amabilidad.","objective":"Elegir una forma visible segura e inventar un símbolo de equipo, o usar la tarjeta.","roles":{"spotter":"Señala un muro, ventana o barco desde la parada compartida.","detective":"Convierte la forma en un símbolo sencillo del equipo.","navigator":"Decide con el adulto si esta pista termina el bloque."},"facts":{"SRC-TRIP-LAZISE-01":{"label":"HECHO","text":"El centro histórico público de Lazise conserva murallas y puertas Scaliger junto a su antiguo puerto."},"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"Una pista extra corta puede bastar después de un día largo."}},"completion":{"retryLine":"Elegid cualquier forma de tarjeta; el extra puede terminar ahí.","explanation":"Esta actividad es deliberadamente NUESTRA HISTORIA, no una afirmación histórica. Protege la energía y crea un símbolo compartido.","successLine":"Una pequeña pista se convirtió en símbolo del equipo."},"fallbacks":{"noGps":"El adulto elige la parada o las tarjetas.","closedVenue":"No hace falta entrar; elegid círculo, arco u onda como símbolo.","badWeather":"Elegid una de esas formas en el coche aparcado, hotel o a cubierto.","tiredLegs":"Saltad la parada o elegid una forma sentados; ambas resuelven la franja."},"safety":["Dejad de caminar y mirad arriba mientras el adulto sostiene el teléfono.","Permaneced con un adulto lejos del tráfico y del agua; nunca añadáis esta parada si la familia está cansada."]},
-        "verona-childrens-museum":{"title":"Chispa de equipo en interior","locationLabel":"Museo de los Niños solo si ya está reservado, o modo hotel/tarjetas manuales","storyBeat":"La lluvia mantiene la tarde bajo techo, pero Bussola no necesita entrada. Si el adulto ya eligió el museo, cada explorador selecciona un descubrimiento práctico seguro después de usarlo. El Vigía señala su tarjeta, el Detective explica un cambio y el Guía une tres tarjetas en una secuencia. Sin reserva, el mismo reto funciona en el hotel.","objective":"Combinar un descubrimiento de cada papel en el lugar elegido o con tarjetas.","roles":{"spotter":"Señala un descubrimiento aprobado por el adulto o su tarjeta.","detective":"Explica algo que se movió, cambió o sorprendió al equipo.","navigator":"Ordena tres tarjetas en una secuencia de principio, medio y final."},"facts":{},"completion":{"retryLine":"Usad tres tarjetas cualesquiera para crear principio, medio y final.","explanation":"La misión interior premia una secuencia compartida, no la entrada al lugar. Las tarjetas del hotel son un equivalente completo.","successLine":"Tres pistas interiores crearon una chispa de equipo."},"fallbacks":{"noGps":"El adulto elige museo u hotel.","closedVenue":"En el hotel, ordenad las tarjetas mover, cambiar y sorprender; nunca es obligatorio entrar.","badWeather":"Esta ya es la versión de lluvia intensa.","tiredLegs":"Ordenad dos tarjetas sentados o resolved manualmente."},"safety":["Dejad de moveros antes de que el adulto use el teléfono.","Seguid las normas, permaneced juntos y usad solo elementos aprobados por el adulto; no hace falta foto."]}
+      "title": "La página de las tres puertas",
+      "storyBeat": "La página de la tarde permanece cerrada con tres pequeñas puertas. La ruta elegida abrirá una sola: detrás esperan un hilo amarillo, una ciudad con un lado de agua o una chispa que salta entre seis preguntas.",
+      "objective": "Abrir automáticamente la historia de tarde asociada a la ruta elegida.",
+      "locationLabel": "Página de ruta del viernes",
+      "roles": {
+        "spotter": "Abre la primera pieza del relato que muestre el Atlas.",
+        "detective": "Resuelve la pista central escrita por Bussola.",
+        "navigator": "Une las piezas en el sello de la tarde."
       },
-      "completion":{"retryLine":"Elegid una pista de la variante, usad su tarjeta o resolved manualmente.","explanation":"La franja de tarde tiene intencionadamente una sola pista. La pareja elegida cambia el contenido, nunca el acceso al final.","successLine":"Ruta de tarde resuelta."},"fallbacks":{"noGps":"El adulto elige manualmente variante y lugar.","closedVenue":"Usad modo exterior público, sin conexión o manual.","badWeather":"Elegid verona-rain o saltad sin penalización.","tiredLegs":"Lazise es opcional; una observación sentados o la finalización manual resuelven la franja."},"safety":["Permaneced junto a un adulto cerca de ríos y lagos.","No bloqueéis casas, toquéis equipos ni añadáis otra parada si la familia está cansada."]
+      "variants": {
+        "borghetto-water-mill": {
+          "title": "El hilo amarillo del molino",
+          "locationLabel": "Borghetto o teatro ilustrado del Mincio",
+          "storyBeat": "Junto al Mincio, una rueda de molino ha quedado inmóvil. Entre sus palas, Bussola descubre un hilo de seda amarilla y dos recuerdos mezclados: uno pertenece a la historia de Borghetto; el otro, a una leyenda de Silvia y Malco. Para liberar la hebra tendremos que despertar el molino y colocar cada recuerdo bajo su nombre verdadero.",
+          "objective": "Despertar el molino y separar hecho, leyenda y nuestra historia.",
+          "roles": {
+            "spotter": "Devuelve tres gotas al Mincio.",
+            "detective": "Ordena agua, rueda y grano.",
+            "navigator": "Guarda cada recuerdo en HECHO, LEYENDA o NUESTRA HISTORIA."
+          },
+          "choices": {
+            "legend": {
+              "label": "Silvia y Malco dejan una tela amarilla anudada",
+              "hint": "La fuente presenta este relato como leyenda."
+            },
+            "building-record": {
+              "label": "Los molinos servían para moler trigo y cereales",
+              "hint": "Esta pista pertenece a la historia documentada del lugar."
+            }
+          },
+          "facts": {
+            "SRC-TRIP-BORGHETTO-01": {
+              "label": "HECHO",
+              "text": "Borghetto conserva casas de piedra, antiguos molinos de agua y el Ponte Visconteo fortificado."
+            },
+            "SRC-TRIP-KNOT-LEG-01": {
+              "label": "LEYENDA",
+              "text": "El Nudo del Amor cuenta la historia de Silvia, Malco y una tela de seda amarilla anudada."
+            }
+          },
+          "completion": {
+            "retryLine": "La rueda vuelve a abrir los cajones HECHO, LEYENDA y NUESTRA HISTORIA.",
+            "explanation": "Los molinos y la piedra pertenecen a la historia del lugar; Silvia, Malco y la seda amarilla, a su leyenda; Bussola y el hilo atrapado, a nuestra aventura.",
+            "successLine": "Molino, leyenda y aventura: cada recuerdo encontró su lugar."
+          },
+          "fallbacks": {
+            "noGps": "El teatro del Mincio contiene la aventura completa.",
+            "closedVenue": "No hace falta entrar ni tocar un molino.",
+            "badWeather": "La rueda de papel gira igual bajo techo.",
+            "tiredLegs": "Modo sentado: tres gotas y tres cajones."
+          },
+          "safety": [
+            "La pista se mira desde el paseo.",
+            "No os acerquéis al borde del Mincio."
+          ]
+        },
+        "lazise-bonus-spotter": {
+          "title": "La ciudad que tenía tres lados",
+          "locationLabel": "Lazise o mapa ilustrado del Garda",
+          "storyBeat": "En el mapa del Garda, Lazise aparece como una ciudad de piedra a medio dibujar. Bussola levanta una muralla al norte, otra al este y otra al sur. En el oeste queda un vacío azul. “No falta una pared”, dice al ver una ola escondida. Descubrid qué completa su cuarto lado y devolvedle la salida hacia el puerto.",
+          "objective": "Completar los tres lados de piedra y el lado de agua de Lazise.",
+          "roles": {
+            "spotter": "Levanta tres lados de muralla.",
+            "detective": "Encuentra qué completa el oeste azul.",
+            "navigator": "Une una almena y una ola en el emblema final."
+          },
+          "facts": {
+            "SRC-TRIP-LAZISE-01": {
+              "label": "HECHO",
+              "text": "Lazise conserva murallas históricas; su antiguo puerto, la Dogana Veneta y San Nicolò están junto al lago."
+            },
+            "OUR-STORY-1": {
+              "label": "NUESTRA HISTORIA",
+              "text": "La ola almenada es el emblema inventado por Bussola para esta aventura."
+            }
+          },
+          "completion": {
+            "retryLine": "Tres paredes rodean el mapa. Bussola vuelve a iluminar el borde azul del oeste.",
+            "explanation": "La piedra protege tres lados y el lago completa el lado occidental con su puerto.",
+            "successLine": "Tres lados de piedra y un lado de agua completaron Lazise."
+          },
+          "fallbacks": {
+            "noGps": "El mapa del Garda contiene la misión completa.",
+            "closedVenue": "La historia no necesita entrada.",
+            "badWeather": "La ciudad de papel se completa bajo techo.",
+            "tiredLegs": "Modo sentado: tres muros y una ola."
+          },
+          "safety": [
+            "En el puerto, observad desde el paseo.",
+            "El mapa ilustrado conserva piedra y lago."
+          ]
+        },
+        "verona-childrens-museum": {
+          "title": "La chispa de las seis puertas",
+          "locationLabel": "Children’s Museum Verona o constelación ilustrada de Bussola",
+          "storyBeat": "La lluvia apaga una página del Atlas, pero dentro queda una chispa saltando de puerta en puerta. Bussola lee seis nombres: agua, luz, mecánica, sonido, lógica y cuerpo. Ninguna flecha marca un recorrido obligatorio. Abrid las seis y llevad la chispa por la secuencia que el propio Atlas ha preparado.",
+          "objective": "Abrir seis puertas y guiar una chispa por agua, mecánica y luz.",
+          "roles": {
+            "spotter": "Toca las seis puertas cuando Bussola las nombre.",
+            "detective": "Encuentra el mapa con muchas conexiones posibles.",
+            "navigator": "Guía la chispa por agua, mecánica y luz."
+          },
+          "facts": {},
+          "completion": {
+            "retryLine": "La gota, el engranaje y el rayo siguen visibles. Bussola ilumina el siguiente símbolo.",
+            "explanation": "El Atlas inventa la máquina de la chispa; el museo real inspira preguntas sobre ciencia y exploración.",
+            "successLine": "Seis puertas, muchas rutas y una chispa conectada."
+          },
+          "fallbacks": {
+            "noGps": "La constelación ilustrada contiene la misión completa.",
+            "closedVenue": "Las seis puertas se abren igual fuera del museo.",
+            "badWeather": "Esta aventura ya vive bajo techo.",
+            "tiredLegs": "Modo sentado: seis grandes puertas para tocar."
+          },
+          "safety": [
+            "Constelación en pantalla.",
+            "La visita real es opcional."
+          ]
+        }
+      },
+      "completion": {
+        "retryLine": "La puerta mantiene visible la pista que falta.",
+        "explanation": "Cada ruta abre una historia completa con principio, misterio y final.",
+        "successLine": "La página de la tarde ya tiene su sello."
+      },
+      "fallbacks": {
+        "noGps": "La historia ilustrada no necesita ubicación.",
+        "closedVenue": "La puerta contiene la aventura completa.",
+        "badWeather": "El Atlas abre la historia interior elegida.",
+        "tiredLegs": "Modo sentado: las mismas pistas llegan a la pantalla."
+      },
+      "safety": [
+        "La app abre la historia de la ruta elegida.",
+        "La aventura ilustrada contiene el camino completo."
+      ]
     },
     "VER-06": {
-      "title":"Restaura la brújula","storyBeat":"Bussola ya guarda Curiosidad, Asombro y Creatividad, mientras el Trabajo en equipo parpadea en el centro. El final funciona en cualquier lugar seguro. El Vigía elige un icono favorito; el Detective lo etiqueta HECHO, TRADICIÓN, LEYENDA o NUESTRA HISTORIA; el Guía coloca las cuatro tarjetas de poderes alrededor de Bussola. Cuando se unen tres acciones distintas, la aguja se alinea, sin importar la ruta, el tiempo, las elecciones manuales o los saltos.","objective":"Combinar una acción de cada papel y restaurar el Trabajo en equipo.","locationLabel":"Cualquier mirador seguro de Verona, hotel, coche aparcado o lugar interior",
-      "roles":{"spotter":"Elige un icono de descubrimiento favorito.","detective":"Di si fue hecho, tradición, leyenda o nuestra historia.","navigator":"Coloca las cuatro tarjetas de poderes alrededor de Bussola."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"Rutas distintas pueden restaurar la misma brújula compartida."}},
-      "completion":{"retryLine":"Elegid un icono y una etiqueta de historia; el adulto puede colocar las tarjetas.","explanation":"Los cuatro poderes pertenecen a toda la familia. Las pistas resueltas, incluidas las manuales y saltadas, mantienen abierto el final porque el trabajo en equipo no es una puntuación perfecta.","successLine":"Ruta distinta, mismo equipo. El Trabajo en equipo brilla."},
-      "fallbacks":{"noGps":"El final funciona en cualquier lugar.","closedVenue":"No hace falta ningún lugar concreto.","badWeather":"Usad la celebración estática en interior.","tiredLegs":"Completadla sentados, sin movimiento ni sonido."},"safety":["No hace falta actuar en público.","Saltar franjas de excursión nunca bloquea esta misión."]
+      "title": "El puente de la aguja",
+      "storyBeat": "Bussola está a punto de recuperar su última luz cuando suena clac. La aguja se abre en cinco piezas y cae sobre un río de tinta. “Una piedra romana, un ladrillo medieval, una página, un arco… son demasiado diferentes”. Entonces el río dibuja Ponte Pietra. Quizá a la aguja no le falte una pieza. Quizá le falte aprender a estar insieme.",
+      "objective": "Reconstruir cinco piezas y activar insieme: juntos.",
+      "locationLabel": "Final en pantalla · listo en cualquier lugar",
+      "roles": {
+        "spotter": "Encuentra la curva que completa el primer arco.",
+        "detective": "Ordena tres capas de Verona desde la más antigua.",
+        "navigator": "Une las piezas recuperadas sin volverlas iguales."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "La aguja convertida en puente pertenece al final de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "Forma, fecha y marcas siguen visibles. Bussola ilumina el encaje siguiente.",
+        "explanation": "Insieme significa juntos: partes diferentes que forman un todo.",
+        "successLine": "Piezas distintas. Un solo viaje. Bussola vuelve a orientarse."
+      },
+      "fallbacks": {
+        "noGps": "Este es el camino normal: todo sucede en pantalla.",
+        "closedVenue": "No depende de ningún lugar.",
+        "badWeather": "El río de tinta sigue dentro del Atlas.",
+        "tiredLegs": "Modo cuento: tres grandes elecciones y el mismo final."
+      },
+      "safety": [
+        "Final en pantalla · 4 min.",
+        "No hace falta moverse."
+      ]
     },
     "RETURN-EP": {
-      "title":"La flecha de casa","storyBeat":"El sábado, la aguja de Bussola apunta a casa. Es un epílogo, no una misión con puntos. Antes de conducir, en una parada segura o tras llegar, el Vigía elige un sello favorito, el Detective nombra un descubrimiento sorprendente y el Guía apunta la flecha sin conexión hacia Basilea. La brújula no guarda el historial de la ruta; el relato familiar lleva el viaje a casa.","objective":"Elegir una pista favorita para recordarla juntos.","locationLabel":"Antes de salir, en una parada segura o después de llegar a casa",
-      "roles":{"spotter":"Elige un sello favorito.","detective":"Nombra algo sorprendente.","navigator":"Apunta la flecha de casa de Bussola hacia Basilea en la tarjeta sin conexión."},
-      "facts":{"OUR-STORY-1":{"label":"NUESTRA HISTORIA","text":"La brújula restaurada puede llevar recuerdos sin guardar un historial de ubicaciones."}},
-      "completion":{"retryLine":"Elegid un solo sello o cerrad la historia con un toque.","explanation":"La flecha de casa es una tarjeta de historia sin conexión. No usa GPS, no guarda una ruta ni añade puntos.","successLine":"Casa es la dirección final, no una puntuación."},
-      "fallbacks":{"noGps":"Usad la flecha de casa sin conexión.","closedVenue":"No hace falta ningún lugar concreto.","badWeather":"Jugad en el coche aparcado o en casa.","tiredLegs":"Un toque cierra la historia."},"safety":["El adulto inicia antes de conducir, en una parada segura o en casa.","Quien conduce nunca usa el teléfono."]
+      "title": "La quinta dirección",
+      "storyBeat": "El Atlas se cierra, pero Bussola sigue despierta. Curiosidad, Asombro, Creatividad y Trabajo en equipo brillan en sus cuatro puntas. La aguja intenta señalar el camino a casa… y se queda quieta. “Creo que aún me falta una dirección”, susurra. No está al norte, al sur, al este ni al oeste. Tres manos convertirán un poder y un recuerdo en la flecha de casa.",
+      "objective": "Convertir un recuerdo del viaje en la flecha de casa.",
+      "locationLabel": "Dentro del Atlas de Bussola",
+      "roles": {
+        "spotter": "Toca uno de los cuatro poderes.",
+        "detective": "Elige una de las tres memorias que abre el Atlas.",
+        "navigator": "Sella la flecha con una de tres frases ya escritas."
+      },
+      "facts": {
+        "OUR-STORY-1": {
+          "label": "NUESTRA HISTORIA",
+          "text": "CASA es la quinta dirección imaginaria que cierra el primer viaje de Bussola."
+        }
+      },
+      "completion": {
+        "retryLine": "La flecha espera vuestra elección.",
+        "explanation": "Los cuatro poderes ya están despiertos. Ahora convierten un recuerdo en la dirección de casa.",
+        "successLine": "Bussola ya no está perdida."
+      },
+      "fallbacks": {
+        "noGps": "La flecha nace de un recuerdo, no de una ruta.",
+        "closedVenue": "El epílogo sucede dentro del Atlas.",
+        "badWeather": "La quinta dirección aparece igual bajo cualquier cielo.",
+        "tiredLegs": "Historia breve: una elección y el mismo final."
+      },
+      "safety": [
+        "Epílogo en pantalla.",
+        "Tres toques cierran la historia."
+      ]
     }
   }
 }

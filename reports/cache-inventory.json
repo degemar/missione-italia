@@ -29,22 +29,28 @@
       "gzipBytes": 313667
     },
     {
-      "url": "/missione-italia/assets/index-CQbHJIFa.css",
-      "revision": "5447018c59a4f7acd620ea4bda26f3abef66ebecadd03b8250cc6ca377207d14",
-      "bytes": 32823,
-      "gzipBytes": 7444
+      "url": "/missione-italia/assets/index-CK0xzKSb.css",
+      "revision": "66c72864931087f1b7cf2c5b6395af87935b53481bcd31f4110fea2b191d611f",
+      "bytes": 34932,
+      "gzipBytes": 7777
     },
     {
-      "url": "/missione-italia/assets/index-DAMqiEM1.js",
-      "revision": "7f51685fd7f663223bd743ea875d2e2cf05d26a79483d2b3b5b19a0fd5361df6",
-      "bytes": 414166,
-      "gzipBytes": 120101
+      "url": "/missione-italia/assets/index-CwNuEAbD.js",
+      "revision": "1bef640bd14ee3a7b5aa2ca41cb818fd32ded118254adb490a0ca9fa8a8df444",
+      "bytes": 442032,
+      "gzipBytes": 127231
     },
     {
       "url": "/missione-italia/assets/workbox-window.prod.es5-Bd17z0YL.js",
       "revision": "17bcc17d60dc78f927834b880c39649b03af46fd1f5cdbb8c42c5ae2b515dce9",
       "bytes": 5653,
       "gzipBytes": 2199
+    },
+    {
+      "url": "/missione-italia/audio/narration/v1/manifest.json",
+      "revision": "fc8cf0ba1a52fbb5d2967dc74d9540cbd842de887e62a184bb715b171b4e2311",
+      "bytes": 24958,
+      "gzipBytes": 3203
     },
     {
       "url": "/missione-italia/content/assets.json",
@@ -66,15 +72,15 @@
     },
     {
       "url": "/missione-italia/content/locales/narration.es.json",
-      "revision": "ab5d87e93adc23ba3a262c865654ed41980830fedbf37a155c0577ef1d6b84d5",
-      "bytes": 5321,
-      "gzipBytes": 823
+      "revision": "aa8a162ba3f84d833c51b69109a149e908da962d8b25282aa6b7cebdbafa6fa2",
+      "bytes": 6310,
+      "gzipBytes": 859
     },
     {
       "url": "/missione-italia/content/locales/trip-manifest.es.json",
-      "revision": "7245c0ee05d672e97e068acf85ff6a69a86797c7197e9466b044f16e4ce191bd",
-      "bytes": 48594,
-      "gzipBytes": 13705
+      "revision": "b561c3c894293d65081fcc7980e98651e90c560c62ed364ceb62994456422b49",
+      "bytes": 49759,
+      "gzipBytes": 13376
     },
     {
       "url": "/missione-italia/content/rewards.json",
@@ -96,7 +102,7 @@
     },
     {
       "url": "/missione-italia/index.html",
-      "revision": "0c555a60ca2417281dd991ab36c15fc3eadf9c687266026816538055dd645089",
+      "revision": "85aa5f6d50177f1d82f380c85169a7ab789d75a9b5340cd9f87cfceda6addb02",
       "bytes": 872,
       "gzipBytes": 401
     },
@@ -108,9 +114,9 @@
     }
   ],
   "totals": {
-    "files": 17,
-    "bytes": 1312584,
-    "gzipBytes": 881036
+    "files": 18,
+    "bytes": 1369671,
+    "gzipBytes": 891409
   },
   "budgets": {
     "targetPrecacheBytes": 15728640,
@@ -123,6 +129,7 @@
     "Supabase responses",
     "diagnostics",
     "family data and photos",
-    "source masters and source maps"
+    "source masters and source maps",
+    "optional narration audio"
   ]
 }

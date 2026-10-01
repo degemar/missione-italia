@@ -14,6 +14,8 @@ import {
 } from '@phosphor-icons/react';
 import {useReducer} from 'react';
 
+import type {NarrationChapterCache} from '../audio/narration-cache.js';
+import type {NarratorController} from '../audio/narrator-controller.js';
 import type {AppScreen} from '../app/app-state.js';
 import type {SaveEnvelopeV1} from '../contracts/save-contract.js';
 import type {ContentBundle, RoleId} from '../content/types.js';
@@ -34,6 +36,7 @@ import type {TripMaintenanceAction} from '../platform/trip-data-maintenance.js';
 import type {PersistenceRequestResult} from '../storage/index.js';
 import {AccessibleDialog} from './AccessibleDialog.js';
 import {InstallGuide} from './InstallGuide.js';
+import {NarrationDownloads} from './NarrationDownloads.js';
 import './parent-corner-r3.css';
 
 interface ParentCornerProps {
@@ -50,6 +53,8 @@ interface ParentCornerProps {
   readonly copyStatus: 'idle' | 'copied' | 'unavailable';
   readonly updateAvailable: boolean;
   readonly canApplyUpdate: boolean;
+  readonly narrationCache: NarrationChapterCache | null;
+  readonly narrator: NarratorController | null;
   readonly onDone: () => void;
   readonly onRotateRoles: () => void;
   readonly onResolveMission: (result: 'manual' | 'skipped') => void;
@@ -211,6 +216,13 @@ export function ParentCorner(props: ParentCornerProps) {
           <span>{t('parent.reducedMotion')}</span>
         </label>
       </section>
+
+      <NarrationDownloads
+        cache={props.narrationCache}
+        chapters={props.bundle.chapters}
+        disabled={props.busy}
+        onStop={() => props.narrator?.stop()}
+      />
 
       <section className="parent-section parent-section--offline" aria-labelledby="parent-offline-heading">
         <h2 id="parent-offline-heading">{t('parent.offlineTitle')}</h2>

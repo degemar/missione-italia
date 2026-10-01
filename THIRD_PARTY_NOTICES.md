@@ -18,6 +18,20 @@ R2 adds **no package**. The existing React/CSS/Vite stack and Phosphor icon pack
 
 Exact tarball URLs, integrity hashes, and transitive dependency records are locked in `package-lock.json`. All five package licences are available in their installed package directories; no third-party artwork or fonts ship in this wave.
 
+### Generated Bussola narration
+
+The app ships 32 synthetic Spanish MP3 clips in `public/audio/narration/v1/`. The project-authored scripts were generated locally with `qwen-tts` 0.1.1 and the built-in `Serena` preset from `Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice` at immutable revision `85e237c12c027371202489a0ec509ded67b5e4b5`.
+
+- Model and package family: Qwen3-TTS, Apache License 2.0
+- Pinned model card: https://huggingface.co/Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice/tree/85e237c12c027371202489a0ec509ded67b5e4b5
+- Source and licence: https://github.com/QwenLM/Qwen3-TTS and https://github.com/QwenLM/Qwen3-TTS/blob/main/LICENSE
+- PyPI release used: https://pypi.org/project/qwen-tts/0.1.1/
+- Voice identity: Qwen's synthetic `Serena` preset; no human recording, imported voice, speaker embedding, or voice-cloning reference was used.
+- Shipped output: generated MP3 files and their manifest only. Qwen model weights, `qwen-tts`, PyTorch, FlashAttention 2, SoundFile, and FFmpeg/imageio-ffmpeg were local authoring tools and are not bundled, called, or required at runtime.
+- Voicebox was not used to generate or edit these files. It informed the optional-pack architecture only and is neither a production dependency nor part of the audio provenance chain.
+
+The model card marks the pinned checkpoint Apache-2.0, supports Spanish, and describes `Serena` as a built-in warm, gentle synthetic preset. The release contains no imitation of an identified person. Audio-level hashes, dates, script references, loudness measurements, and exact generator/model metadata are recorded in `public/audio/narration/v1/manifest.json`; the production verification record is `planning/R4_AUDIO_PRODUCTION_HANDOFF.md`. This notice records technical provenance and is not legal advice.
+
 ### Phosphor Icons for React
 
 - Source: https://github.com/phosphor-icons/react
@@ -67,4 +81,4 @@ Review snapshots are pinned in `planning/ASSET_PROVENANCE_REGISTER.md`; moving b
 ## Explicit exclusions
 
 - The three `planning/r0-ux-options/*.png` boards are internally generated concept artifacts, not third-party assets and not production artwork. They are excluded from the app and service-worker cache.
-- Voicebox is not shipped, bundled, called, or cleared as a production dependency. Any later offline narration workflow requires separate tool, model, voice, and output-distribution provenance.
+- Voicebox is not shipped, bundled, called, or part of the production-generation chain. It was reviewed only as architectural inspiration; the shipped narration was generated directly through the local `qwen-tts` Python workflow documented above.

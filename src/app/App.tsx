@@ -1,7 +1,11 @@
 import {useEffect, useReducer, useRef, useState} from 'react';
 
+import {NarrationChapterCache} from '../audio/narration-cache.js';
+import {NarratorController} from '../audio/narrator-controller.js';
+import {loadNarrationPack} from '../audio/narration-pack.js';
 import {AppShell} from '../components/AppShell.js';
 import {ParentCorner} from '../components/ParentCorner.js';
+import type {NarrationBinding} from '../components/NarrationControls.js';
 import {
   AtlasScreen,
   CelebrationScreen,
@@ -76,6 +80,11 @@ const resultFromSave = (save: SaveEnvelopeV1, missionId: string): ResolvedMissio
   return state === 'completed' || state === 'manual' || state === 'skipped' ? state : null;
 };
 
+interface NarrationRuntime {
+  readonly cache: NarrationChapterCache;
+  readonly narrator: NarratorController;
+}
+
 export function App() {
   const [state, dispatch] = useReducer(appReducer, initialAppState);
   const [bootAttempt, setBootAttempt] = useState(0);
@@ -87,8 +96,10 @@ export function App() {
   const [persistenceResult, setPersistenceResult] = useState<PersistenceRequestResult['status'] | null>(null);
   const [diagnosticPreview, setDiagnosticPreview] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'unavailable'>('idle');
+  const [narrationRuntime, setNarrationRuntime] = useState<NarrationRuntime | null>(null);
   const savedReducedMotion = state.save?.settings.reducedMotion;
   const controllerRef = useRef<LocalGameController | null>(null);
+  const narratorRef = useRef<NarratorController | null>(null);
   const platformControllerRef = useRef<PlatformStateController | null>(null);
   const diagnosticBufferRef = useRef<LocalDiagnosticBuffer | null>(null);
   const storageHealthAdapterRef = useRef<StorageHealthAdapter | null>(null);
@@ -136,19 +147,34 @@ export function App() {
   useEffect(() => {
     let cancelled = false;
     let created: LocalGameController | null = null;
+    let createdNarration: NarrationRuntime | null = null;
 
     const boot = async () => {
       try {
         const baseBundle = await loadContentBundle();
         const spanishContent = await loadSpanishContentResources(baseBundle);
+        try {
+          const narrationPack = await loadNarrationPack({
+            contentVersion: baseBundle.manifest.contentVersion,
+            chapterIds: baseBundle.chapters.map(({id}) => id),
+            narration: spanishContent.narration,
+          });
+          const cache = new NarrationChapterCache(narrationPack);
+          createdNarration = {cache, narrator: new NarratorController(cache)};
+        } catch {
+          createdNarration = null;
+        }
         created = await LocalGameController.create(baseBundle);
         const loaded = await created.hydrate();
         if (cancelled) {
           created.close();
+          createdNarration?.narrator.dispose();
           return;
         }
         const bundle = selectSpanishContent(baseBundle, spanishContent);
         controllerRef.current = created;
+        narratorRef.current = createdNarration?.narrator ?? null;
+        setNarrationRuntime(createdNarration);
         dispatch({type: 'BOOT_SUCCESS', bundle, save: loaded.save, durability: loaded.durability, warning: loaded.warning});
         if (loaded.durability.mode === 'memory-only') diagnosticBufferRef.current?.record('MI_STORAGE_UNAVAILABLE');
       } catch {
@@ -163,9 +189,29 @@ export function App() {
     return () => {
       cancelled = true;
       created?.close();
+      createdNarration?.narrator.dispose();
       if (controllerRef.current === created) controllerRef.current = null;
+      if (narratorRef.current === createdNarration?.narrator) narratorRef.current = null;
     };
   }, [bootAttempt]);
+
+  useEffect(() => {
+    narratorRef.current?.stop();
+  }, [state.screen]);
+
+  useEffect(() => {
+    const stopForBackground = () => narratorRef.current?.stop();
+    const stopWhenHidden = () => {
+      if (document.visibilityState === 'hidden') stopForBackground();
+    };
+    document.addEventListener('visibilitychange', stopWhenHidden);
+    window.addEventListener('pagehide', stopForBackground);
+    return () => {
+      document.removeEventListener('visibilitychange', stopWhenHidden);
+      window.removeEventListener('pagehide', stopForBackground);
+      stopForBackground();
+    };
+  }, []);
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
@@ -293,6 +339,7 @@ export function App() {
   const updateParentSetting = async (setting: 'sound' | 'reducedMotion', value: boolean) => {
     const controller = controllerRef.current;
     if (!controller) return;
+    if (setting === 'sound' && !value) narratorRef.current?.stop();
     if (setting === 'reducedMotion') applyReducedMotion(value);
     await commit(() => controller.updateSettings({[setting]: value}), {id: 'PARENT'}, t('status.settingsSaved'));
   };
@@ -395,6 +442,12 @@ export function App() {
     }
   };
 
+  const narrationFor = (scriptRef: string): NarrationBinding | null => {
+    if (!narrationRuntime) return null;
+    const segmentId = narrationRuntime.narrator.segmentForScriptRef(scriptRef);
+    return segmentId ? {controller: narrationRuntime.narrator, segmentId} : null;
+  };
+
   const renderMissionScreen = (missionId: string, screenId: AppScreen['id']) => {
     if (!bundle || !save) return <ContentErrorScreen onRetry={retryBoot} />;
     const mission = bundle.missionById.get(missionId);
@@ -420,6 +473,9 @@ export function App() {
       return (
         <StoryScreen
           mission={effective}
+          narration={narrationFor(effective.resolvedVariantId
+            ? `missions.${mission.id}.variants.${effective.resolvedVariantId}.storyBeat`
+            : `missions.${mission.id}.storyBeat`)}
           busy={state.busy}
           onLookUp={() => void navigate({id: 'LOOK-UP', chapterId: mission.chapterId, missionId: mission.id})}
           onPause={() => void navigate({id: 'MISSION', chapterId: mission.chapterId, missionId: mission.id}, bundle.manifest.narrative.states.interrupted)}
@@ -476,6 +532,7 @@ export function App() {
             opening={bundle.manifest.narrative.opening}
             step={openingStep}
             busy={state.busy}
+            narration={narrationFor('narrative.opening.storyBeat')}
             onNext={() => {
               if (openingStep < 2) dispatch({type: 'OPENING_NEXT'});
               else void navigate({id: 'ATLAS'});
@@ -518,6 +575,8 @@ export function App() {
             bundle={bundle}
             save={save}
             chapter={chapter}
+            openingNarration={narrationFor(`chapters.${chapter.id}.openingBeat`)}
+            closingNarration={narrationFor(`chapters.${chapter.id}.closingBeat`)}
             onMission={(mission) => void openMission(mission)}
           />
         );
@@ -564,7 +623,7 @@ export function App() {
           const effective = getEffectiveMission(mission, save.excursionSelection.selectedPairId, save.missionProgress[mission.id]?.resolvedVariantId ?? null);
           return <CelebrationScreen bundle={bundle} save={save} mission={effective} result={result} onContinue={() => void navigate({id: 'PASSPORT'})} />;
         }
-        return <EpilogueScreen mission={mission} busy={state.busy} onStart={() => void resolveMission(mission, 'completed')} />;
+        return <EpilogueScreen mission={mission} narration={narrationFor(`missions.${mission.id}.storyBeat`)} busy={state.busy} onStart={() => void resolveMission(mission, 'completed')} />;
       }
       case 'PARENT': {
         if (!bundle || !save) return <ContentErrorScreen onRetry={retryBoot} />;
@@ -588,6 +647,8 @@ export function App() {
             copyStatus={copyStatus}
             updateAvailable={updateAvailable}
             canApplyUpdate={canApplyUpdate}
+            narrationCache={narrationRuntime?.cache ?? null}
+            narrator={narrationRuntime?.narrator ?? null}
             onDone={() => void closeParent()}
             onRotateRoles={() => dispatch({type: 'ROTATE_ROLE_NAMES'})}
             onResolveMission={(result) => {

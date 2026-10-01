@@ -57,6 +57,13 @@ const candidates = allFiles.filter(isPrecacheCandidate).sort();
 const sw = await readFile(join(dist, 'sw.js'), 'utf8');
 const entries = [];
 
+for (const path of allFiles.filter((file) => /\.(?:mp3|ogg|wav)$/i.test(file))) {
+  const relativePath = toPosix(relative(dist, path));
+  if (sw.includes(JSON.stringify(relativePath))) {
+    throw new Error(`Narration audio must not be included in the app-shell precache: ${relativePath}`);
+  }
+}
+
 for (const path of candidates) {
   const relativePath = toPosix(relative(dist, path));
   const data = await readFile(path);
@@ -140,6 +147,7 @@ const report = {
     'diagnostics',
     'family data and photos',
     'source masters and source maps',
+    'optional narration audio',
   ],
 };
 

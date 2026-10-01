@@ -7,6 +7,7 @@ export const PRECACHE_GLOB_PATTERNS = [
 export const PRECACHE_GLOB_IGNORES = [
   '**/*.map',
   '**/bussola-app-icon-source.png',
+  '**/audio/narration/**/*.mp3',
   '**/cache-inventory.json',
 ];
 
@@ -16,6 +17,7 @@ const FORBIDDEN_PRECACHE_PATTERNS = [
   /supabase/i,
   /diagnostic/i,
   /family[-_/ ]?(?:data|photo)/i,
+  /\/audio\/narration\/.*\.mp3(?:$|\?)/i,
 ];
 
 export function isAllowedPrecacheUrl(url: string): boolean {

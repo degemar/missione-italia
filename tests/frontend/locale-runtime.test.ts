@@ -31,9 +31,9 @@ describe('locale runtime', () => {
     });
     const localized = selectSpanishContent(base, spanish);
     expect(localized.locale).toBe('es');
-    expect(localized.missionById.get('VEN-01')?.title).toBe('Encuentra el león alado');
+    expect(localized.missionById.get('VEN-01')?.title).toBe('El guardián imposible');
     expect(localized.missionById.get('VEN-01')?.id).toBe('VEN-01');
-    expect(localized.chapterById.get('venice')?.title).toBe('La ciudad que flota');
+    expect(localized.chapterById.get('venice')?.title).toBe('Los secretos del agua');
     expect(localized.stampLabelById.get('eagle-eye')).toBe('Ojo de águila');
     const state = {...initialAppState, bundle: base, screen: {id: 'PARENT'} as const};
     const switched = appReducer(state, {type: 'SET_BUNDLE', bundle: localized});
